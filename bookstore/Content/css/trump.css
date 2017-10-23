@@ -1,0 +1,82 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19-Dec-2016, 22:09:33
+    Author     : Admin
+*/
+
+.l-tintuc{
+    height: auto;
+    width: 745px;
+}
+.dot {
+    height: 23px;
+    background: url(../../Image_System/contact/dot0.png) repeat-x left bottom;
+    background-size: 10px;
+    width: 100%;
+}
+.content-tt {
+    margin-left: 10px;
+    height: 1120px;
+    width: 100%;
+    background: url(../../Image_System/contact/dot0.png) repeat-x left bottom;
+    background-size: 10px;
+}
+strong{
+        line-height: 25px;
+        font-size: 13px;
+}
+p{
+    font-size: 12px;
+    line-height: 19px;
+}
+span{
+     line-height: 25px;
+        font-size: 13px;
+        
+        font-family: inherit;
+        color: #333;
+}
+.btn-share a{
+    text-decoration: none;
+    font-size: 11px;
+    color: #333;
+}
+.btn-share a.zing {
+    background: url(zme.gif) left no-repeat;
+    padding: 4px 10px 6px 16px;
+    float: left;
+}
+.btn-share a.face {
+    background: url(small-facebook.gif) left no-repeat;
+    padding: 4px 10px 6px 16px;
+    float: left;
+}
+.btn-share a.twi {
+    background: url(small-twitter.gif) left no-repeat;
+    padding: 4px 10px 6px 16px;
+    float: left;
+}
+.cactinkhac{
+    width: 745px;
+    height: auto;
+   
+    margin-left: 50px;
+    float:left;
+    margin-top: 30px;
+}
+#listtinkhac{
+    background: url(../../Image_System/contact/arrow9.png) no-repeat left;
+    height: 20px;
+    width: 100%;
+    padding: 15px 15px 0 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+img{
+    
+    padding: 5px 5px;
+}

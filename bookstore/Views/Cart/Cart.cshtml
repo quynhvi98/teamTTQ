@@ -1,0 +1,269 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cart = ViewBag.listCart;
+    var row = 0;
+    var checklogin = ViewBag.checklogin;
+}
+
+<a href="#">
+    <div class="quangcao">
+        <img src="~/Image_System/category_home/quangcao.jpg" alt="" height="430" />
+    </div>
+</a>
+<a href="#">
+    <div style="position:absolute;top:230px;left:100px;" class="quangcao1">
+        <img src="~/Image_System/category_home/quangcao.jpg" alt="" height="430" />
+    </div>
+</a>
+<div class="giohang" style="margin-left:200px;">
+    <div class="dautien">
+        <a class="trangchugiohang" href="index.html"><h5>Trang Chủ </h5></a>
+        <strong class="trangchugiohang1"> > </strong>
+        <strong class="trangchugiohang1"><h5> Giỏ hàng</h5> </strong>
+        <div class="dautienbenphai">
+            <img class="imgdoitradedang" src="~/Image_System/cart/support-logo.png" alt="" />
+            <div class="dautienbenphai1"><a href="#">Hỗ Trợ Khách Hàng</a></div>
+        </div>
+        <div class="dautienbenphai">
+            <img class="imgdoitradedang" src="~/Image_System/cart/doi-tra-de-dang-icon.png" />
+            <div class="dautienbenphai1"><a href="#">Đổi trả dễ dàng</a></div>
+        </div>
+    </div>
+    @if (cart.Count == 0)
+    {
+        <div style="width:500px;height:auto;margin-left:auto;margin-right:auto;">
+            <img height="230" width="230" src="~/Image_System/cart/cart-empty.png" />
+            <p>Bạn không có sản phẩm nào trong giỏ hàng</p>
+            <br />
+            <a style="padding:20px 0 0 70px;" href="/Home/Index">
+                <input style="height:30px;width:170px;background-color: #fdd835;
+    color: #4a4a4a;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;border-radius:4px;" type="button" value="Tiếp tục mua sắm" />
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="noidunggiohang">
+            <div class="khunggiohang">
+                <div>
+                    <div class="giohangsanpham" style="font-size: 14px;"><strong style="font-size: 19px;">Giỏ Hàng </strong> (@cart.Count sản phẩm)</div>
+
+                </div>
+
+            </div>
+            <div class="khunggiohang">
+                <div style="margin-left:-160px;" class="giamua">Mã SP</div>
+                <div style="margin-left:-50px;" class="giamua">Chi tiết sản phẩm</div>
+                <div style="margin-left:230px;" class="giamua">Giá Mua</div>
+                <div class="soluongne">Số Lượng</div>
+            </div>
+            <div class="noidunggohang1">
+                <div class="noidunggiohangne">
+                    <table id="mytable">
+                        @foreach (var item in cart)
+                        {
+                            var a = row++;
+                            <tr>
+                                <td style="width:60px;padding-left:20px;font-weight:bold;font-size:18px;color:crimson;">
+                                    @item.id_product
+                                </td>
+                                <td style="width:550px;">
+                                    <div class="noidungne">
+                                        <img src="~/Image_Data/@item.img" alt="" />
+                                        <div class="vitriten">
+                                            <strong>  @item.name_product . </strong> <br>
+                                            <img class="icon24h" src="~/Image_System/cart/icon-24h.svg" alt="" /><br>
+                                            <p class="soluongcon">Chỉ còn @item.repository sản phẩm</p>
+                                            <a class="xoa" href="#" onclick="deleteRow(@a,'@item.id_product')">Xóa</a>
+                                            <a class="dedanhmuasau" href="#">để dành mua sau</a>
+                                        </div>
+                                        <div class="giamuasoluong">
+                                            <strong> @item.price_pages VNĐ   </strong> <br>
+                                            <strong class="giatiengoc"> @item.price VNĐ  </strong> <br>
+                                            <p class="sale"> Giảm 45% </p>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="soluong">
+                                        <strong>
+                                            <select class="quantity" onclick="check()">
+                                                @for (var i = 1; i <= 30; i++)
+                                                {
+                                                    if (i == item.quantity)
+                                                    {
+                                                        <option selected value="@i">@i</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@i">@i</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </strong> <br>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+                    <br><br>
+                </div>
+            </div>
+
+            <div class="noidunggohang2">
+                <div class="khungtinhtientam">
+                    <div class="gokhungtinhtien">
+                        <div style=" border-bottom: 2px solid #ff0033 ;height: 30px;">
+                            <p style="float: left;">Tạm tính:</p>
+                            <p id="tongtien" style="float: right;">@ViewBag.tongtien  ₫</p>
+                        </div>
+                    </div>
+                    <div class="gokhungthanhtien">
+                        <div style="height: 30px;">
+                            <p style="float: left;">Thành Tiền:</p>
+                            <p id="tongtien1" style="float: right;color: #ff0033;font-size: 25px;">@ViewBag.tongtien  ₫</p><br><br>
+                            <div style="float: right;color: #000;font-size: 15px;">(Đã bao gồm VAT) </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="dathang">
+                    <a class="tienhanhdathangtes" onclick="tienhanhdathang()">Tiến Hành Đặt Hàng</a>
+
+                </div>
+                <div>
+                    <div class="khungmagiamgia">
+                        <div class="row" style="background-color: white; box-sizing: border-box; color: #333333;  font-size: 14px; margin-left: -15px; margin-right: -15px;">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12" style="box-sizing: border-box; float: left; min-height: 1px; padding-left: 15px; padding-right: 15px; position: relative; width: 330px;">
+                                <div class="panel-group coupon" id="accordion" style="box-sizing: border-box; margin-bottom: 15px; margin-top: 15px;">
+                                    <div class="panel panel-default" style="border-radius: 3px; border: 1px solid rgb(221, 221, 221); box-shadow: none; box-sizing: border-box; margin-bottom: 0px;">
+                                        <div class="panel-heading" style="background: linear-gradient(rgb(255, 255, 255), rgb(247, 247, 247)); border-bottom: 0px rgb(221, 221, 221); border-left-color: rgb(221, 221, 221); border-right-color: rgb(221, 221, 221); border-top-color: rgb(221, 221, 221); border-top-left-radius: 3px; border-top-right-radius: 3px; box-sizing: border-box; padding: 0px;">
+                                            <h4 class="panel-title" style="box-sizing: border-box; color: inherit; font-size: 12px; font-weight: 500; line-height: 1.1; margin-bottom: 0px; margin-top: 0px;">
+                                                <a aria-expanded="true" class="" data-parent="#accordion" data-toggle="collapse" href="#" style=" color: #000;background-color: transparent; box-sizing: border-box; display: block; line-height: 18px;font-size: 14px; padding: 13px 15px 12px; text-decoration: none;">Mã giảm giá / Quà tặng<span style="box-sizing: border-box; float: right;"><img alt="" height="7" src="https://vcdn.tikicdn.com/assets/img/ico11.png" style="border: 0px; box-sizing: border-box; vertical-align: middle;" width="12" /></span></a>
+                                            </h4>
+                                        </div>
+                                        <div aria-expanded="true" class="panel-collapse collapse in" id="collapseOne3" style="box-sizing: border-box;">
+                                            <div class="panel-body" style="border-top: 1px solid rgb(221, 221, 221); box-sizing: border-box; font-size: 12px; padding: 15px;">
+                                                <div class="input-group" style="border-collapse: separate; box-sizing: border-box; display: table; position: relative;">
+                                                    <input class="form-control" id="coupon" placeholder="Nhập ở đây.." style="height: 20px;background-image: none; border-bottom: 1px solid rgb(204, 204, 204); border-left: 1px solid rgb(204, 204, 204); border-radius: 3px 0px 0px 3px; border-right-style: none; border-top: 1px solid rgb(204, 204, 204); box-shadow: none; color: #555555; display: table-cell; float: left; font-size: 13px; line-height: 1.42857; margin: 0px; padding: 6px 12px; position: relative; text-overflow: ellipsis; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; width: 176px; z-index: 2;" type="text" value="" /><span class="input-group-btn" style="box-sizing: border-box; display: table-cell; font-size: 0px; position: relative; vertical-align: middle; white-space: nowrap; width: 62px;"><button class="btn btn-default btn-coupon" style="-webkit-user-select: none; background: rgb(0, 183, 241); border-radius: 0px 3px 3px 0px; border: none; color: white; cursor: pointer; font-size: 12px; line-height: 1.42857; margin: 0px 0px 0px -1px; outline: 0px; overflow: visible; padding: 9px 12px 8px; position: relative; touch-action: manipulation; transition: all 0.5s linear; vertical-align: middle; z-index: 2;" type="button">Đồng ý</button></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+<div class="nhataitro">
+    <div class="giaodiennhataitro">
+        <a href="http://alphabooks.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Alphabooks.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://www.bachviet.edu.vn/vi/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Bách Việt.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://mannup.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/manup.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://nhanam.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Nhã Nam.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://sachbaovn.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/logosachbaovn.png" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://docsachcungcon.com/" target="_blank"> <img src="~/Image_System/nha_tai_tro/doc sach.png" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="https://www.bigdream.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/bigdream.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="https://read.alezaa.com/?view=store" target="_blank"> <img src="~/Image_System/nha_tai_tro/alezaa.png" alt="" /> </a>
+    </div>
+</div>
+<script>
+
+    var a = 0;
+
+    $(".quantity").click(function () {
+
+        if (a == 0) {
+            a = 1;
+        } else {
+            a = 0;
+            var formData = new FormData();
+            formData.append("product", $(this).closest('tr').find('td:first-child').html().trim());
+            formData.append("quantity", $(this).closest('tr').find(".quantity").val());
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("post", "/Cart/UpdateData", false); // false for synchronous request
+            xmlHttp.send(formData);
+            xmlHttp.responseText;
+            var formData1 = new FormData();
+
+            var xmlHttp1 = new XMLHttpRequest();
+            xmlHttp1.open("get", "/Cart/Cart1", false); // false for synchronous request
+            xmlHttp1.send();
+            //window.location.reload();
+            $("#tongtien").html(xmlHttp1.responseText + " ₫");
+            $("#tongtien1").html(xmlHttp1.responseText + " ₫");
+        }
+    });
+
+    function check() {
+        if (a == 0) {
+            a = 1;
+        } else {
+            a = 0;
+        }
+    }
+
+    function deleteRow(btn, id_product) {
+        var formData = new FormData();
+        formData.append("product", id_product);
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("post", "/Cart/deleteDataCart", false); // false for synchronous request
+        xmlHttp.send(formData);
+        document.getElementById("mytable").deleteRow(btn);
+
+        window.location.reload();
+        xmlHttp.responseText;
+
+    }
+
+    function tienhanhdathang() {
+        var a = "";
+        match = document.cookie.match(new RegExp("Account" + '=([^;]+)'));
+        if (match) a = match[1];
+        if (a.length > 4) {
+            window.location = "/FormMuaHang/Address";
+        } else {
+            window.location = "/FormMuaHang/FormMuaHang";
+        }
+
+    }
+
+</script>
+@section css_link{
+
+    <link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/giohang1.css" rel="stylesheet" type="text/css" />
+
+}
+@section login{
+
+    @Html.Raw(checklogin)
+}

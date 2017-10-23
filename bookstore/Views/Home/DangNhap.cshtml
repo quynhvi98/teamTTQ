@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left:350px;" class="noidunggohang1">
+    <div class="nhapthongtondemua">
+        @{ Html.BeginForm("DangNhap", "Home");
+        }
+        <form method="post">
+            <div class="formthongtin">
+                <div style="margin-top:15px;float:left;">
+                    <span>Họ tên</span><br>
+                    <span style="line-height:60px;">Mật khẩu</span><br>
+
+
+                </div>
+
+                <div class="khungnhapne" style="margin-top:0px;margin-left:100px;">
+                    <input  name="username"  id="username" style="margin-left: 2px;" type="text" placeholder="Nhập tài khoản" /><br />
+                    <input name="password" id="password" style="margin-left: 2px;" type="password" placeholder="Nhập mật khẩu" /><br />
+                    <input style="width:100px;height:30px;"  type="submit" value="Đăng nhập"/>
+                    <input  style="width:100px;height:30px;" type="button" value="Đăng ký" />
+                </div>
+                <br>
+            </div>
+        </form>
+        @{ Html.EndForm();}
+    </div>
+</div>
+
+@section css_link{
+    <link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/nhapthongtinmua.css" rel="stylesheet" type="text/css" />
+}

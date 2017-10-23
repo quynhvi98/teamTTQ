@@ -1,0 +1,180 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16-12-2016, 15:23:14
+    Author     : ASUS
+*/
+slider{
+    display: inline-block;
+    margin-left: 20px;
+}
+.menuslider{
+    float: left;
+    width: 230px;
+    height: 400px;
+    margin-right: 15px;
+}
+section{
+    width: 1350px;
+}
+.tintuc{
+    margin-right: 0px;
+} 
+#team_2{
+    margin-left: 5.4px;
+}
+.headsach{
+    width: 95%;
+    height: 25px;
+    color: #0088ca;
+    font-family: 'noto',sans-serif;
+    
+    border-top: 2px solid #0088ca;
+    margin-top: 20px;
+    padding: 10px 0 0 25px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+}
+.noidungsachgk{
+    width: 93%;
+    height: auto;
+    border-top: 2px solid #0088ca;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tieude{height:60px;
+        width: 590px;
+        margin-left: 
+            auto;
+        margin-right: auto;
+        margin-top: 40px;}
+.tieude > h2{
+    float:left;
+    color:#C00 !important;
+    font-weight: 300;
+    font-size: 30px;
+    padding: 0 10px;
+}
+.chitietsach{
+    width: 100%;
+    height:370px;
+    margin-top: 50px;
+}
+#chitiet{
+    height: auto;
+    width:180px;
+    float:left;
+}
+#chitiet1{
+    height: auto;
+    width:180px;
+    float:left;
+    margin-left: 35px;
+}
+#icoin{
+    
+    border: 1px #ddd solid;
+    font-size: 18px;
+    width: 55px;
+    height: 30px;
+    line-height: 25px;
+    background: #E5E5E5;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 7px;
+    margin-left: 2px;
+    float: left;
+}
+a{
+    color: #8f8f8f;
+}
+p{
+    font-weight: normal;
+    font-size: 12px;
+}
+#sale{
+    z-index: 10;
+    height: 40px;
+    width: 50px;
+    border-radius: 25px;
+    background: #FAA52D;
+    color: #fff;
+    font-size: 19px;
+    margin-left: 0px;
+    position: absolute;
+    margin-top:-250px;
+    text-align: center;
+    padding-top: 10px;
+}
+#chitiet>img{
+    z-index: 1;
+}
+#price{
+    height: 25px;
+    width: 30px;
+    padding: 5px 0 0 5px;
+    background: #CC0000;
+    color: #fff;
+    position: absolute;
+    margin-left: 160px;
+    margin-top: -250px;
+    font-size: 15px;
+}
+#price1{
+    height: 25px;
+    width: 70px;
+    padding: 5px 0 0 5px;
+    background: #CC0000;
+    color: #fff;
+    position: absolute;
+    margin-left: 120px;
+    margin-top: -250px;
+}
+#costprice{
+    width: 55px;
+    height: 20px;
+    background: #F2F2F2;
+    position: absolute;
+    text-decoration:line-through;
+    margin-top: -220px;
+    margin-left: 120px;
+    font-size: 14px;
+    padding-left: 5px;
+}
+a>#icoin:hover{
+     background: #c00;
+    color: #fff;
+}
+.price-date{
+    height: 45px;
+    width: 85px;
+    padding: 5px 0 0 5px;
+    background: #CC0000;
+    color: #fff;
+    position: absolute;
+    margin-left: 110px;
+    margin-top: -250px;
+    font-size: 13px;
+}
+.price-date>span{
+    font-size: 11px;
+    font-family: 'arial',sans-serif;
+    color: #fff;
+}
+
+@-webkit-keyframes rotate {
+    0% { -webkit-transform:rotate(0); }
+    0% { -webkit-transform:rotate(-360deg); }
+}
+@-moz-keyframes rotate {
+    0% { -moz-transform:rotate(0); }
+    0% { -moz-transform:rotate(-360deg); }
+}
+@keyframes rotate {
+    0% { transform:rotate(0); }
+    0% { transform:rotate(-360deg); }
+}

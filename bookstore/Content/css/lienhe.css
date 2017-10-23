@@ -1,0 +1,259 @@
+.main{
+    min-height: 900px;
+    width: 60%;
+    font-size: 14px;
+    margin-left: 210px;      
+}
+.khoangcachlienhe{
+    margin-left: 20px;
+    min-height: 690px;
+}
+.headtintuc{
+    height: 25px;
+    width: 1035px;
+    margin-left: -40px;
+    border-bottom: 1px #999999 dashed;
+    font-family: 'noto',sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+    float: left;     
+}
+section{
+    width: 960px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.leftbody{
+    width: 680px;
+    height: auto;
+    float: left;
+}
+footer{
+    clear: both;
+}
+.rightbody{
+    width: 255px;
+    height: auto;
+    float:right;
+}
+#thongbao{
+    height: 30px;
+    width: 100%;
+    background: #ccc;
+    float: left;
+}
+.lienhe{
+    height: auto;
+    width: 100%;
+    margin-top: 50px;
+    font-family: 'arial',sans-serif;
+}
+.lienhe>p{
+    line-height: 2.3em;
+    font-size: 14px;
+}
+.lienhe>h4 {
+    color: #000099;
+    font-size: 15px;
+}
+.lienhe>h5{
+    color: #085389;
+    font-size: 15px;
+    line-height: 2em;
+}
+.menu-tintuc{
+    background: url(../../Image_System/contact/bg-middle-right.png) no-repeat left top;
+    float: LEFT;
+    width: 228px;
+    margin-top: 20px ;
+    margin-left: 25px;
+    padding: 20px 10px 12px 10px;
+    position: relative;
+    border: 1px solid #cbcbcb;
+    border-top: 0;
+    height: auto;
+}
+.row{
+    background: url(../../Image_System/contact/arrow9.png) left 6px no-repeat;
+    margin: 0;
+    padding: 0 0 0 20px;
+    float: left;
+    width: 210px;
+    height: 25px;
+    margin-top: 8px;
+    font-size: 9px;
+}
+.row>h2{
+    border-bottom: dashed 1px #ddd;
+    height: 20px;
+}
+.row>h2>a{
+    text-decoration: none;
+    color: #333333;
+    font-weight: 100;
+}
+.tr-tintuc{
+    margin-top: 20px;
+    height: 35px;
+    width: 250px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #085389;
+    font-family: 'noto',sans-serif;
+    background: url(../../Image_System/contact/dot0.png) repeat-x left bottom;
+    float:right;
+}
+#tinduocquantam{
+    height: 300px;
+    width: 250px;
+    float:right;
+
+}
+#tinduocquantam-list{
+    height: 80px;
+    width: 255px;
+    margin-top: 15px;
+
+}
+#tinduocquantam-list>p{
+    margin-left: 100px;
+    font-size: 15px;
+}
+#tinduocquantam-list>p>a{
+    text-decoration: none;
+    color: #009999;
+}
+#tinduocquantam-list>p>a:hover{
+    text-decoration: underline;
+}
+#content>p3{
+    font-weight: bold; 
+    display: block;
+}
+#doitac {
+    float: left;
+    height: 22px;
+    width: 1000px;
+    display: block;
+    /* margin-left: 40px; */
+    padding-left: 30px;
+    padding-top: 3px;
+    background: url(../../Image_System/contact/bg_doitac_1.png);
+    font-size: 14px;
+    color: forestgreen;
+}
+.row>h2>a:hover{
+    text-decoration: underline;
+    color: #00B7F1;
+}
+#content>p3>a{
+    text-decoration: none;
+    color: #085389;
+}
+#content>p3>a:hover{
+    color: #00B7F1;
+}
+
+
+.tl-tintuc {
+    height: 35px;
+    width: 258px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #085389;
+    font-family: 'noto',sans-serif;
+    background: url(../../Image_System/contact/dot0.png) repeat-x left bottom;
+    margin-top: 20px;
+    float: right;
+}
+.tll-tintuc {
+    height: 35px;
+    width: 100%;
+    font-size: 17px;
+    font-weight: bold;
+    color: #085389;
+    font-family: 'noto',sans-serif;
+    background: url(../../Image_System/contact/dot0.png) repeat-x left bottom;
+    margin-top: 20px;
+    float: right;
+}
+.formthongtin{
+    width: 100%;
+    height: 260px;
+    border:1px solid #ddd;
+    font-family: 'arial',sans-serif;
+
+}
+.formthongtin>h5{
+    background: url(../img/lienhe/backgroundform.png) no-repeat left;
+    font-family: 'arial',sans-serif;
+    margin-top: -8px;
+    margin-left: 15px;
+    background-color: #fff;
+    width: 130px;
+
+}
+.formthongtin>h5>a{
+    padding-left: 10px;
+    text-decoration: none;
+    font-size: 13px;
+    color:#085389 ;
+}
+.formthongtin>span{
+    font-family: 'arial',sans-serif;
+    font-size: 12px;
+    padding: 10px 0 10px 10px;
+    line-height: 3em;
+}
+.formthongtin1{
+    width: 100%;
+    height: 160px;
+    border: 1px #ddd solid;
+    margin-top: 20px;
+}
+.formthongtin1>h5{
+    background: url(../img/lienhe/backgroundform.png) no-repeat left;
+    font-family: 'arial',sans-serif;
+    margin-top: -8px;
+    margin-left: 15px;
+    background-color: #fff;
+    width: 80px;
+}
+.formthongtin1>h5>a{
+    padding-left: 10px;
+    text-decoration: none;
+    font-size: 13px;
+    color: #085389;
+}
+.formthongtin1>span{
+    font-family: 'arial',sans-serif;
+    font-size: 12px;
+    padding: 10px 0 10px 10px;
+    line-height: 3em;
+}
+button{
+    width: 100px;
+    height: 20px;
+    margin-top: 10px;
+}
+.nhataitro{
+    width: 100%;
+    height: 300px;
+    float: left;
+    margin: 50px 0 50px 0;
+}
+.giaodiennhataitro{   
+    margin-left: 50px;
+    display: inline-table;
+    width: 50px;
+}
+.giaodiennhataitro>a>img{
+    box-shadow: 1px 2px 2px #616D7E;
+    width: 150px;
+    margin-top: 50px;  
+    margin-left: 30px;
+}
+span{
+    font-family: 'Noto Sans', sans-serif; 
+}

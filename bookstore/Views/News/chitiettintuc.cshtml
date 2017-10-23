@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "chitiettintuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var news = ViewBag.newsdetails;
+}
+
+<div class="headtintuc">
+    <i style="color: #009999; font-size: 20px;" class="fa fa-home"></i>&nbsp;Tin tức
+</div><br><br>
+<slider>
+    <div id="team_2" style="position: relative; margin-left: 20px; top: 0px; left: 0px; width: 1050px; height: 336px; overflow: hidden; visibility: hidden; background-color: #fff;">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('../../Image_System/slider/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1050px; height: 336px; overflow: hidden;">
+            @foreach (var item in ViewBag.interestnews)
+            {
+                <div data-p="144.50">
+                    <a href="/News/chitiettintuc?id_news=@item._id" title="@item._name"><img data-u="image" src="~/Image_System/@item._img" /></a>
+                </div>
+            }
+        </div>
+        <!-- Thumbnail Navigator -->
+        <!-- Arrow Navigator -->
+    </div>
+</slider>
+<div class="l-tintuc">
+    <div class="tl-tintuc">
+        @news._name
+    </div>
+    <div class="dot">
+    </div>
+    <div class="content-tt">
+        <strong>@news._name </strong>   
+        <img src="~/Image_Data/@news._img" width="745" height="700" alt="" />
+        
+    </div>
+</div>
+<div class="r-tintuc">
+    <div class="tl-tintuc">DANH MỤC</div>
+</div>
+<div class="menu-tintuc">
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">TIN EDU BOOKS</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">TUYỂN DỤNG</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">EDU DIGITAL</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">TIN EDU BOOKS</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">BÁO CHÍ GIỚI THIỆU</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">CLIP GIỚI THIỆU SÁCH</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">SÁCH TÁI BẢN TRONG THÁNG</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">THÔNG TIN BẢN QUYỀN</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">NHÂN VẬT SỰ KIỆN</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">GÓC NHÌN CEO</a></h2>
+    </div>
+    <div class="row">
+        <h2><a href="chitietcuonsach/sachmoi1.html">TIN KHUYẾN MÃI</a></h2>
+    </div>
+</div>
+<div class="tr-tintuc">
+    TIN ĐƯỢC QUAN TÂM
+</div>
+<div id="tinduocquantam">
+    @foreach (var item in ViewBag.interestnews)
+    {
+        <div id="tinduocquantam-list">
+            <img style="float: left;" src="~/Image_Data/@item._img" width="90" height="70" alt="@item._name" />
+            <p><a href="/News/chitiettintuc?id_news=@item._id">@item._name</a></p>
+        </div>
+    }
+</div>
+
+<div class="cactinkhac">
+    <div class="tl-tintuc">
+        CÁC TIN KHÁC
+    </div>
+    <div id="noidungtinkhac">
+        @foreach (var item in ViewBag.othernews)
+        {
+            <div id="listtinkhac">
+               
+                <p><a href="/News/chitiettintuc?id_news=@item._id">@item._name</a></p>
+            </div>
+        }
+        
+    </div>
+</div>
+<div class="nhataitro">
+    <div id="doitac">
+        Đối tác
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://alphabooks.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Alphabooks.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://www.bachviet.edu.vn/vi/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Bách Việt.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://mannup.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/manup.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://nhanam.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Nhã Nam.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://sachbaovn.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/logosachbaovn.png" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://docsachcungcon.com/" target="_blank"> <img src="~/Image_System/nha_tai_tro/doc sach.png" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="https://www.bigdream.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/bigdream.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="https://read.alezaa.com/?view=store" target="_blank"> <img src="~/Image_System/nha_tai_tro/alezaa.png" alt="" /> </a>
+    </div>
+</div>
+
+@section css_link{
+    <link href="~/Content/newcss.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/css/tintuc.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/css/trump.css" type="text/css" rel="stylesheet" />
+
+
+}

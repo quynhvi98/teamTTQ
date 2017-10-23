@@ -1,0 +1,228 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TTQDTCOMPANY</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/font-awesome-4.6.3/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="Capture.PNG" sizes="25x25" />
+    <link rel="icon" type="image/x-icon" href="Capture.PNG" sizes="25x25" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&amp;subset=vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lemonada&amp;subset=vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Infant&amp;subset=vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&amp;subset=vietnamese" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    @*<link href="~/Content/css/danhmuc/SGK&giaotrinh.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/css/chitietcuonsach/sachbanchaynhat1.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/css/giohang1.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/css/nhapthongtinmua.css" rel="stylesheet" type="text/css"/>
+        <link href="~/Content/css/sachhaygiamgia.css" rel=" stylesheet" type="text/css"/>*@
+    @RenderSection("css_link", false)
+   
+</head>
+<body onload="time()">
+    <main>
+        <!-- Begin header -->
+        <header>
+            <div>
+                <a href="#"><img class="sach" src="~/Image_System/boi_vi_sach_la_tg1.jpg" width="700" /></a>
+            </div>
+            <img class="logo" src="~/Image_System/logo.jpg" height="60" width="320" style="margin-left: 70px; margin-top: 10px;" />
+            <div class="centerh">
+                <span><a href="#" style="color:#009966; font-weight: bold; text-decoration: none; "></a></span>
+                @{ Html.BeginForm("SearchResult", "Search");
+                }
+                <form method="get" name="frmSearch">
+
+                    <input  style="width:80% ;float:left; margin-top: 25px; height: 28px;  border-top: 3px solid #0099ff;border-left: 3px solid #0099ff;border-bottom: 3px solid #0099ff;border-right: 1px solid #0099ff;padding-left: 10px;" type="text" name="txt_search" placeholder="Nhập để tìm kiếm ..." size="30" onFocus="this.value = '';" />
+                    <input style="margin-top: 25px; height: 34px; width: 80px; font-size: 15px; border-top: 3px solid #0099ff;border-bottom: 3px solid #0099ff;border-right: 3px solid #0099ff;border-left: 3px solid #0099ff; background: url(../../Image_System/search.png) no-repeat center; background-color: #0099ff;" type="submit" value="" onClick="return btnSearch_onclick();" />
+                </form>
+                @{ Html.EndForm();}
+            </div>
+            <div class="righth">
+                
+                @RenderSection("login", false)
+            </div>
+            
+              
+           
+        </header>
+        <!-- End header --><br>
+        <!-- Begin nav -->
+        <nav id="fixNav">
+            <ul>
+              <!-- <li><a href="Index"><i class="fa fa-home">&nbsp;</i>TRANG CHỦ</a></li>--> 
+                <li>@Html.ActionLink(" Trang Chủ", "Index", "Home")</li>
+                <li>
+                    <a @Html.ActionLink(" Danh Mục", "Index", "Home")</a>
+                    <ul class="sub-menu">
+                        <li><a href="danhmuc/tacgia.html">Tác giả</a></li>
+                        <li><a href="danhmuc/tuyentap.html">Tuyển tập</a></li>
+                        <li><a href="danhmuc/sachhaygiamgia.html">Sách hay giảm giá</a></li>
+                        <li><a href="danhmuc/SGK&giaotrinh.html">SGK & Giáo trình</a></li>
+                        <li><a href="danhmuc/sachhocngoaingu.html">Sách học ngoại ngữ</a></li>
+                        <li><a href="danhmuc/foreignbooks.html">Foreign books</a></li>
+                        <li><a href="danhmuc/dungcuhocsinh.html">Dụng cụ học sinh</a></li>
+                        <li><a href="danhmuc/sachtrongnuoc.html">Sách trong nước</a></li>
+                        <li><a href="danhmuc/vanhoapham.html">Văn hóa phẩm</a></li>
+                        <li><a href="danhmuc/tacphamchuyenthe.html">Tác phẩm chuyển thể</a></li>
+                    </ul>
+                </li>
+                <li><a @Html.ActionLink(" Tin tức", "TinTuc", "News")</a></li>
+                <li><a href="danhgiasach.html">ĐÁNH GIÁ SÁCH</a></li>
+                <li>@Html.ActionLink("Liên Hệ", "Contact", "Home")</li>
+                <li>@Html.ActionLink(" GIỎ HÀNG", "Cart", "Cart")</li>
+            </ul>
+        </nav>
+        <!-- End nav -->
+        <br>
+        <section>
+            
+            @RenderBody()
+        </section>
+
+        <a id="lentop" style="position:fixed;bottom:5px;right:5px;" title="Back to Top">
+        </a>
+        <footer>
+            <div class="leftf">
+                <h4>Hỗ trợ khách hàng</h4>
+                <p>Điện thoại: 08 2226 1295 (T2 - T6, 9AM - 6PM). Hotline: 0903 923 144</p>
+                <p><a href="#">Câu hỏi thường gặp</a></p>
+                <p><a href="#">Yêu cầu hỗ trợ
+                <p><a href="#">Facebook</a></p>
+            </div>
+            <div class="midf">
+                <h4>Edu Ebook bản quyền</h4>
+                <p>Trở thành thành viên Alezaa Premium để tải và đọc không giới hạn hơn 10,000 tựa sách và 200,000 bài viết tạp chí đặc sắc. </p>
+                <p><a href="#">Đăng ký.</a></p>
+                <p><a href="#">Đăng nhập</a>&nbsp;&nbsp;&nbsp;<a href="#">Tạo tài khoản</a></p>
+                <p>Tải app Alezaa: <a href="#">IOS</a>&nbsp;&nbsp;&nbsp;<a href="#">Android</a>&nbsp;&nbsp;&nbsp;<a href="#">Window</a></p>
+            </div>
+            <div class="rightf">
+                <h4>Công ty CP EduBooks</h4>
+                <p>Địa chỉ: Tầng 12, Toà nhà TMS, 172 Hai Bà Trưng, Quận 1, TP.HCM</p>
+                <p style="line-height: 2.5em;">Điện thoại: 08 2226 1295</p>
+                <p style="line-height: 1.5em;">© 2016 EduBooks Inc.</p>
+                <img style="padding-top: 10px;" src="~/Image_System/dk.png" width="150" height="55" />
+            </div>
+        </footer>
+        <script src="~/Scripts/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+        <script src="~/Scripts/js/main.js" type="text/javascript"></script>
+        <div class="overlay" style="display: none;">
+            <div class="xoa1">
+            </div>
+            <div class="login-wrapper">
+                <div class="login-content">
+                    <a class="close" style="font-size: 20px;float: right;margin-top: -20px;">x</a><br>
+                    <div id="dangnhap1">
+                        <h3>Đăng nhập</h3>
+                        <span>Bạn chưa có tài khoản? </span><a href="#">Đăng ký</a>
+                    </div>
+                    @{ Html.BeginForm("DangNhap", "Home");
+                    }
+                    <form method="post">
+                        <label for="username">
+                            Tên tài khoản:
+                            <input type="text" name="username" id="username" placeholder="Tên tài khoản phải được viết thường, không dấu." required="required" />
+                        </label>
+                        <label for="password">
+                            Mật khẩu:
+                            <input type="password" name="password" id="password" placeholder="Mât khẩu có ít nhất 6 kí tự." required="required" />
+                        </label>
+                        <a class="dangnhap2" href="#">Quên mật khẩu?</a><br><br>
+                        <button type="submit">Sign in</button>
+                    </form>
+                    @{ Html.EndForm();}
+                </div>
+            </div>
+        </div>
+        <div class="overlay1" style="display: none;">
+            <div class="login-wrapper1">
+                <div class="login-content1">
+                    <div>
+                        <a class="close1" style="font-size: 20px;float: right;margin-top: -20px;">x</a><br>
+                    </div>
+                    <h3>Đăng Ký Thành Viên</h3>
+                    <form method="post" action="login.php">
+                        <label for="name">
+                            Họ và tên:
+                            <input type="text" name="name" id="name" placeholder="Nhập họ và tên" required="required" />
+                        </label>
+                        <label for="Email">
+                            Email:
+                            <input type="email" name="email" id="email" placeholder="Nhập email." required="required" />
+                        </label>
+                        <label for="username">
+                            Tên tài khoản:
+                            <input type="text" name="username" id="username1" placeholder="Tên tài khoản phải được viết thường, không dấu." required="required" />
+                        </label>
+                        <label for="password">
+                            Mật khẩu:
+                            <input type="password" name="password" id="password1" placeholder="Mât khẩu có ít nhất 6 kí tự." required="required" />
+                        </label>
+
+                        <button onclick="dangky()" type="button">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+           function LoginUot() {
+               window.location = "/Home/logout";
+           }
+           function dangky() {
+               var name = document.getElementById("name").value;
+               var email = document.getElementById("email").value;
+               var username = document.getElementById("username1").value;
+               var password = document.getElementById("password1").value;
+               if (name.length < 1 || email.length < 1 || username.length < 1 || password.length < 1) {
+                   swal("Thông Báo", "Bạn phải nhập đầy đủ không được bỏ trống.", "error");
+               } else {
+                   var formData2 = new FormData();
+                   formData2.append("name", name);
+                   formData2.append("email", email);
+                   formData2.append("username", username);
+                   formData2.append("password", password);
+                   var xmlHttp2 = new XMLHttpRequest();
+                   xmlHttp2.open("post", "/Home/Signin", false); // false for synchronous request
+                   xmlHttp2.send(formData2);
+                   var intEmail = xmlHttp2.responseText;
+                   console.log(intEmail);
+                   switch (intEmail.trim()) {
+                       case "0":
+                           swal({
+                               title: "Thông Báo",
+                               text: "Đăng Ký Thành Công.",
+                               icon: "success",
+                               buttons: true,
+                               dangerMode: true,
+                           })
+                               .then((willDelete) => {
+                                   if (willDelete) {
+                                       window.location = "/Home/Index";
+                                   }
+                               });
+                           break;
+                       case "1":
+                           swal("Thông Báo", "Đã có tên tài khoản này rồi.", "error");
+                           break;
+                       case "2":
+                           swal("Thông Báo", "Sai định dạng email.", "error");
+                           break;
+                       case "3":
+                           swal("Thông Báo", "Đã có email này rồi.", "error");
+                           break;
+                       default:
+                           swal("Thông Báo", "Lỗi Không Xác Định", "error");
+                   }
+               }
+               
+           }
+    </script>
+</body>
+</html>

@@ -1,0 +1,691 @@
+﻿@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var list_books = ViewBag.ListBooks;
+    var name_type = ViewBag.name_type;
+}
+<slider>
+    <div id="team_2" style=" position: absolute;position: relative; top: 0px; left: 0px; width: 800px; height: 456px; overflow: hidden; visibility: hidden; background-color: #fff;">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('../img/trangchu/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 900px; height: 356px; overflow: hidden;">
+            <div data-p="144.50">
+                <a href="../#"><img data-u="image" src="../img/trangchu/01.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-01.jpg" />
+            </div>
+            <a data-u="any" href="../#" style="display:none">Image Gallery</a>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/02.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-02.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/03.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-03.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/04.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-04.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/05.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-05.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/06.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-06.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/07.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-07.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/08.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-08.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/09.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-09.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/10.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-10.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/11.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-11.jpg" />
+            </div>
+            <div data-p="144.50" style="display: none;">
+                <a href="../#"><img data-u="image" src="../img/trangchu/12.jpg" /></a>
+                <img data-u="thumb" src="../img/trangchu/thumb-12.jpg" />
+            </div>
+        </div>
+        <!-- Thumbnail Navigator -->
+        <div data-u="thumbnavigator" class="book01" style="position:absolute;left:0px;bottom:0px;width:800px;height:100px;" data-autocenter="1">
+            <!-- Thumbnail Item Skin Begin -->
+            <div data-u="slides" style="cursor: default;">
+                <div data-u="prototype" class="p">
+                    <div class="w">
+                        <div data-u="thumbnailtemplate" class="t"></div>
+                    </div>
+                    <div class="c"></div>
+                </div>
+            </div>
+            <!-- Thumbnail Item Skin End -->
+        </div>
+        <!-- Arrow Navigator -->
+        <span data-u="arrowleft" class="book02" style="top:158px;left:8px;width:40px;height:40px;"></span>
+        <span data-u="arrowright" class="book03" style="top:158px;right:8px;width:40px;height:40px;"></span>
+    </div>
+</slider>
+<div class="menuslider">
+    <div id="menu">
+        <ul>
+            <h1 class="allca"><strong>Thể loại<img style="float: left; margin-right: 10px;" src="../img/trangchu/booktheloai (2).png" alt="" width="35" height="35" /></strong></h1>
+            <li>
+                <a href="sachtrongnuoc.html">Sách Trong Nước</a><ul class="sub-menu">
+                    <div class="noidunglimenu">
+                        <div class="noidunglimenudiv1">
+                            <strong class="tieudenoidungdiv1">KIẾN THỨC TỔNG HỢP</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="theloai/sachtrongnuoc/kienthuctonghop/chamsocnuoidaycon.html"> Chăm Sóc - Nuôi Dạy Con</a></li>
+                                <li><a href="theloai/sachtrongnuoc/kienthuctonghop/nuconggiachanh.html"> Nữ Công Gia Chánh</a></li>
+                                <li><a href="theloai/sachtrongnuoc/kienthuctonghop/tamlykynangsong.html"> Tâm Lý - Kỹ Năng Sống</a></li>
+                                <li><a href="theloai/sachtrongnuoc/kienthuctonghop/lichsudialytongiao.html"> Lịch Sử - Địa Lý - Tôn Giáo</a></li>
+                                <li><a href="theloai/sachtrongnuoc/kienthuctonghop/phongthuykinhdich.html">Phong Thủy, Kinh Dịch</a></li>
+                                <li><a href="theloai/sachtrongnuoc/kienthuctonghop/theducthethaogiaitri.html">Thể Dục Thể Thao, Giải Trí</a></li>
+                                <li><a href="theloai/sachtrongnuoc/kienthuctonghop/vanhoanghethuatdulich.html"> Văn hóa - Nghệ thuật - Du lịch</a></li>
+                                <li><a href="theloai/sachtrongnuoc/kienthuctonghop/amnhacmythuatthoitrang.html">Âm Nhạc - Mỹ Thuật -Thời Trang</a></li>
+                                <li><a href="theloai/sachtrongnuoc/kienthuctonghop/lamvuonthunuoi.html">Làm Vườn- Thú Nuôi</a></li>
+                            </ul>
+                        </div>
+                        <div class="noidunglimenudiv2">
+                            <strong class="tieudenoidungdiv1">KHOA HỌC KỸ THUẬT</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="theloai/sachtrongnuoc/khoahockythuat/tinhoc.html"> Tin Học</a></li>
+                                <li><a href="theloai/sachtrongnuoc/khoahockythuat/yhoc.html"> Y Học</a></li>
+                                <li><a href="theloai/sachtrongnuoc/khoahockythuat/diendientu.html"> Điện - Điện Tử</a></li>
+                                <li><a href="theloai/sachtrongnuoc/khoahockythuat/cokhi.html"> Cơ Khí</a></li>
+                                <li><a href="theloai/sachtrongnuoc/khoahockythuat/kientrucxaydung.html"> Kiến Trúc - Xây Dựng</a></li>
+                                <li><a href="#">Nông - Lâm - Ngư Nghiệp</a></li>
+                                <li><a href="#"> Môi trường - hoáng Sản - Hóa Chất</a></li>
+                                <li><a href="#">Khoa Học - Vũ Trụ</a></li>
+                                <li><a href="#">Khoa Học Khác</a></li>
+                            </ul>
+                        </div>
+                        <div class="noidunglimenudiv3">
+                            <strong class="tieudenoidungdiv1">KINH TẾ - CHÍNH TRỊ   </strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#"> Kinh tế - Chính trị - Pháp lý</a></li>
+                                <li><a href="#"> Luật - Văn Bản Dưới Luật</a></li>
+                                <li><a href="#"> Nhân Vật - Sự Kiện Lịch Sử</a></li>
+                                <li><a href="#"> Ngân hàng - Tài Chính - Kế Toán</a></li>
+                                <li><a href="#">Triết Học - Lý Luận Chính Trị Văn Kiện</a></li>
+                                <li><a href="#"> Chứng khoán - Bất động sản</a></li>
+                                <li><a href="#">Nghiệp Vụ Văn Phòng</a></li>
+                                <li><a href="#">Quản Trị Kinh Doanh - Marketing Ngoại Thương</a></li>
+                            </ul>
+                        </div>
+                        <div class="noidunglimenudiv4">
+                            <strong class="tieudenoidungdiv1">SÁCH THIẾU NHI</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#"> Truyện Tranh</a></li>
+                                <li><a href="#"> Truyện Đọc</a></li>
+                                <li><a href="#"> Tô Màu - Luyện Chữ</a></li>
+                                <li><a href="#"> Kiến Thức Bách Khoa</a></li>
+                                <li><a href="#">Manga - Comic</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+            <div class="test"></div>
+            <li>
+                <a href="tuyentap.html">Tuyển Tập</a>
+                <ul class="sub-menu2">
+                    <div class="noidunglimenu2">
+                        <div class="noidunglimenu2div1">
+                            <strong class="tieudenoidungdiv1">CHỦ ĐỀ</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Light Novel</a></li>
+                                <li><a href="#"> Bút Ký – Hồi Ký</a></li>
+                                <li><a href="#"> Nữ Công Gia Chánh</a></li>
+                                <li><a href="#"> Sách Ngôn Tình    </a></li>
+                                <li><a href="#">Nuôi Dạy Con</a></li>
+                                <li><a href="#">Sách Tô Màu Dành Cho Người Lớn</a></li>
+                                <li><a href="#">Báo Hoa Học Trò - Sinh Viên</a></li>
+                                <li><a href="#">Tuyển Tập Sách Minh Long</a></li>
+                                <li><a href="#">Sách Chuyển Thể Thành Phim</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu2div2">
+                            <strong class="tieudenoidungdiv1">TÁC GIẢ</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Nguyễn Nhật Ánh</a></li>
+                                <li><a href="#">Nguyễn Ngọc Tư</a></li>
+                                <li><a href="#">Hamlet Trương</a></li>
+                                <li><a href="#"> Nguyễn Ngọc Thạch</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu2div3">
+                            <strong class="tieudenoidungdiv1">TRUYỆN DÀI TẬP</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Harry Potter</a></li>
+                                <li><a href="#">Diary Of A Wimpy Kid</a></li>
+                                <li><a href="#">Comic - Manga</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu2div4">
+                            <ul class="tieudenoidungdivul1">
+                                <a href="#"> <img class="anhnoidunglimenu" src="../img/danhmuc/giaoduc/TUYENTAP-293x350.png" alt="" /></a>
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="sachhaygiamgia.html">Sách Hay Giảm Giá</a>
+                <ul class="sub-menu3">
+                    <div class="noidunglimenu3">
+                        <div class="noidunglimenu3div1">
+                            <ul class="tieudenoidungdivul1">
+                                <a href="#"> <img class="anhnoidunglimenu" src="../img/danhmuc/giaoduc/banner-sach-tieng-anh.jpg" alt="" /></a>
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu3div2">
+                            <ul class="tieudenoidungdivul">
+                                <a href="#"> <img class="anhnoidunglimenu" src="../img/danhmuc/giaoduc/banner-sach-tieng-viet-a.jpg" alt="" /></a>
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="SGK&giaotrinh.html">Sách Giáo Khoa & Giáo Trình</a>
+                <ul class="sub-menu4">
+                    <div class="noidunglimenu4">
+                        <div class="noidunglimenu4div1">
+                            <strong class="tieudenoidungdiv1">CẤP I</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Lớp 1</a></li>
+                                <li><a href="#">Lớp 2</a></li>
+                                <li><a href="#">Lớp 3</a></li>
+                                <li><a href="#">Lớp 4</a></li>
+                                <li><a href="#">Lớp 5</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu4div2">
+                            <strong class="tieudenoidungdiv1">CẤP II</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Lớp 6</a></li>
+                                <li><a href="#">Lớp 7</a></li>
+                                <li><a href="#">Lớp 8</a></li>
+                                <li><a href="#">Lớp 9</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu4div3">
+                            <strong class="tieudenoidungdiv1">CẤP III</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Lớp 10</a></li>
+                                <li><a href="#">Lớp11</a></li>
+                                <li><a href="#">Lớp 12</a></li>
+                                <li><a href="#">Luyện Thi Đại Học, Cao Đẳng</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu4div4">
+                            <strong class="tieudenoidungdiv1">ĐẠI HỌC</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Đại Học</a></li>
+                                <li><a href="#">Sách Giáo Viên</a></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu4div5">
+                            <a href="#">   <img style="height: 250px;" src="../img/danhmuc/giaoduc/SACHGIAOKHOA.jpg" alt="" /></a>
+                        </div>
+                        <a href="#">  <img style="width: 100%;height:154px" src="../img/danhmuc/giaoduc/footer-sgk.jpg" alt="" /></a>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="sachhocngoaingu.html">Sách Học Ngoại Ngữ</a>
+                <ul class="sub-menu5">
+                    <div class="noidunglimenu5">
+                        <div class="noidunglimenu5div1">
+                            <strong class="tieudenoidungdiv1">SÁCH NGOẠI NGỮ</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Tiếng Anh</a></li>
+                                <li><a href="#">Tiếng Pháp</a></li>
+                                <li><a href="#">Tiếng Hàn</a></li>
+                                <li><a href="#">Tiếng Nhật</a></li>
+                                <li><a href="#">Tiếng Hoa</a></li>
+                                <li><a href="#">Tiếng Đức</a></li>
+                                <li><a href="#">Tiếng Việt Cho Người Nước Ngoài</a></li>
+                                <li><a href="#">Luyện Thi Chứng Chỉ A,B,C</a></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu5div2">
+                            <strong class="tieudenoidungdiv1">TỪ ĐIỂN</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Từ Điển Tiếng Việt</a></li>
+                                <li><a href="#">Từ Điển Tiếng Anh-Anh, Anh-Việt, Việt-Anh</a></li>
+                                <li><a href="#">Từ Điển Tiếng Pháp - Việt, Việt - Pháp</a></li>
+                                <li><a href="#">Từ Điển Tiếng Đức-Việt, Việt-Đức</a></li>
+                                <li><a href="#">Từ Điển Tiếng Nhật-Việt, Việt-Nhật</a></li>
+                                <li><a href="#">Từ Điển Tiếng Hàn-Việt, Việt-Hàn</a></li>
+                                <li><a href="#">Từ Điển Hán-Việt</a></li>
+                                <li><a href="#">Từ Điển Chuyên Ngành</a></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu5div3">
+                            <ul class="tieudenoidungdivul1">
+                                <a href="#">  <img style="width: 300px;" src="../img/danhmuc/giaoduc/sachhocngoaingu.png" alt="" /></a>
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="foreignbooks.html">FOREIGN BOOKS</a>
+                <ul class="sub-menu6">
+                    <div class="noidunglimenu6">
+                        <div class="noidunglimenu6div1">
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">English Language Teaching - ELT</a></li>
+                                <li><a href="#">Children Books</a></li>
+                                <li><a href="#">New Arrivals</a></li>
+                                <li><a href="#">Best Sellers</a></li>
+                                <li><a href="#">The New York Time Best Sellers</a></li>
+                                <li><a href="#">Collection</a></li>
+                                <li><a href="#">Deals Of The Day</a></li>
+                                <li><a href="#">Others</a></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu6div2">
+                            <ul class="tieudenoidungdivul1">
+
+                                <img class="noidunglimenu6div2anh" src="../img/danhmuc/giaoduc/fo_book/oxford-600.jpg" alt="" />
+                                <img class="noidunglimenu6div2anh" src="../img/danhmuc/giaoduc/fo_book/cambridge-600.jpg" alt="" />
+                                <img class="noidunglimenu6div2anh" src="../img/theloai/giaoduc/fo_book/cengage-600.jpg " alt="" />
+                                <img class="noidunglimenu6div2anh" src="../img/theloai/giaoduc/fo_book/hachette.jpg " alt="" />
+                                <img class="noidunglimenu6div2anh" src="../img/theloai/giaoduc/fo_book/macgrawhill-600.jpg " alt="" />
+                                <img class="noidunglimenu6div2anh" src="../img/theloai/giaoduc/fo_book/macmilan-600.jpg " alt="" />
+                                <img class="noidunglimenu6div2anh" src="../img/theloai/giaoduc/fo_book/penguin-600.jpg " alt="" />
+                                <img class="noidunglimenu6div2anh" src="../img/theloai/giaoduc/fo_book/usborne-600.jpg " alt="" />
+
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="dungcuhocsinh.html">VPP - Dụng Cụ Học Sinh</a>
+                <ul class="sub-menu7">
+                    <div class="noidunglimenu7">
+                        <div class="noidungmenu7so1">
+                            <div class="noidunglimenu7div1">
+                                <strong class="tieudenoidungdiv1">SẢN PHẨM GIẤY</strong><br>
+                                <ul class="tieudenoidungdivul7">
+                                    <li><a href="#">Giấy Photo</a></li>
+                                    <li><a href="#">Giấy Fax</a></li>
+                                    <li><a href="#">Sổ Tay Các Loại</a></li>
+                                    <li><a href="#">Tập</a></li>
+                                    <li><a href="#">Xem thêm</a></li>
+
+
+                                </ul>
+                            </div>
+                            <div class="noidunglimenu7div2">
+                                <strong class="tieudenoidungdiv1">BÚT - VIẾT</strong><br>
+                                <ul class="tieudenoidungdivul7">
+                                    <li><a href="#">Bút Lông Kim</a></li>
+                                    <li><a href="#">Bút Lông Bảng</a></li>
+                                    <li><a href="#">Bút Dầu</a></li>
+                                    <li><a href="#">Xem thêm</a></li>
+
+
+                                </ul>
+                            </div>
+                            <div class="noidunglimenu7div3">
+                                <strong class="tieudenoidungdiv1">BÌA FILE, KỆ LƯU HỒ SƠ</strong><br>
+                                <ul class="tieudenoidungdivul7">
+                                    <li><a href="#">Bìa Lỗ</a></li>
+                                    <li><a href="#">Bìa Lò Xo</a></li>
+                                    <li><a href="#">Bìa Trình Ký</a></li>
+                                    <li><a href="#">Khay Hồ Sơ</a></li>
+                                    <li><a href="#">Xem thêm</a></li>
+
+
+                                </ul>
+                            </div>
+                            <div class="noidunglimenu7div4">
+                                <strong class="tieudenoidungdiv1">SẢN PHẨM, DỤNG CỤ KHÁC</strong><br>
+                                <ul class="tieudenoidungdivul7">
+                                    <li><a href="#">Kéo</a></li>
+                                    <li><a href="#">Bấm Kim</a></li>
+                                    <li><a href="#">Bấm Lỗ</a></li>
+                                    <li><a href="#">Xem thêm</a></li>
+
+
+                                </ul>
+                            </div>
+
+
+
+                        </div>
+                        <div>
+
+                            <div class="noidunglimenu7div1">
+                                <strong class="tieudenoidungdiv1">CẶP - BA LÔ - BÓP VIẾT</strong><br>
+                                <ul class="tieudenoidungdivul7">
+                                    <li><a href="#">Cặp Học Sinh</a></li>
+                                    <li><a href="#">Túi Xách</a></li>
+                                    <li><a href="#">Hộp Viết</a></li>
+                                    <li><a href="#">Xem thêm</a></li>
+
+
+                                </ul>
+                            </div>
+                            <div class="noidunglimenu7div2">
+                                <strong class="tieudenoidungdiv1">BẢN ĐỒ - ĐỊA CẦU</strong><br>
+                                <ul class="tieudenoidungdivul7">
+                                    <li><a href="#">Tờ</a></li>
+                                    <li><a href="#">Tập</a></li>
+                                    <li><a href="#">Địa Cầu</a></li>
+                                    <li><a href="#">Xem thêm</a></li>
+
+
+                                </ul>
+                            </div>
+                            <div class="noidunglimenu7div3">
+                                <strong class="tieudenoidungdiv1">SẢN PHẨM ĐIỆN TỬ</strong><br>
+                                <ul class="tieudenoidungdivul7">
+                                    <li><a href="#">Máy Tính</a></li>
+                                    <li><a href="#">Kim Từ Điển</a></li>
+                                    <li><a href="#">Băng Đĩa: Học, Ca Nhạc...</a></li>
+                                    <li><a href="#">Bút Thông Minh</a></li>
+                                    <li><a href="#">Xem thêm</a></li>
+
+
+                                </ul>
+                            </div>
+                            <div class="noidunglimenu7div4">
+                                <strong class="tieudenoidungdiv1">SẢN PHẨM KHÁC</strong><br>
+                                <ul class="tieudenoidungdivul7">
+                                    <li><a href="#">Bảng, Lau Bảng</a></li>
+                                    <li><a href="#">Mực</a></li>
+                                    <li><a href="#">Keo, Hồ Dán</a></li>
+                                    <li><a href="#">Nylon Bao Tập, Bao Sách</a></li>
+                                    <li><a href="#">Xem thêm</a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="vanhoapham.html">Văn Hóa Phẩm</a>
+                <ul class="sub-menu8">
+                    <div class="noidunglimenu8">
+                        <div class="noidungmenu8khung1">
+                            <div class="noidunglimenu8div1">
+                                <strong class="tieudenoidungdiv1">LỊCH</strong><br>
+                                <ul class="tieudenoidungdivul7">
+                                    <li><a href="#">Lịch Năm</a></li>
+                                    <li><a href="#">Lịch Tuần</a></li>
+                                    <li><a href="#">Lịch Bloc</a></li>
+                                    <li><a href="#">Lịch Bàn</a></li>
+                                    <li><a href="#">Agenda</a></li>
+                                    <li><a href="#">Xem thêm</a></li>
+
+                                </ul>
+
+                            </div>
+                            <img class="anhnoidungmenu8" src="../img/danhmuc/giaoduc/lich-banner_1.jpg" alt="" />
+
+                        </div>
+                        <div class="noidunglimenu8div2">
+                            <strong class="tieudenoidungdiv1">THIỆP</strong><br>
+                            <ul class="tieudenoidungdivul7">
+                                <li><a href="#">Thiệp In</a></li>
+                                <li><a href="#">Thiệp Handmade</a></li>
+                                <li><a href="#">Thiệp Sinh Nhật</a></li>
+                                <li><a href="#">Xem thêm</a></li>
+
+                            </ul>
+
+                        </div>
+                        <img class="anhnoidungmenu8" src="../img/danhmuc/giaoduc/calenda2017.jpg" alt="" />
+
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="tacgia.html">Tác Giả</a>
+                <ul class="sub-menu9">
+                    <div class="noidunglimenu9">
+                        <div class="noidunglimenu9div1">
+                            <strong class="tieudenoidungdiv1" style="font-size: 15px">Tác Giả Trong Nước</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Nguyễn Nhật Ánh</a></li>
+                                <li><a href="#">Tô Hoài</a></li>
+                                <li><a href="#">Xuân Diệu</a></li>
+                                <li><a href="#"> Ngô Tất Tố</a></li>
+                                <li><a href="#">Xuân Quỳnh</a></li>
+                                <li><a href="#">Tố Hữu</a></li>
+                                <li><a href="#">Nam Cao</a></li>
+                                <li><a href="#"> Kim Lân</a></li>
+                                <li><a href="#">Xem thêm</a></li>
+
+                            </ul>
+
+                        </div>
+                        <div class="noidunglimenu9div2">
+                            <strong class="tieudenoidungdiv1" style="font-size: 15px">Tác Giả Nước Ngoài</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#"> Miguel De Cervantes</a></li>
+                                <li><a href="#">Paulo Coelho</a></li>
+                                <li><a href="#">Emily Bronte</a></li>
+                                <li><a href="#">   J.R.R. Tolkien</a></li>
+                                <li><a href="#">Haruki Murakami</a></li>
+                                <li><a href="#">Vladimir Nabokov</a></li>
+                                <li><a href="#">Harper Lee</a></li>
+                                <li><a href="#"> J.D. Salinger</a></li>
+                                <li><a href="#">Xem thêm</a></li>
+
+                            </ul>
+
+                        </div>
+                        <div class="noidunglimenu9div3">
+                            <strong class="tieudenoidungdiv1" style="font-size: 15px">Tác Giả Đạt nobel Văn Học</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#">Bob Dylan </a></li>
+                                <li><a href="#">Svetlana Alexievich</a></li>
+                                <li><a href="#">Patrick Modiano</a></li>
+                                <li><a href="#">	Alice Munro</a></li>
+                                <li><a href="#"> Mạc Ngôn</a></li>
+                                <li><a href="#">	Tomas Tranströmer</a></li>
+                                <li><a href="#">Mario Vargas Llosa</a></li>
+                                <li><a href="#">Herta Müller</a></li>
+                                <li><a href="#">Xem thêm</a></li>
+
+                            </ul>
+
+                        </div>
+                        <img style="width: 200px;height:400px;" src="../img/danhmuc/giaoduc/van_hoc_trong_nuoc___drop.png" alt="" />
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="tacphamchuyenthe.html">Tác Phẩm Chuyển Thể</a>
+                <ul class="sub-menu10">
+                    <div class="noidunglimenu10">
+                        <div class="noidunglimenu10div1">
+                            <strong class="tieudenoidungdiv1" style="font-size: 15px">Tác phẩm văn học kinh điển</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#"> The Great Gatsby</a></li>
+                                <li><a href="#">Anna Karenina</a></li>
+                                <li><a href="#">Dorian Gray</a></li>
+                                <li><a href="#">Pride and Prejudice</a></li>
+                                <li><a href="#">Oliver Twist</a></li>
+                                <li><a href="#">Les Miserables</a></li>
+                                <li><a href="#"> The Count of Monte Cristo</a></li>
+                                <li><a href="#"> The Thorn Birds</a></li>
+                                <li><a href="#">Xem thêm</a></li>
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu10div2">
+                            <strong class="tieudenoidungdiv1" style="font-size: 15px">Chuyển thể từ truyện ngôn tình</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#"> Bộ bộ kinh tâm</a></li>
+                                <li><a href="#">Bên nhau trọn đời</a></li>
+                                <li><a href="#">Sam Sam đến đây ăn nào</a></li>
+                                <li><a href="#">Không kịp nói yêu em</a></li>
+                                <li><a href="#">Thiên sơn mộ tuyết</a></li>
+                                <li><a href="#">Lang nha bảng </a></li>
+                                <li><a href="#"> Hậu cung Chân Hoàn truyện</a></li>
+                                <li><a href="#"> Mị Nguyệt truyện</a></li>
+                                <li><a href="#">Xem thêm</a></li>
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu10div3">
+                            <strong class="tieudenoidungdiv1" style="font-size: 15px">Chuyển thể từ văn học Việt Nam</strong><br>
+                            <ul class="tieudenoidungdivul1">
+                                <li><a href="#"> Vợ chồng A Phủ</a></li>
+                                <li><a href="#"> Mẹ vắng nhà</a></li>
+                                <li><a href="#">Chị Dậu</a></li>
+                                <li><a href="#"> Làng Vũ Đại ngày ấy</a></li>
+                                <li><a href="#">Bến không chồng</a></li>
+                                <li><a href="#">Thời xa vắng</a></li>
+                                <li><a href="#"> Đừng đốt</a></li>
+                                <li><a href="#"> Tuổi thơ dữ dội</a></li>
+                                <li><a href="#">Xem thêm</a></li>
+                            </ul>
+                        </div>
+                        <div class="noidunglimenu10div4">
+                            <img style="width: 200px;height: 210px" src="../img/danhmuc/giaoduc/vo-chong-a-phu-3-190920255.jpg" alt="" />
+                            <br>
+                            <img style="width: 200px;height: 210px" src="../img/danhmuc/giaoduc/me-vang-nha-2-190920208.jpg" alt="" />
+                        </div>
+                    </div>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="tintuc">
+    <div id="head">
+        <img style="float:left; padding-top: 7px; padding-left: 25px;" src="../img/img_tintuc/th_hot.gif" width="40" height="13" />
+        <p style="font-size: 15px; color: #fff; font-weight: bold; padding-left: 75px;   padding-top:5px;">MỚI CẬP NHẬT</p>
+    </div>
+    <div id="author">
+        <p style="font-size: 11px; color:#999999;padding-left: 10px; font-weight: bold;">Powered by Trọng Deep Try</p>
+    </div>
+    <div id="tintuc1">
+        <img style="padding-left: 10px; padding-right: 10px; float: left; padding-top: 15px;" src="../img/img_tintuc/body_dung.jpg" width="70" height="60" />
+        <p><a href="../trump.html">Nhà văn không nên là nô lệ của đồng tiền.</a></p>
+        <p style="font-size: 13px; color: #666666;"><strong id="thoigiantintuc"></strong></p>
+    </div>
+    <div id="tintuc1">
+        <img style="padding-left: 10px; padding-right: 10px; padding-top: 15px; float:left;" src="../img/img_tintuc/tin2.jpg" width="70" height="60" />
+        <p><a href="../hwangsunmi.html">Éric-Emmanuel Schmitt: 'Tôi không viết văn...</a></p>
+        <p style="font-size: 13px; color: #666666;"><strong id="thoigiantintuc1"></strong></p>
+    </div>
+    <div id="tintuc1">
+        <img style="padding-left: 10px; padding-top: 10px; padding-right: 15px; float: left;" src="../img/img_tintuc/tin3.jpg" width="70" height="60" />
+        <p><a href="../talk.html">Một sử gia khiến chúng ta suy nghĩ rất nhiều</a></p>
+        <p style="font-size: 13px; color: #666666;"><strong id="thoigiantintuc2"></strong></p>
+    </div>
+    <div id="tintuc2">
+        <img style="padding-left: 10px; padding-right: 10px; padding-top: 15px; float:left;" src="../img/img_tintuc/IMG_7064.JPG" width="70" height="60" />
+        <p><a href="../talk2.html">Hãy mạnh mẽ lên nếu một ngày ta không còn có nhau.</a></p>
+        <p style="font-size: 13px; color: #666666; padding-left: 90px;"><strong id="thoigiantintuc3"></strong></p>
+    </div>
+</div>
+<div class="headsach">
+    FOREIGN BOOKS
+</div>
+<div class="noidungsachgk">
+    <img style="margin-top: 25px;" src="~/Image_System/book_type/sgk-1170x260_2.jpg" width="100%" alt="" />
+    <div style="width: 550px;" class="tieude">
+        <img style="float:left;" src="~/Image_System/book_type/trai-xam.png" alt="" />
+        <h2>@name_type</h2>
+        <img src="~/Image_System/book_type/phai-xam.png" alt="" />
+    </div>
+    <div class="chitietsach">
+        @foreach (var item in list_books)
+        {
+            bookstore.Models.BookModel model = new bookstore.Models.BookModel();
+            var rating = model.GetRating(@item._id);
+            var rate = rating * 20;
+            <div id="chitiet1">
+                <img src="~/Image_Data/@item._img" width="180" height="230" alt="" />
+                <div id="sale">50%</div>
+                <div id="price1">@item._price_pages đ</div>
+                <div id="costprice">@item._price đ</div>
+                <br>
+                <a href="../giohang1.html">
+                    <div id="icoin">
+                        <i class="fa fa-shopping-cart hhcart"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div id="icoin">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div id="icoin">
+                        <i class="fa fa-retweet"></i>
+                    </div>
+                </a>
+                <p>@item._name</p>
+               
+                <div style="margin-top: 10px;float:left;" class="rating-box">
+                    <div class="rating" style="width:@rate%"></div>
+                </div>
+                <div style="margin-top:5px;">&nbsp;&nbsp;(@rating)</div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $jq(document).ready(function () {
+        $jq(".hethang").unbind('click');
+    });
+</script>
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+<script type="text/javascript">
+    window.criteo_q = window.criteo_q || [];
+    window.criteo_q.push(
+        { event: "setAccount", account: 34556 },
+        { event: "setEmail", email: "" },
+        { event: "setSiteType", type: "d" },
+        { event: "viewList", item: ["85559,85558,2887,82322,2881,2883,31000,30995,31001,30567,27865,28605,28087,28057,28055,28054,28053,28052,28050,28048,28045,28041,28039,28036"] }
+    );
+</script>
+<br>
+<br>
+@section css_link{
+    <link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/danhmuc/SGK&giaotrinh.css" rel="stylesheet" type="text/css" />
+}

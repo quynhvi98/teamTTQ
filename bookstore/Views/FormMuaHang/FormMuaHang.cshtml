@@ -1,0 +1,250 @@
+﻿
+@{
+    ViewBag.Title = "FormMuaHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cart_list = ViewBag.cart_list;
+    var tong_tien = ViewBag.tong_tien;
+}
+
+<a href="#">
+    <div class="quangcao">
+        <img src="~/Image_System/category_home/quangcao.jpg" alt="" height="430" />
+    </div>
+</a>
+<a href="#">
+    <div class="quangcao1">
+        <img src="~/Image_System/category_home/quangcao.jpg" alt="" height="430" />
+    </div>
+</a>
+<div class="giohang">
+   
+    <div class="dautien">
+        <a class="trangchugiohang" href="index.html"><h5>Trang Chủ </h5></a>
+        <strong class="trangchugiohang1"> > </strong>
+        <strong class="trangchugiohang1"><h5> Giỏ hàng</h5> </strong>
+        <div class="dautienbenphai">
+            <img class="imgdoitradedang" src="~/Image_System/cart/support-logo.png" alt="" />
+            <div class="dautienbenphai1"><a href="#">Hỗ Trợ Khách Hàng</a></div>
+        </div>
+        <div class="dautienbenphai">
+            <img class="imgdoitradedang" src="~/Image_System/cart/doi-tra-de-dang-icon.png" />
+            <div class="dautienbenphai1"><a href="#">Đổi trả dễ dàng</a></div>
+        </div>
+    </div>
+    <div class="noidunggiohang">
+        <div class="noidunggohang1">
+            <div class="nhapthongtondemua">
+                <form action="#" method="get">
+                    <div class="formthongtin">
+                        <span>Họ tên</span><br>
+                        <span>Nhập email</span><br>
+                        <span>Điện thoại di động</span><br>
+                        <span>Tỉnh/Thành phố</span>
+                        <br>
+                        <span>Quận/Huyện</span>
+                        <br>
+                        <br>
+                        <div class="khungnhapne">
+                            <input style="margin-left: 2px;" id="nhahoten" type="text" placeholder="Nhập họ tên" />
+                            <input style="margin-left: 2px;" id="email" type="email"  placeholder="Nhập email" />
+                            <input style="margin-left: 2px;" id="sodienthoai" type="tel" placeholder="Số điện thoại" />
+                            <select id="thanhpho" style="width: 323px;height: 35px">
+                                <option selected value="1">Hà Nội</option>
+                                <option value="2">TP Hồ Ch&#237; Minh</option>
+                                <option value="3">An Giang</option>
+                                <option value="4">B&#224; Rịa-Vũng T&#224;u</option>
+                                <option value="5">Bắc Giang</option>
+                                <option value="6">Bắc Kạn</option>
+                                <option value="7">Bạc Li&#234;u</option>
+                                <option value="8">Bắc Ninh</option>
+                                <option value="9">Bến Tre</option>
+                                <option value="10">B&#236;nh Định</option>
+                                <option value="11">B&#236;nh Dương</option>
+                                <option value="12">B&#236;nh Phước</option>
+                                <option value="13">B&#236;nh Thuận</option>
+                                <option value="14">C&#224; Mau</option>
+                                <option value="15">Cần Thơ</option>
+                                <option value="16">Cao Bằng</option>
+                                <option value="17">Đ&#224; Nẵng</option>
+                                <option value="18">Đắk Lắk</option>
+                                <option value="19">Đắk N&#244;ng</option>
+                                <option value="20">Điện Bi&#234;n</option>
+                                <option value="21">Đồng Nai</option>
+                                <option value="22">Đồng Th&#225;p</option>
+                                <option value="23">Gia Lai</option>
+                                <option value="24">H&#224; Giang</option>
+                                <option value="25">H&#224; Nam</option>
+                                <option value="26">H&#224; Tĩnh</option>
+                                <option value="27">Hải Dương</option>
+                                <option value="28">Hải Ph&#242;ng</option>
+                                <option value="29">Hậu Giang</option>
+                                <option value="30">H&#242;a B&#236;nh</option>
+                                <option value="31">Hưng Y&#234;n</option>
+                                <option value="32">Kh&#225;nh H&#242;a</option>
+                                <option value="33">Ki&#234;n Giang</option>
+                                <option value="34">Kon Tum</option>
+                                <option value="35">Lai Ch&#226;u</option>
+                                <option value="36">L&#226;m Đồng</option>
+                                <option value="37">Lạng Sơn</option>
+                                <option value="38">L&#224;o Cai</option>
+                                <option value="39">Long An</option>
+                                <option value="40">Nam Định</option>
+                                <option value="41">Nghệ An</option>
+                                <option value="42">Ninh B&#236;nh</option>
+                                <option value="43">Ninh Thuận</option>
+                                <option value="44">Ph&#250; Thọ</option>
+                                <option value="45">Ph&#250; Y&#234;n</option>
+                                <option value="46">Quảng B&#236;nh</option>
+                                <option value="47">Quảng Nam</option>
+                                <option value="48">Quảng Ng&#227;i</option>
+                                <option value="49">Quảng Ninh</option>
+                                <option value="50">Quảng Trị</option>
+                                <option value="51">S&#243;c Trăng</option>
+                                <option value="52">Sơn La</option>
+                                <option value="53">T&#226;y Ninh</option>
+                                <option value="54">Th&#225;i B&#236;nh</option>
+                                <option value="55">Th&#225;i Nguy&#234;n</option>
+                                <option value="56">Thanh H&#243;a</option>
+                                <option value="57">Thừa Thi&#234;n Huế</option>
+                                <option value="58">Tiền Giang</option>
+                                <option value="59">Tr&#224; Vinh</option>
+                                <option value="60">Tuy&#234;n Quang</option>
+                                <option value="61">Vĩnh Long</option>
+                                <option value="62">Vĩnh Ph&#250;c</option>
+                                <option value="63">Y&#234;n B&#225;i</option>
+                            </select>
+                            <input id="quanhuyen" style="margin-left: 2px;" type="text" placeholder="Nhập quận/huyện" />
+                         
+                        </div>
+                        <br>
+                        <div style="margin: 10px 10px;float:left; font-size: 13px; font-weight: bold;">Địa chỉ</div><textarea id="diachi" style="margin-left: 135px;border-radius: 3px; margin-top: 10px;" cols="44 " rows="4"></textarea><br>
+                        <br><i style="margin-left: 200px; font-size: 11px;color:#333;">Để nhận hàng thuận tiện hơn bạn vui lòng cho edub biết loại địa chỉ</i><br>
+                       
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="noidunggohang2">
+        <div class="khungtinhtientam">
+            <div class="gokhungtinhtien">
+                <div style=" border-bottom: 2px solid #ddd ;height: 30px;">
+                    <p style="font-size: 15px;font-weight: 400;">Đơn hàng (@cart_list.Count sản phẩm)</p>
+                </div>
+            </div>
+            <div class="gokhungthanhtien1" style=" border-bottom: 2px solid #ff0033 ">
+               @foreach (var item in cart_list)
+               {
+                <div class="cacdonhangcantinhtien">
+                    <p style="float: left;font-weight: bold">x @item.quantity</p>
+                    <a href="#"> <p style="float: left;margin-left: 10px;">@item.name_product</p> </a>
+                    <p style="float: right;font-weight: 500">@item.price_pages ₫ </p>
+                </div>
+               }
+                
+                
+            </div>
+            <div class="gokhungthanhtien">
+                <div>
+                    <br>
+                    <br>
+                    <p style="float: left;">Thành Tiền:</p>
+                    <p style="float: right;color: #ff0033;font-size: 25px;">@tong_tien ₫</p><br><br>
+                    <div style="color: #000;font-size: 15px;padding-bottom:10px;">(Miễn Phí Vận Chuyển) </div>
+                </div>
+            </div>
+        </div>
+        <div class="dathang">
+            <a class="tienhanhdathangtes" onclick="guithongtinmuahang()">Gửi Thông Tin Đặt Hàng</a>
+        </div>
+
+    </div>
+</div>
+               
+<div class="nhataitro">
+    <div class="giaodiennhataitro">
+        <a href="http://alphabooks.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Alphabooks.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://www.bachviet.edu.vn/vi/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Bách Việt.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://mannup.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/manup.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://nhanam.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Nhã Nam.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://sachbaovn.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/logosachbaovn.png" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://docsachcungcon.com/" target="_blank"> <img src="~/Image_System/nha_tai_tro/doc sach.png" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="https://www.bigdream.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/bigdream.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="https://read.alezaa.com/?view=store" target="_blank"> <img src="~/Image_System/nha_tai_tro/alezaa.png" alt="" /> </a>
+    </div>
+</div>
+<script>
+    function guithongtinmuahang() {
+
+        var nhahoten = document.getElementById("nhahoten").value;
+        var email = document.getElementById("email").value;
+        var sodienthoai = document.getElementById("sodienthoai").value;
+        var thanhpho = document.getElementById("thanhpho").options[document.getElementById("thanhpho").selectedIndex].text;
+        var quanhuyen = document.getElementById("quanhuyen").value;
+        var diachi = document.getElementById("diachi").value;
+        var formData2 = new FormData();
+        formData2.append("email", email);
+        var xmlHttp2 = new XMLHttpRequest();
+        xmlHttp2.open("post", "/FormMuaHang/CheckEmail", false); // false for synchronous request
+        xmlHttp2.send(formData2);
+        var intEmail = xmlHttp2.responseText;
+        if (intEmail == "2") {
+            swal("Thông Báo", "Sai định dạng email", "error");
+        } else {
+            if (intEmail == "3") {
+                swal("Thông Báo", "Đã Có email này rồi.", "error");
+            } else {
+                if (nhahoten.length > 0, email.length > 0, sodienthoai.length > 0, thanhpho.length > 0, quanhuyen.length > 0, diachi.length > 0) {
+                    var formData = new FormData();
+                    formData.append("nhahoten", nhahoten);
+                    formData.append("email", email);
+                    formData.append("sodienthoai", sodienthoai);
+                    formData.append("thanhpho", thanhpho);
+                    formData.append("quanhuyen", quanhuyen);
+                    formData.append("diachi", diachi);
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("post", "/FormMuaHang/CreatOrderFromCart", false); // false for synchronous request
+                    xmlHttp.send(formData);
+                   xmlHttp.responseText;
+
+                    swal({
+                        title: "Congratulations",
+                        text: "Chúc mừng bạn đã đặt hàng thành công :D",
+                        icon: "success",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                window.location = "/Home/Index";
+                            }
+                        });
+                } else {
+                    swal("Thông Báo", "Làm ơn Hãy nhập đầy đủ thông tin", "error");
+                }
+            }
+
+        }
+    }
+
+</script>
+
+@section css_link{
+    <link href="~/Content/css/nhapthongtinmua.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@6.10.2/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@6.10.2/dist/sweetalert2.min.js"></script>
+}

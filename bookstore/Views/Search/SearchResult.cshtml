@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "SearchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var results = ViewBag.results;
+}
+
+
+<a href="#">
+    <div class="quangcao">
+        <img src="~/Image_System/category_home/quangcao.jpg" alt="" height="430" />
+    </div>
+</a>
+<a href="#">
+    <div style="position:absolute;top:230px;left:60px;" class="quangcao1">
+        <img src="~/Image_System/category_home/quangcao.jpg" alt="" height="430" />
+    </div>
+</a>
+<div class="giohang" style="margin-left:200px;">
+    <div class="dautien">
+        <a class="trangchugiohang" href="index.html"><h5>Trang Chủ </h5></a>
+        <strong class="trangchugiohang1"> > </strong>
+        <strong class="trangchugiohang1"><h5> Tìm Kiếm</h5> </strong>
+        <div class="dautienbenphai">
+            <img class="imgdoitradedang" src="~/Image_System/cart/support-logo.png" alt="" />
+            <div class="dautienbenphai1"><a href="#">Hỗ Trợ Khách Hàng</a></div>
+        </div>
+        <div class="dautienbenphai">
+            <img class="imgdoitradedang" src="~/Image_System/cart/doi-tra-de-dang-icon.png" />
+            <div class="dautienbenphai1"><a href="#">Đổi trả dễ dàng</a></div>
+        </div>
+    </div>
+    <div class="noidunggiohang">
+        <div class="khunggiohang">
+            <div>
+                <div class="giohangsanpham" style="font-size: 14px;float:none;"><strong style="font-size: 19px;">ABC </strong> (@results.Count kết quả)</div>
+            </div>
+            @foreach (var item in results)
+            {
+                bookstore.Models.BookModel model = new bookstore.Models.BookModel();
+                var rating = model.GetRating(@item._id) * 20;
+                <div id="chitiet" style="margin-left:30px;">
+                    <img src="~/Image_Data/@item._img" width="180" height="230" alt="" />
+
+                    <p>@item._name</p>
+                    <div style="margin-top: 10px;" class="rating-box">
+                        <div class="rating" style="width:@rating%"></div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="nhataitro">
+    <div class="giaodiennhataitro">
+        <a href="http://alphabooks.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Alphabooks.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://www.bachviet.edu.vn/vi/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Bách Việt.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://mannup.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/manup.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://nhanam.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/Nhã Nam.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://sachbaovn.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/logosachbaovn.png" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="http://docsachcungcon.com/" target="_blank"> <img src="~/Image_System/nha_tai_tro/doc sach.png" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="https://www.bigdream.vn/" target="_blank"> <img src="~/Image_System/nha_tai_tro/bigdream.jpg" alt="" /> </a>
+    </div>
+    <div class="giaodiennhataitro">
+        <a href="https://read.alezaa.com/?view=store" target="_blank"> <img src="~/Image_System/nha_tai_tro/alezaa.png" alt="" /> </a>
+    </div>
+</div>
+
+@section css_link{
+    <link href="~/Content/css/giohang1.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/danhmuc/SGK&giaotrinh.css" rel="stylesheet" type="text/css" />
+}
