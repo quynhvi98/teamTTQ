@@ -207,34 +207,47 @@
             if (intEmail == "3") {
                 swal("Thông Báo", "Đã Có email này rồi.", "error");
             } else {
-                if (nhahoten.length > 0, email.length > 0, sodienthoai.length > 0, thanhpho.length > 0, quanhuyen.length > 0, diachi.length > 0) {
-                    var formData = new FormData();
-                    formData.append("nhahoten", nhahoten);
-                    formData.append("email", email);
-                    formData.append("sodienthoai", sodienthoai);
-                    formData.append("thanhpho", thanhpho);
-                    formData.append("quanhuyen", quanhuyen);
-                    formData.append("diachi", diachi);
-                    var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("post", "/FormMuaHang/CreatOrderFromCart", false); // false for synchronous request
-                    xmlHttp.send(formData);
-                   xmlHttp.responseText;
 
-                    swal({
-                        title: "Congratulations",
-                        text: "Chúc mừng bạn đã đặt hàng thành công :D",
-                        icon: "success",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                window.location = "/Home/Index";
-                            }
-                        });
+                var formData21 = new FormData();
+                formData21.append("sodienthoai", sodienthoai);
+                var xmlHttp21 = new XMLHttpRequest();
+                xmlHttp21.open("post", "/FormMuaHang/CheckPhone", false); // false for synchronous request
+                xmlHttp21.send(formData21);
+                var CheckPhoneInt = xmlHttp21.responseText;
+
+                if (CheckPhoneInt == "0") {
+                    if (nhahoten.length > 0, email.length > 0, sodienthoai.length > 0, thanhpho.length > 0, quanhuyen.length > 0, diachi.length > 0) {
+                        var formData = new FormData();
+                        formData.append("nhahoten", nhahoten);
+                        formData.append("email", email);
+                        formData.append("sodienthoai", sodienthoai);
+                        formData.append("thanhpho", thanhpho);
+                        formData.append("quanhuyen", quanhuyen);
+                        formData.append("diachi", diachi);
+                        var xmlHttp = new XMLHttpRequest();
+                        xmlHttp.open("post", "/FormMuaHang/CreatOrderFromCart", false); // false for synchronous request
+                        xmlHttp.send(formData);
+                        xmlHttp.responseText;
+
+                        swal({
+                            title: "Congratulations",
+                            text: "Chúc mừng bạn đã đặt hàng thành công :D",
+                            icon: "success",
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                            .then((willDelete) => {
+                                if (willDelete) {
+                                    window.location = "/Home/Index";
+                                }
+                            });
+                    } else {
+                        swal("Thông Báo", "Làm ơn Hãy nhập đầy đủ thông tin", "error");
+                    }
                 } else {
-                    swal("Thông Báo", "Làm ơn Hãy nhập đầy đủ thông tin", "error");
+                    swal("Thông Báo", "Làm ơn hãy nhập đúng số điện thoại", "error");
                 }
+               
             }
 
         }
