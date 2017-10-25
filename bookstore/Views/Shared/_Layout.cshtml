@@ -174,20 +174,27 @@
         function dangnhap() {
             var name = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-            var formData2 = new FormData();
-            formData2.append("username", name);
-            formData2.append("password", password);
-            var xmlHttp2 = new XMLHttpRequest();
-            xmlHttp2.open("post", "/Home/DangNhapCheck", false); // false for synchronous request
-            xmlHttp2.send(formData2);
-            var intEmail = xmlHttp2.responseText;
-            if (intEmail == "True") {
+            if (name.length > 0 || password.length > 0) {
+                var formData2 = new FormData();
+                formData2.append("username", name);
+                formData2.append("password", password);
                 var xmlHttp2 = new XMLHttpRequest();
-                xmlHttp2.open("post", "/Home/DangNhap", false); // false for synchronous request
+                xmlHttp2.open("post", "/Home/DangNhapCheck", false); // false for synchronous request
                 xmlHttp2.send(formData2);
-                window.location = "";
+                var intEmail = xmlHttp2.responseText;
+                if (intEmail == "True") {
+                    var xmlHttp2 = new XMLHttpRequest();
+                    xmlHttp2.open("post", "/Home/DangNhap", false); // false for synchronous request
+                    xmlHttp2.send(formData2);
+                    window.location = "";
 
+                } else {
+                    swal("Thông Báo", "Tài Khoản hoặc mật khẩu không chính xác.", "error");
+                }
+            } else {
+                swal("Thông Báo", "Bạn vui lòng nhập đầy đủ tài khoản mật khẩu.", "error");
             }
+         
         }
            function LoginUot() {
                window.location = "/Home/logout";
