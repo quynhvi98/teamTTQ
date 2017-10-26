@@ -383,6 +383,7 @@ section{
 #tintuc1>p>a{
     text-decoration: none;
     color: #666666;
+    font-size:12px;
 }
 #tintuc1>p>a:hover{
     text-decoration: underline;
