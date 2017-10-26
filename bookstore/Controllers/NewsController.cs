@@ -21,7 +21,6 @@ namespace bookstore.Controllers
         public ActionResult chitiettintuc(string id_news)
         {
             NewsModel model = new NewsModel();
-            ViewBag.interestnews = model.GetListNews(3);
             ViewBag.newsdetails = model.GetNewsByID(id_news);
             ViewBag.interestnews = model.GetListNews(3);
             ViewBag.othernews = model.GetListNews(4);

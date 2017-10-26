@@ -19,7 +19,7 @@
             @foreach (var item in ViewBag.interestnews)
             {
                 <div data-p="144.50">
-                    <a href="/News/chitiettintuc?id_news=@item._id" title="@item._name"><img data-u="image" src="~/Image_System/@item._img" /></a>
+                    <a href="/News/chitiettintuc?id_news=@item._id" title="@item._name"><img data-u="image" src="~/Image_Data/@item._img" /></a>
                 </div>
             }
         </div>
@@ -36,7 +36,7 @@
     <div class="content-tt">
         <strong>@news._name </strong>   
         <img src="~/Image_Data/@news._img" width="745" height="700" alt="" />
-        
+        @Html.Raw(news._content)
     </div>
 </div>
 <div class="r-tintuc">

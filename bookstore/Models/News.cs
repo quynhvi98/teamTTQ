@@ -13,6 +13,6 @@ namespace bookstore.Models
         public string _content { get; set; }
         public string _author { get; set; }
         public DateTime _date { get; set; }
-        //tesst
+        public string _short_title { get; set; }
     }
 }
