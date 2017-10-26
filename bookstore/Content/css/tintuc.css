@@ -157,7 +157,7 @@ section{
     font-weight: bold;
     color: #085389;
     font-family: 'noto',sans-serif;
-    background: url(../img/img_tintuc/dot0.png) repeat-x left bottom;
+    background: url(../../Image_System/contact/dot0.png) repeat-x left bottom;
     margin-top: 20px;
 }
 .listnew{
@@ -199,7 +199,7 @@ p2{
     margin-right: 40px;
 }
 .menu-tintuc{
-    background: url(../img/img_tintuc/bg-middle-right.png) no-repeat left top;
+    background: url(../../Image_System/contact/bg-middle-right.png) no-repeat left top;
     float: LEFT;
     width: 228px;
     margin-top: 20px ;
@@ -211,7 +211,7 @@ p2{
     height: auto;
 }
 .row{
-    background: url(../img/img_tintuc/arrow9.png) left 6px no-repeat;
+    background: url(../../Image_System/contact/arrow9.png) left 6px no-repeat;
     margin: 0;
     padding: 0 0 0 20px;
     float: left;
@@ -238,7 +238,7 @@ p2{
     font-weight: bold;
     color: #085389;
     font-family: 'noto',sans-serif;
-    background: url(../img/img_tintuc/dot0.png) repeat-x left bottom;
+    background: url(../../Image_System/contact/dot0.png) repeat-x left bottom;
     float:right;
 }
 #tinduocquantam{
@@ -267,7 +267,7 @@ p2{
 }
 #content>p3{
     font-weight: bold; 
-    display: block;
+   
 }
 #doitac{
     float: left;
@@ -276,7 +276,7 @@ p2{
     display: block;
     margin-left: 40px;
     padding-left: 30px;padding-top: 3px;
-    background: url(../img/bg_doitac_1.png);
+    background: url(../../Image_System/contact/bg_doitac_1.png);
     font-size: 14px;color:forestgreen;
 }
 .row>h2>a:hover{

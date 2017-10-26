@@ -10,6 +10,7 @@ namespace bookstore.Controllers
 {
     public class HomeController : Controller
     {
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
             if (Request.Cookies["id_user"]==null&&Request.Cookies["Account"]==null)
@@ -53,6 +54,21 @@ namespace bookstore.Controllers
 
             return View("Contact");
         }
+        public bool DangNhapCheck()
+        {
+            String account = Request.Form["username"];
+            String password = Request.Form["password"];
+            CustomerModel customerModel = new CustomerModel();
+            if (customerModel.LoginWithAccAndPass(account, password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+         }
+
         [HttpPost]
         public ActionResult DangNhap()
         {

@@ -16,13 +16,13 @@ namespace bookstore.Models
             string sql = null;
 
             if (type == 1)
-                sql = "SELECT TOP 4 id_new,title,img,date_new,content_new,author_new FROM dbo.book_news ORDER BY id_new DESC";
+                sql = "SELECT TOP 4 id_new,title,img,date_new,content_new,author_new,short_title FROM dbo.book_news ORDER BY id_new DESC";
             if (type == 2)
-                sql = "SELECT id_new, title, img, date_new, content_new,author_new FROM dbo.book_news";
+                sql = "SELECT id_new, title, img, date_new, content_new,author_new,short_title FROM dbo.book_news";
             if (type == 3)
-                sql = "SELECT TOP 3 id_new,title,img,date_new,content_new,author_new FROM dbo.book_news ORDER BY id_new DESC";
+                sql = "SELECT TOP 3 id_new,title,img,date_new,content_new,author_new,short_title FROM dbo.book_news ORDER BY id_new DESC";
             if (type == 4)
-                sql = "SELECT TOP 8 id_new,title,img,date_new,content_new,author_new FROM dbo.book_news ORDER BY id_new DESC";
+                sql = "SELECT TOP 8 id_new,title,img,date_new,content_new,author_new,short_title FROM dbo.book_news ORDER BY id_new DESC";
             SqlCommand cmd = new SqlCommand(sql, GetConnection());
             cmd.Connection.Open();
             SqlDataReader dr = cmd.ExecuteReader();
@@ -35,7 +35,8 @@ namespace bookstore.Models
                     _img = dr.GetString(2),
                     _date = dr.GetDateTime(3),
                     _content = dr.GetString(4),
-                    _author = dr.GetString(5)
+                    _author = dr.GetString(5),
+                    _short_title = dr.GetString(6)
                 };
                 list.Add(news);
             }
