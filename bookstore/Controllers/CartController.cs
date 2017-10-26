@@ -12,13 +12,13 @@ namespace bookstore.Controllers
         // GET: Cart
         public ActionResult Cart()
         {
-            //if (Request.Cookies["id_user"] == null && Request.Cookies["Account"] == null)
-            //{
-            //    HttpCookie httpCookie = new HttpCookie("id_user");
-            //    DateTime dt = DateTime.Now;
-            //    httpCookie.Values.Add("user", "U" + dt.Ticks.ToString());
-            //    Response.Cookies.Add(httpCookie);
-            //}
+            if (Request.Cookies["id_user"] == null && Request.Cookies["Account"] == null)
+            {
+                HttpCookie httpCookie = new HttpCookie("id_user");
+                DateTime dt = DateTime.Now;
+                httpCookie.Values.Add("user", "U" + dt.Ticks.ToString());
+                Response.Cookies.Add(httpCookie);
+            }
             if (Request.Cookies["Account"] != null)
             {
                 ViewBag.checklogin = "<span>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </span> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
