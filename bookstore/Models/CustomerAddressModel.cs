@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 
 namespace bookstore.Models
@@ -188,6 +190,32 @@ namespace bookstore.Models
             cmd.Connection.Close();
 
             return list;
+        }
+        public bool MailToCustomer(string email)
+        {
+            try
+            {
+                StringBuilder Body = new StringBuilder();
+                Body.Append("<p>Chúc mừng bạn đã đặt hàng thành công, nhân viên của chúng tôi sẽ sớm gọi điện lại cho bạn để xác nhận.</p>");     
+                MailMessage mail = new MailMessage();
+                mail.To.Add(email);//đổi mail của mình để test
+                mail.From = new MailAddress("projectsem2aptech@gmail.com");
+                mail.Subject = "Edubook.com.vn";
+                mail.Body = Body.ToString();
+                mail.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = new System.Net.NetworkCredential("projectsem2aptech@gmail.com", "Chicanem1");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

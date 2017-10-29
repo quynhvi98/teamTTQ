@@ -241,17 +241,33 @@ namespace bookstore.Controllers
         {
             var sodienthoai = Request.Form["sodienthoai"];
             CustomerModel customerModel = new CustomerModel();
-            string strRegex = @"^(([(]?(\\d{2,4})[)]?)|(\\d{2,4})|([+1-9]+\\d{1,2}))?[-\\s]?(\\d{2,3})?[-\\s]?((\\d{7,8})|(\\d{3,4}[-\\s]\\d{3,4}))$";
+            string strRegex = "^(([(]?(\\d{2,4})[)]?)|(\\d{2,4})|([+1-9]+\\d{1,2}))?[-\\s]?(\\d{2,3})?[-\\s]?((\\d{7,8})|(\\d{3,4}[-\\s]\\d{3,4}))$";
             Regex re = new Regex(strRegex);
             if (re.IsMatch(sodienthoai))
             {
-
+                return 0;
             }
             else
             {
                 return 2;
             }
-            return 0;
+            
+        }
+
+        public Boolean MailToCus()
+        {
+            try
+            {
+                var email = Request.Form["email"];
+                CustomerAddressModel model = new CustomerAddressModel();
+                model.MailToCustomer(email);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
     }
 }

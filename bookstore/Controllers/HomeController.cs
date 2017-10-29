@@ -50,9 +50,30 @@ namespace bookstore.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+           
 
             return View("Contact");
+        }
+
+        public Boolean SendEmail()
+        {
+            try
+            {
+                var hoten = Request.Form["hoten"];
+                var noidung = Request.Form["noidung"];
+                var tieude = Request.Form["tieude"];
+                var email = Request.Form["email"];
+                var sdt = Request.Form["sdt"];
+                ContactModel contact = new ContactModel();
+                contact.SendMail_Contact(hoten, email,sdt,tieude,noidung);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+            
         }
         public bool DangNhapCheck()
         {

@@ -24,7 +24,7 @@ namespace bookstore.Controllers
             ReviewModel review_model = new ReviewModel();
             ViewBag.book_detail = book_model.GetBookByID(id);
             ViewBag.reviews = review_model.GetReviews(id);
-            ViewBag.point = book_model.GetRating(id)*2;
+            ViewBag.point = book_model.GetRating(id);
             return View();
         }
     }

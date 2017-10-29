@@ -40,7 +40,8 @@
         <p>trongtran@edubooks.com</p><br>
         <br>
     </div>
-    <form action="#" method="get">
+
+    <form id="form-contact" method="get">
         <div class="formthongtin">
             <h5><a href="#">Thông tin cá nhân</a></h5>
             <br>
@@ -52,10 +53,10 @@
                 <span>Thông tin thêm </span><br><br>
             </div>
             <div style="float: right;margin-right: 70px;">
-                <input type="text" size="50" /><br>
-                <input style="margin-top: 15px;" type="email" size="50" /><br>
+                <input id="hoten" type="text" size="50" /><br>
+                <input id="email" style="margin-top: 15px;" type="email" size="50" /><br>
                 <input style="margin-top: 15px;" type="text" size="50" /><br>
-                <input style="margin-top: 15px;" type="tel" size="50" /><br>
+                <input id="sdt" style="margin-top: 15px;" type="tel" size="50" /><br>
                 <textarea style="margin-top: 15px;" rows="4" cols="55"></textarea>
             </div>
         </div>
@@ -66,11 +67,11 @@
                 <span>Nội dung <span style="color: #ff0033;font-family: 'arial',sans-serif;">*</span></span><br>
             </div>
             <div style="float: right;margin-right: 70px;">
-                <input style="" type="text" size="50" /><br>
-                <textarea style="margin-top: 15px;" rows="4" cols="55"></textarea>
+                <input id="tieude" style="" type="text" size="50" /><br>
+                <textarea id="noidung" style="margin-top: 15px;" rows="4" cols="55"></textarea>
             </div>
         </div>
-        <button type="submit"><a href="dathangthanhcong.html" style="text-decoration: none">Gửi thông tin</a></button>
+        <input type="button" value="Gửi thông tin" onclick="Validation()" />
         <span>( Ý kiến phản hồi của bạn là sự đóng góp cho chúng tôi !)</span>
     </form>
 </div>
@@ -158,9 +159,51 @@
         <a href="https://read.alezaa.com/?view=store" target="_blank"> <img src="~/Image_System/nha_tai_tro/alezaa.png" alt="" /> </a>
     </div>
 </div>
+<script>
+    function Validation() {
+        var hoten = document.getElementById("hoten").value;
+        var email = document.getElementById("email").value;
+        var tieude = document.getElementById("tieude").value;
+        var noidung = document.getElementById("noidung").value;
+        var sdt = document.getElementById("sdt").value;
+        if (hoten.length < 1) {
+            swal("Note!", "Họ tên không được trống!", "warning");
+        } else
+            if (email.length < 1) {
+                swal("Note!", "Email không được trống!", "warning");
+            } else
+                if (sdt.length < 1) {
+                    swal("Note!", "Số điện thoại không được trống!", "warning");
+                } else
+                    if (tieude.length < 1) {
+                        swal("Note!", "Tiêu đề không được trống!", "warning");
+                    } else
+                        if (noidung.length < 1) {
+                            swal("Note!", "Nội dung không được trống!", "warning");
+                        } else {
+                            var formData2 = new FormData();
+                            formData2.append("hoten", hoten);
+                            formData2.append("noidung", noidung);
+                            formData2.append("email", email);
+                            formData2.append("tieude", tieude);
+                            formData2.append("sdt", sdt);
+                            var xmlHttp2 = new XMLHttpRequest();
 
+                            xmlHttp2.open("post", "/Home/SendEmail", false); // false for synchronous request
+                            xmlHttp2.send(formData2);
+                            var intEmail = xmlHttp2.responseText;
+                            if (intEmail == "True") {
+                                swal("Thanks for feedback!", "Ý kiến phản hồi của bạn là sự đóng góp cho chúng tôi !!", "success");
+                            } else {
+                                swal("Error 404!", "Error 404!", "warning");
+                            }
+                        }
+    }
+</script>
 
 @section css_link{
-    <link href="~/Content/newcss.css" type="text/css" rel="stylesheet"/>
-    <link href="~/Content/css/lienhe.css" type="text/css" rel="stylesheet"/>
-    }
+    <link href="~/Content/newcss.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/css/lienhe.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@6.10.2/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@6.10.2/dist/sweetalert2.min.js"></script>
+}

@@ -7,7 +7,7 @@
     var point = ViewBag.point;
 }
 <div class="tieude">
-    Trang chủ > &nbsp;&nbsp;Sách bán chạy nhất > &nbsp;&nbsp;@book_detail._name.
+    Trang chủ > &nbsp;&nbsp;Sách bán chạy nhất > &nbsp;&nbsp;@book_detail._name
 </div>
 <div class="content-sach">
     <img style="float: left;" width="280" height="400" src="~/Image_Data/@book_detail._img" alt="@book_detail._name">
@@ -67,45 +67,10 @@
 <div class="nhanxet">
     <h2 style="height: 45px;">Khách hàng nhận xét</h2>
     <!-- begin rating -->
-    <br><br>
-    <div class="control-rating" id="720">
-        <div class="box-star-score pull-left">
-            @point
-        </div>
-        <div class="box-until">
-            <div class="row-rating">
-                <p class="pull-left">Đánh giá:</p>
-                <div id="star-rating" class="star-rating pull-left">
-                    <input type="radio" name="star" class="rating" value="1" />
-                    <input type="radio" name="star" class="rating" value="2" />
-                    <input type="radio" name="star" class="rating" value="3" />
-                    <input type="radio" name="star" class="rating" value="4" />
-                    <input type="radio" name="star" class="rating" value="5" />
-                    <input type="radio" name="star" class="rating" value="6" />
-                    <input type="radio" name="star" class="rating" value="7" />
-                    <input type="radio" name="star" class="rating" value="8" />
-                    <input type="radio" name="star" class="rating" value="9" />
-                    <input type="radio" name="star" class="rating" value="10" />
-                </div>
-                <p class="pull-left">
-                    <span class="score-vote">
-                        0
-                    </span>
-                    /10
-                </p>
-            </div><br />
-            <div class="row-score">
-                <span onclick="listRating(this);" style="cursor: pointer;">
-                    Điểm: <span class="total-score">@point</span>/10
-                </span>
-                <span class="pull-right num-user-rating hidden" onclick="listRating(this);">
-                </span>
-            </div>
-        </div>
-    </div>
-    <!-- end rating -->  <br>
 
-    @foreach(var review in reviews){
+
+    @foreach (var review in reviews)
+    {
         <div class="ndnx">
 
             <span style="font-family: inherit;color: #000;font-weight: 700;line-height: 2em;">Một cuốn sách tuyệt vời </span>&nbsp;&nbsp;
@@ -119,13 +84,53 @@
             <p>@review._comment</p>
         </div>
     }
-    
+
 
 </div>
 <div class="note">
-    <p>Chỉ có thành viên mới có thể viết nhận xét. Vui lòng <a style="color: #c00;" class="dangnhap" href="#">đăng nhập</a> hoặc <a class="dangky" style="color: #c00;" href="#">đăng ký</a>.</p>
+    <div class="control-rating" id="720">
+        <div class="box-star-score pull-left">
+            @point
+        </div>
+        <div class="box-until">
+            <div class="row-rating">
+                <p class="pull-left">Đánh giá:</p>
+                <div class="star-rating pull-left">
+                    <input id="rate1" type="radio" value="1" />
+                    <input id="rate1" type="radio" value="2" />
+                    <input id="rate3" type="radio" value="3" />
+                    <input id="rate4" type="radio" value="4" />
+                    <input id="rate5" type="radio" value="5" />
+
+                </div>
+
+                <p class="pull-left">
+                    <span id="fffff" class="score-vote">
+                        0
+                    </span>
+                    /5
+                </p>
+            </div><br />
+            <div class="row-score">
+                <span onclick="listRating(this);" style="cursor: pointer;">
+                    Điểm: <span class="total-score">@point</span>/5
+                </span>
+                <span class="pull-right num-user-rating hidden" onclick="listRating(this);">
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- end rating -->  <br>
+    <span style="color:#007fff;font-family:'Noto Sans', sans-serif;">Trọng Trần </span>
+    <input id="comment" type="text" style="margin-left:10px;height:30px;width:400px;padding:2px 12px;border-radius:20px;border:1px solid #ccc;" placeholder="Viết bình luận..." />
+    <input id="submit" type="button" value="Đăng" />
 </div>
 <script>
+    var checkpoint;
+    //function Review(point) {
+    //    console.log(point);
+    //}
+
     function TienHanhDatHang(id) {
         var formData = new FormData();
         formData.append("product", id);
@@ -134,9 +139,25 @@
         xmlHttp.send(formData);
         return xmlHttp.responseText;
     }
+
+
+    $(function Review(id) {
+
+        $('.star-rating').rating(function () {
+
+        });
+        
+        $('.star-rating').click(function () {
+            var value = document.getElementById("fffff").innerHTML;
+            console.log(value);
+            var s = document.getElementById('rate5').style;
+            s.background = "url(../../Image_System/book_details/saovang.png)";
+        });
+
+    });
 </script>
+
 @section css_link{
     <link href="~/Content/css/chitietcuonsach/sachbanchaynhat1.css" rel="stylesheet" type="text/css" />
-
     <link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />
 }

@@ -160,6 +160,7 @@
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\ConnectDatabase.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerAddress.cs" />
     <Compile Include="Models\CustomerAddressModel.cs" />
