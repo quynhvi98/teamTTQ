@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+    var list_books = ViewBag.ListBooks;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetCategory</title>
+</head>
+<body>
+    <div>
+        @foreach (var item in list_books)
+        {
+            bookstore.Models.BookModel model = new bookstore.Models.BookModel();
+            var rating = model.GetRating(@item._id);
+            var rate = rating * 20;
+            <div id="chitiet1">
+                <img src="~/Image_Data/@item._img" width="180" height="230" alt="" />
+                <div id="sale">50%</div>
+                <div id="price1">@item._price_pages đ</div>
+                <div id="costprice">@item._price đ</div>
+                <br>
+                <a href="../giohang1.html">
+                    <div id="icoin">
+                        <i class="fa fa-shopping-cart hhcart"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div id="icoin">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div id="icoin">
+                        <i class="fa fa-retweet"></i>
+                    </div>
+                </a>
+                <p>@item._name</p>
+
+                <div style="margin-top: 10px;float:left;" class="rating-box">
+                    <div class="rating" style="width:@rate%"></div>
+                </div>
+                <div style="margin-top:5px;">&nbsp;&nbsp;(@rating)</div>
+            </div>
+        }
+    </div>
+</body>
+</html>
