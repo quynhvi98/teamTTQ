@@ -130,6 +130,13 @@ namespace bookstore.Controllers
             httpCookie.Values.Add("password", "43");
             httpCookie.Expires = DateTime.Now.AddDays(-2);
             Response.Cookies.Add(httpCookie);
+
+                HttpCookie httpCookie1 = new HttpCookie("id_user");
+                DateTime dt = DateTime.Now;
+                httpCookie1.Values.Add("user", "U" + dt.Ticks.ToString());
+                httpCookie1.Expires = DateTime.Now.AddDays(20);
+                Response.Cookies.Add(httpCookie1);
+
             BookModel model = new BookModel();
             AuthorModel author_model = new AuthorModel();
             ViewBag.hot_books = model.GetBooks("TOP 6", "WHERE [_id_category] =1");
