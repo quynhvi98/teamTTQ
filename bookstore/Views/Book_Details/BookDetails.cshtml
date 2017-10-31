@@ -59,7 +59,7 @@
             <span style="color: forestgreen;">7.000 Đ</span>
         </div>
         <div class="dathang">
-            <a class="tienhanhdathangtes" onclick="TienHanhDatHang(@book_detail._id)" href="~/Cart/Cart">Tiến Hành Đặt Hàng</a>
+            <a title="@book_detail._id" class="tienhanhdathangtes" onclick="TienHanhDatHang(@book_detail._id)" href="~/Cart/Cart">Tiến Hành Đặt Hàng</a>
 
         </div>
     </div>
@@ -73,7 +73,7 @@
     {
         <div class="ndnx">
 
-            <span style="font-family: inherit;color: #000;font-weight: 700;line-height: 2em;">Một cuốn sách tuyệt vời </span>&nbsp;&nbsp;
+            <span style="font-family: inherit;color: #000;font-weight: 700;line-height: 2em;">@review._title </span>&nbsp;&nbsp;
             <div style="display: inline-block;" class="rating-box">
                 <div style="width: @review._rating%;" class="rating"></div>
 
@@ -127,6 +127,7 @@
 </div>
 <script>
     var checkpoint;
+    var rate;
     //function Review(point) {
     //    console.log(point);
     //}
@@ -146,18 +147,54 @@
         $('.star-rating').rating(function () {
 
         });
-        
+
         $('.star-rating').click(function () {
-            var value = document.getElementById("fffff").innerHTML;
-            console.log(value);
-            var s = document.getElementById('rate5').style;
-            s.background = "url(../../Image_System/book_details/saovang.png)";
+            rate = document.getElementById("fffff").innerHTML;
         });
 
     });
+
+    $('#submit').click(function () {
+        var comment = $('#comment').val();
+        if (rate != null) {
+            if (comment != "") {
+                var formData = new FormData();
+                formData.append("id","@book_detail._id");
+                formData.append("rate", rate);
+                formData.append("comment", comment);
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open("post", "/Book_Details/Comment", false); // false for synchronous request
+                xmlHttp.send(formData);
+              
+                $('.nhanxet').append("<div class='ndnx'><span style='font-family: inherit;color: #000;font-weight: 700;line-height: 2em;'>" + comment + " </span>&nbsp;&nbsp<div style='display: inline-block;' class='rating-box'><div style='width: " + rate * 20 + "%;' class='rating'></div></div> <br><p style='line-height: 3em;'>Nhận xét bởi <a href='#'>"+getCookie()+"</a> vào ngày " + getDatetime()+"</p><p>" + comment + "</p></div>");
+                $('#comment').val("");
+
+            } else {
+                alert("You must comment before posting");
+            }
+        } else {
+            alert("You must rate before posting");
+        }
+    });
+    function getCookie() {
+        var account = document.cookie.split('=');
+        return account[1];
+    }
+    function getDatetime() {
+        var now = new Date();
+        var TimeAbout = "";
+        if (now.getHours <= 12)
+            TimeAbout = "AM";
+        else
+            TimeAbout = "PM";
+        return now.getDate() + "/" + now.getMonth() + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " " + TimeAbout;
+    }
 </script>
 
 @section css_link{
     <link href="~/Content/css/chitietcuonsach/sachbanchaynhat1.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />
+}
+@section login{
+    @Html.Raw(ViewBag.checklogin)
 }

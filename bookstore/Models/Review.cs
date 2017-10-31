@@ -12,5 +12,6 @@ namespace bookstore.Models
         public DateTime _date { get; set; }
         public string _comment { get; set; }
         public int _rating { get; set; }
+        public string _title { get; set; }
     }
 }

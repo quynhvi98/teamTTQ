@@ -230,6 +230,7 @@
     <Content Include="Image_System\1.jpg" />
     <Content Include="Image_System\boi_vi_sach_la_tg1.jpg" />
     <Content Include="Image_System\booktheloai %282%29.png" />
+    <Content Include="Image_System\book_details\bkg_rating_hover_1.png" />
     <Content Include="Image_System\book_details\dot_check.png" />
     <Content Include="Image_System\book_details\saovang.png" />
     <Content Include="Image_System\book_details\star-point.png" />

@@ -27,5 +27,25 @@ namespace bookstore.Controllers
             ViewBag.point = book_model.GetRating(id);
             return View();
         }
+
+        public bool Comment()
+        {
+            try
+            {
+                var id = Request.Form["id"];
+                var rate = Request.Form["rate"];
+                var comment = Request.Form["comment"];
+                var user = Request.Cookies["Account"].Values["user"];
+                
+                ReviewModel rm = new ReviewModel();
+                rm.Comment_Book(id, int.Parse(rate), comment,user);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
     }
 }
