@@ -10,6 +10,8 @@ namespace bookstore.Controllers
 {
     public class HomeController : Controller
     {
+        localhost.Service s = new localhost.Service();
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -21,15 +23,13 @@ namespace bookstore.Controllers
                 httpCookie.Expires = DateTime.Now.AddDays(20);
                 Response.Cookies.Add(httpCookie);
             }
-            BookModel model = new BookModel();
-            AuthorModel author_model = new AuthorModel();
-            ViewBag.hot_books = model.GetBooks("TOP 6", "WHERE [_id_category] =1");
-            ViewBag.new_books = model.GetBooks("TOP 6", "WHERE [_id_category] = 2");
-            ViewBag.sale_books = model.GetBooks("TOP 6", "WHERE [_id_category] = 3");
-            ViewBag.authors = author_model.GetAuthors();
-            ViewBag.slider = model.GetBooksForSlider();
-            NewsModel new_model = new NewsModel();
-            ViewBag.listnews = new_model.GetListNews(1);
+            ViewBag.hot_books = s.GetBooks("TOP 6", "WHERE [_id_category] =1");
+            ViewBag.new_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 2");
+            ViewBag.sale_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 3");
+            ViewBag.authors = s.GetAuthors();
+            ViewBag.slider = s.GetBooksForSlider();
+   
+            ViewBag.listnews = s.GetListNews(1);
             if (Request.Cookies["Account"] != null)
             {
                 ViewBag.checklogin = "<span>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </span> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
@@ -64,8 +64,8 @@ namespace bookstore.Controllers
                 var tieude = Request.Form["tieude"];
                 var email = Request.Form["email"];
                 var sdt = Request.Form["sdt"];
-                ContactModel contact = new ContactModel();
-                contact.SendMail_Contact(hoten, email,sdt,tieude,noidung);
+               
+                s.SendMail_Contact(hoten, email,sdt,tieude,noidung);
                 return true;
             }
             catch (Exception)
@@ -79,8 +79,8 @@ namespace bookstore.Controllers
         {
             String account = Request.Form["username"];
             String password = Request.Form["password"];
-            CustomerModel customerModel = new CustomerModel();
-            if (customerModel.LoginWithAccAndPass(account, password))
+          
+            if (s.LoginWithAccAndPass(account, password))
             {
                 return true;
             }
@@ -95,10 +95,10 @@ namespace bookstore.Controllers
         {
             String account = Request.Form["username"];
             String password = Request.Form["password"];
-            CustomerModel customerModel = new CustomerModel();
-            if (customerModel.LoginWithAccAndPass(account, password))
+          
+            if (s.LoginWithAccAndPass(account, password))
             {
-                var UserFromEmail = customerModel.GetuserByEmail(account);
+                var UserFromEmail = s.GetuserByEmail(account);
                 if (UserFromEmail != null)
                 {
                     account = UserFromEmail;
@@ -109,21 +109,21 @@ namespace bookstore.Controllers
                 httpCookie.Expires = DateTime.Now.AddDays(20);
                 Response.Cookies.Add(httpCookie);
                 Session["Account"] = Request.Cookies["Account"].Value;
-                BookModel model = new BookModel();
-                ViewBag.hot_books = model.GetBooks("TOP 6", "WHERE [_id_category] =1");
-                ViewBag.new_books = model.GetBooks("TOP 6", "WHERE [_id_category] = 2");
-                ViewBag.sale_books = model.GetBooks("TOP 6", "WHERE [_id_category] = 3");
-                AuthorModel author_model = new AuthorModel();
-                ViewBag.authors = author_model.GetAuthors();
-                ViewBag.slider = model.GetBooksForSlider();
-                NewsModel new_model = new NewsModel();
-                ViewBag.listnews = new_model.GetListNews(1);
+                
+                ViewBag.hot_books = s.GetBooks("TOP 6", "WHERE [_id_category] =1");
+                ViewBag.new_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 2");
+                ViewBag.sale_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 3");
+              
+                ViewBag.authors = s.GetAuthors();
+                ViewBag.slider = s.GetBooksForSlider();
+                
+                ViewBag.listnews = s.GetListNews(1);
                 ViewBag.checklogin = "<span>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </span> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
-                CartModel cartModel = new CartModel();
+              
                 if (Request.Cookies["id_user"] != null)
                 {
                     String iduser = Request.Cookies["id_user"].Values["user"];
-                    cartModel.UpdateIdserFromIdCustomer(iduser, account);
+                    s.UpdateIdserFromIdCustomer(iduser, account);
                 }
               
                 HttpCookie httpCookie1 = new HttpCookie("id_user");
@@ -151,15 +151,14 @@ namespace bookstore.Controllers
             httpCookie.Values.Add("password", "43");
             httpCookie.Expires = DateTime.Now.AddDays(-2);
             Response.Cookies.Add(httpCookie);
-            BookModel model = new BookModel();
-            AuthorModel author_model = new AuthorModel();
-            ViewBag.hot_books = model.GetBooks("TOP 6", "WHERE [_id_category] =1");
-            ViewBag.new_books = model.GetBooks("TOP 6", "WHERE [_id_category] = 2");
-            ViewBag.sale_books = model.GetBooks("TOP 6", "WHERE [_id_category] = 3");
-            ViewBag.authors = author_model.GetAuthors();
-            ViewBag.slider = model.GetBooksForSlider();
-            NewsModel new_model = new NewsModel();
-            ViewBag.listnews = new_model.GetListNews(1);
+          
+            ViewBag.hot_books = s.GetBooks("TOP 6", "WHERE [_id_category] =1");
+            ViewBag.new_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 2");
+            ViewBag.sale_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 3");
+            ViewBag.authors = s.GetAuthors();
+            ViewBag.slider = s.GetBooksForSlider();
+         
+            ViewBag.listnews = s.GetListNews(1);
             ViewBag.checklogin = "<img style='float:left;' src='~/Image_System/dangnhap.png'/>&nbsp;<a class='dangnhap' href='#'>Đăng Nhập</a>&nbsp;|&nbsp;<a class='dangky' href='#'>Đăng Ký</a> <p>Q.lí tài khoản & đơn hàng</p>";
             return View("Index");
         }
@@ -169,27 +168,27 @@ namespace bookstore.Controllers
             var email = Request.Form["email"];
             var username = Request.Form["username"];
             var password = Request.Form["password"];
-            CustomerModel customerModel = new CustomerModel();
+          
             string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
          @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
          @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
             Regex re = new Regex(strRegex);
             if (re.IsMatch(email))
             {
-                int checkCoEmail = customerModel.GetIDCustomerByEmail(email);
+                int checkCoEmail = s.GetIDCustomerByEmail(email);
                 if (checkCoEmail >= 0)
                 {
                     return 3;// đã có email
                 }
                 else
                 {
-                    if (customerModel.GetIDCustomerByUser(username) >= 0)
+                    if (s.GetIDCustomerByUser(username) >= 0)
                     {
                         return 1;// đã có user này rồi.
                     }
                     else
                     {
-                        customerModel.Signin(email, username, password, name);
+                        s.Signin(email, username, password, name);
                     }
                 }
             }

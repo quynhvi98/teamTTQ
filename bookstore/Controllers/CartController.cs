@@ -9,6 +9,7 @@ namespace bookstore.Controllers
 {
     public class CartController : Controller
     {
+           localhost.Service s = new localhost.Service();
         // GET: Cart
         public ActionResult Cart()
         {
@@ -30,22 +31,16 @@ namespace bookstore.Controllers
 
             if (Request.Cookies["id_user"] != null)
             {
-                CartModel cartModel = new CartModel();
-                List<Cart> cartlist = new List<Cart>();
-                String iduser = Request.Cookies["id_user"].Values["user"];
-                cartlist = cartModel.getCartByIdUser(iduser);
-                ViewBag.tongtien = cartModel.gettongtien(iduser);
-                ViewBag.listCart = cartlist;
-
+          
+                string iduser = Request.Cookies["id_user"].Values["user"];            
+                ViewBag.tongtien = s.gettongtien(iduser);
+                ViewBag.listCart = s.getCartByIdUser(iduser);
             }
             else
             {
-                CartModel cartModel = new CartModel();
-                List<Cart> cartlist = new List<Cart>();
-                String iduser = Request.Cookies["Account"].Values["user"];
-                cartlist = cartModel.getCartByIdUser(iduser);
-                ViewBag.tongtien = cartModel.gettongtien(iduser);
-                ViewBag.listCart = cartlist;
+                string iduser = Request.Cookies["Account"].Values["user"];
+                ViewBag.tongtien = s.gettongtien(iduser);
+                ViewBag.listCart = s.getCartByIdUser(iduser);
             }
             return View();
         }
@@ -63,8 +58,8 @@ namespace bookstore.Controllers
             {
                 iduser = Request.Cookies["id_user"].Values["user"];
             }
-            CartModel cartModel = new CartModel();
-            cartModel.updatecart(a, iduser, product);
+        
+            s.updatecart(a, iduser, product);
         }
         [HttpPost]
         public ActionResult CreatDataCart()
@@ -79,8 +74,8 @@ namespace bookstore.Controllers
             {
                 iduser = Request.Cookies["id_user"].Values["user"];
             }
-            CartModel cartModel = new CartModel();
-            cartModel.creatAndUpdate(iduser, product);
+            
+            s.creatAndUpdate(iduser, product);
             return View();
         }
         [HttpPost]
@@ -91,14 +86,14 @@ namespace bookstore.Controllers
             if (Request.Cookies["id_user"] != null)
             {
                 iduser = Request.Cookies["id_user"].Values["user"];
-                CartModel cartModel = new CartModel();
-                cartModel.DeletecartFromUserIdAndProductId(iduser, product);
+             
+                s.DeletecartFromUserIdAndProductId(iduser, product);
             }
             else
             {
                 iduser = Request.Cookies["Account"].Values["user"];
-                CartModel cartModel = new CartModel();
-                cartModel.DeletecartFromUserIdAndProductId(iduser, product);
+             
+                s.DeletecartFromUserIdAndProductId(iduser, product);
 
             }           
 
@@ -106,7 +101,7 @@ namespace bookstore.Controllers
         }
         public Decimal Cart1()
         {
-            CartModel cartModel = new CartModel();
+           
             String iduser;
             if (Request.Cookies["id_user"] == null)
             {
@@ -116,7 +111,7 @@ namespace bookstore.Controllers
             {
                 iduser = Request.Cookies["id_user"].Values["user"];
             }
-            return cartModel.gettongtien(iduser);
+            return s.gettongtien(iduser);
         }
     }
 }

@@ -9,6 +9,8 @@ namespace bookstore.Controllers
 {
     public class Book_DetailsController : Controller
     {
+
+        localhost.Service s = new localhost.Service();
         // GET: Book_Details
         public ActionResult BookDetails(string id)
         {
@@ -20,11 +22,10 @@ namespace bookstore.Controllers
             {
                 ViewBag.checklogin = "<img style='float:left;' src='~/Image_System/dangnhap.png'/>&nbsp;<a class='dangnhap' href='#'>Đăng Nhập</a>&nbsp;|&nbsp;<a class='dangky' href='#'>Đăng Ký</a> <p>Q.lí tài khoản & đơn hàng</p>";
             }
-            BookModel book_model = new BookModel();
-            ReviewModel review_model = new ReviewModel();
-            ViewBag.book_detail = book_model.GetBookByID(id);
-            ViewBag.reviews = review_model.GetReviews(id);
-            ViewBag.point = book_model.GetRating(id);
+           
+            ViewBag.book_detail = s.GetBookByID(id);
+            ViewBag.reviews = s.GetReviews(id);
+            ViewBag.point = s.GetRating(id);
             return View();
         }
 
@@ -37,8 +38,7 @@ namespace bookstore.Controllers
                 var comment = Request.Form["comment"];
                 var user = Request.Cookies["Account"].Values["user"];
                 
-                ReviewModel rm = new ReviewModel();
-                rm.Comment_Book(id, int.Parse(rate), comment,user);
+                s.Comment_Book(id, int.Parse(rate), comment,user);
                 return true;
             }
             catch (Exception)

@@ -1,0 +1,1715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetBooksForSlider">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBooksForSliderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBooksForSliderResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBook">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Book" nillable="true" type="tns:Book" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Book">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_img" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="_price" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="_price_pages" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="_pages" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="_weight" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="_content" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_year_of_creation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_producer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_category" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBooks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="query2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBooksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBooksResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRating">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_book" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRatingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRatingResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBookByIDResult" type="tns:Book" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="searchByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="searchByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchByNameResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuthors">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAuthorsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuthorsResult" type="tns:ArrayOfAuthor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAuthor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Author" nillable="true" type="tns:Author" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Author">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id_author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name_author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="img_author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getCartByIdUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCartByIdUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCartByIdUserResult" type="tns:ArrayOfCart" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCart">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cart" nillable="true" type="tns:Cart" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cart">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="id_user" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="id_product" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="img" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="quantity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="price" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="price_pages" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="name_product" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="repository" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="gettongtien">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettongtienResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="gettongtienResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updatecart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="quanti" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="product" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updatecartResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="creatAndUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="product" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatAndUpdateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetlistProductFromIdUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetlistProductFromIdUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetlistProductFromIdUserResult" type="tns:ArrayOfRefProductOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRefProductOrder">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RefProductOrder" nillable="true" type="tns:RefProductOrder" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RefProductOrder">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="_quantity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="_id_order" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="_id_product" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="_price" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Deletecart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletecartResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeletecartFromUserIdAndProductId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idProduct" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletecartFromUserIdAndProductIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetlistCartFromIdUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetlistCartFromIdUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetlistCartFromIdUserResult" type="tns:ArrayOfCart" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateIdserFromIdCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Customer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateIdserFromIdCustomerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateCustomerHad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Customer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idProdcut" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="quantity" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCustomerHadResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBookByCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookByCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBookByCategoryResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMail_Contact">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hoten" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sdt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tieude" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noidung" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMail_ContactResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMail_ContactResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatCustomerAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_adddress_full" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_district" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_id_customer" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatCustomerAddressResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetIDCustomerAddressrUniqueByIdCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIDCustomerAddressrUniqueByIdCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetIDCustomerAddressrUniqueByIdCustomerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatCustomerAddressHaveEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_adddress_full" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_district" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_id_customer" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatCustomerAddressHaveEmailResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetIDCustomerAddressrTop1UniqueByIdCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIDCustomerAddressrTop1UniqueByIdCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetIDCustomerAddressrTop1UniqueByIdCustomerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListAddressCustomerByCustomerId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListAddressCustomerByCustomerIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListAddressCustomerByCustomerIdResult" type="tns:ArrayOfCustomerAddress" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCustomerAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomerAddress" nillable="true" type="tns:CustomerAddress" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomerAddress">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="_adddress_full" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_zipe_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_nation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_district" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="_id_customer" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MailToCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MailToCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MailToCustomerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginWithAccAndPass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginWithAccAndPassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginWithAccAndPassResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatCustomerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetIDCustomerByEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIDCustomerByEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetIDCustomerByEmailResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetuserByEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetuserByEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetuserByEmailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIDCustomerByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIDCustomerByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetIDCustomerByUserResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Signin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SigninResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetListNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListNewsResult" type="tns:ArrayOfNews" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNews">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="News" nillable="true" type="tns:News" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="News">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_img" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_content" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_author" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="_date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="_short_title" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNewsByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_news" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewsByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsByIDResult" type="tns:News" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_total_bill" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="_customer" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_id_customer_address" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatOrderResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetIDOrderFromTotalBillIdCustomrAndCustomerAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_total_bill" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="_customer" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_id_customer_address" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIDOrderFromTotalBillIdCustomrAndCustomerAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetIDOrderFromTotalBillIdCustomrAndCustomerAddressResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatRefProductOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="refProductOrder" type="tns:RefProductOrder" />
+            <s:element minOccurs="1" maxOccurs="1" name="idOrder" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creatRefProductOrderResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetReviews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReviewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReviewsResult" type="tns:ArrayOfReview" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReview">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Review" nillable="true" type="tns:Review" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Review">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="_name_customer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="_date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="_comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="_rating" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="_title" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Comment_Book">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rate" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Comment_BookResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetBooksForSliderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBooksForSlider" />
+  </wsdl:message>
+  <wsdl:message name="GetBooksForSliderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBooksForSliderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBooksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBooks" />
+  </wsdl:message>
+  <wsdl:message name="GetBooksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRatingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRating" />
+  </wsdl:message>
+  <wsdl:message name="GetRatingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBookByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBookByID" />
+  </wsdl:message>
+  <wsdl:message name="GetBookByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBookByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:searchByName" />
+  </wsdl:message>
+  <wsdl:message name="searchByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:searchByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthorsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuthors" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthorsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuthorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCartByIdUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getCartByIdUser" />
+  </wsdl:message>
+  <wsdl:message name="getCartByIdUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getCartByIdUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="gettongtienSoapIn">
+    <wsdl:part name="parameters" element="tns:gettongtien" />
+  </wsdl:message>
+  <wsdl:message name="gettongtienSoapOut">
+    <wsdl:part name="parameters" element="tns:gettongtienResponse" />
+  </wsdl:message>
+  <wsdl:message name="updatecartSoapIn">
+    <wsdl:part name="parameters" element="tns:updatecart" />
+  </wsdl:message>
+  <wsdl:message name="updatecartSoapOut">
+    <wsdl:part name="parameters" element="tns:updatecartResponse" />
+  </wsdl:message>
+  <wsdl:message name="creatAndUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:creatAndUpdate" />
+  </wsdl:message>
+  <wsdl:message name="creatAndUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:creatAndUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetlistProductFromIdUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetlistProductFromIdUser" />
+  </wsdl:message>
+  <wsdl:message name="GetlistProductFromIdUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetlistProductFromIdUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletecartSoapIn">
+    <wsdl:part name="parameters" element="tns:Deletecart" />
+  </wsdl:message>
+  <wsdl:message name="DeletecartSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletecartResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletecartFromUserIdAndProductIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletecartFromUserIdAndProductId" />
+  </wsdl:message>
+  <wsdl:message name="DeletecartFromUserIdAndProductIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletecartFromUserIdAndProductIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetlistCartFromIdUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetlistCartFromIdUser" />
+  </wsdl:message>
+  <wsdl:message name="GetlistCartFromIdUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetlistCartFromIdUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIdserFromIdCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateIdserFromIdCustomer" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIdserFromIdCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateIdserFromIdCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateCustomerHadSoapIn">
+    <wsdl:part name="parameters" element="tns:updateCustomerHad" />
+  </wsdl:message>
+  <wsdl:message name="updateCustomerHadSoapOut">
+    <wsdl:part name="parameters" element="tns:updateCustomerHadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBookByCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetBookByCategory" />
+  </wsdl:message>
+  <wsdl:message name="GetBookByCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetBookByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMail_ContactSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMail_Contact" />
+  </wsdl:message>
+  <wsdl:message name="SendMail_ContactSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMail_ContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="creatCustomerAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:creatCustomerAddress" />
+  </wsdl:message>
+  <wsdl:message name="creatCustomerAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:creatCustomerAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIDCustomerAddressrUniqueByIdCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIDCustomerAddressrUniqueByIdCustomer" />
+  </wsdl:message>
+  <wsdl:message name="GetIDCustomerAddressrUniqueByIdCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIDCustomerAddressrUniqueByIdCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="creatCustomerAddressHaveEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:creatCustomerAddressHaveEmail" />
+  </wsdl:message>
+  <wsdl:message name="creatCustomerAddressHaveEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:creatCustomerAddressHaveEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIDCustomerAddressrTop1UniqueByIdCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIDCustomerAddressrTop1UniqueByIdCustomer" />
+  </wsdl:message>
+  <wsdl:message name="GetIDCustomerAddressrTop1UniqueByIdCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIDCustomerAddressrTop1UniqueByIdCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListAddressCustomerByCustomerIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListAddressCustomerByCustomerId" />
+  </wsdl:message>
+  <wsdl:message name="GetListAddressCustomerByCustomerIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListAddressCustomerByCustomerIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="MailToCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:MailToCustomer" />
+  </wsdl:message>
+  <wsdl:message name="MailToCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:MailToCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginWithAccAndPassSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginWithAccAndPass" />
+  </wsdl:message>
+  <wsdl:message name="LoginWithAccAndPassSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginWithAccAndPassResponse" />
+  </wsdl:message>
+  <wsdl:message name="creatCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:creatCustomer" />
+  </wsdl:message>
+  <wsdl:message name="creatCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:creatCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIDCustomerByEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIDCustomerByEmail" />
+  </wsdl:message>
+  <wsdl:message name="GetIDCustomerByEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIDCustomerByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetuserByEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetuserByEmail" />
+  </wsdl:message>
+  <wsdl:message name="GetuserByEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetuserByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIDCustomerByUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIDCustomerByUser" />
+  </wsdl:message>
+  <wsdl:message name="GetIDCustomerByUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIDCustomerByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SigninSoapIn">
+    <wsdl:part name="parameters" element="tns:Signin" />
+  </wsdl:message>
+  <wsdl:message name="SigninSoapOut">
+    <wsdl:part name="parameters" element="tns:SigninResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListNews" />
+  </wsdl:message>
+  <wsdl:message name="GetListNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewsByID" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewsByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="creatOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:creatOrder" />
+  </wsdl:message>
+  <wsdl:message name="creatOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:creatOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIDOrderFromTotalBillIdCustomrAndCustomerAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIDOrderFromTotalBillIdCustomrAndCustomerAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetIDOrderFromTotalBillIdCustomrAndCustomerAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIDOrderFromTotalBillIdCustomrAndCustomerAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="creatRefProductOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:creatRefProductOrder" />
+  </wsdl:message>
+  <wsdl:message name="creatRefProductOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:creatRefProductOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReviewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReviews" />
+  </wsdl:message>
+  <wsdl:message name="GetReviewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReviewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Comment_BookSoapIn">
+    <wsdl:part name="parameters" element="tns:Comment_Book" />
+  </wsdl:message>
+  <wsdl:message name="Comment_BookSoapOut">
+    <wsdl:part name="parameters" element="tns:Comment_BookResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCus" />
+  </wsdl:message>
+  <wsdl:message name="GetCusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetBooksForSlider">
+      <wsdl:input message="tns:GetBooksForSliderSoapIn" />
+      <wsdl:output message="tns:GetBooksForSliderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBooks">
+      <wsdl:input message="tns:GetBooksSoapIn" />
+      <wsdl:output message="tns:GetBooksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRating">
+      <wsdl:input message="tns:GetRatingSoapIn" />
+      <wsdl:output message="tns:GetRatingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookByID">
+      <wsdl:input message="tns:GetBookByIDSoapIn" />
+      <wsdl:output message="tns:GetBookByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchByName">
+      <wsdl:input message="tns:searchByNameSoapIn" />
+      <wsdl:output message="tns:searchByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthors">
+      <wsdl:input message="tns:GetAuthorsSoapIn" />
+      <wsdl:output message="tns:GetAuthorsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCartByIdUser">
+      <wsdl:input message="tns:getCartByIdUserSoapIn" />
+      <wsdl:output message="tns:getCartByIdUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettongtien">
+      <wsdl:input message="tns:gettongtienSoapIn" />
+      <wsdl:output message="tns:gettongtienSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updatecart">
+      <wsdl:input message="tns:updatecartSoapIn" />
+      <wsdl:output message="tns:updatecartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creatAndUpdate">
+      <wsdl:input message="tns:creatAndUpdateSoapIn" />
+      <wsdl:output message="tns:creatAndUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetlistProductFromIdUser">
+      <wsdl:input message="tns:GetlistProductFromIdUserSoapIn" />
+      <wsdl:output message="tns:GetlistProductFromIdUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Deletecart">
+      <wsdl:input message="tns:DeletecartSoapIn" />
+      <wsdl:output message="tns:DeletecartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletecartFromUserIdAndProductId">
+      <wsdl:input message="tns:DeletecartFromUserIdAndProductIdSoapIn" />
+      <wsdl:output message="tns:DeletecartFromUserIdAndProductIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetlistCartFromIdUser">
+      <wsdl:input message="tns:GetlistCartFromIdUserSoapIn" />
+      <wsdl:output message="tns:GetlistCartFromIdUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIdserFromIdCustomer">
+      <wsdl:input message="tns:UpdateIdserFromIdCustomerSoapIn" />
+      <wsdl:output message="tns:UpdateIdserFromIdCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateCustomerHad">
+      <wsdl:input message="tns:updateCustomerHadSoapIn" />
+      <wsdl:output message="tns:updateCustomerHadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookByCategory">
+      <wsdl:input message="tns:GetBookByCategorySoapIn" />
+      <wsdl:output message="tns:GetBookByCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Contact">
+      <wsdl:input message="tns:SendMail_ContactSoapIn" />
+      <wsdl:output message="tns:SendMail_ContactSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creatCustomerAddress">
+      <wsdl:input message="tns:creatCustomerAddressSoapIn" />
+      <wsdl:output message="tns:creatCustomerAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerAddressrUniqueByIdCustomer">
+      <wsdl:input message="tns:GetIDCustomerAddressrUniqueByIdCustomerSoapIn" />
+      <wsdl:output message="tns:GetIDCustomerAddressrUniqueByIdCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creatCustomerAddressHaveEmail">
+      <wsdl:input message="tns:creatCustomerAddressHaveEmailSoapIn" />
+      <wsdl:output message="tns:creatCustomerAddressHaveEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerAddressrTop1UniqueByIdCustomer">
+      <wsdl:input message="tns:GetIDCustomerAddressrTop1UniqueByIdCustomerSoapIn" />
+      <wsdl:output message="tns:GetIDCustomerAddressrTop1UniqueByIdCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListAddressCustomerByCustomerId">
+      <wsdl:input message="tns:GetListAddressCustomerByCustomerIdSoapIn" />
+      <wsdl:output message="tns:GetListAddressCustomerByCustomerIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MailToCustomer">
+      <wsdl:input message="tns:MailToCustomerSoapIn" />
+      <wsdl:output message="tns:MailToCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithAccAndPass">
+      <wsdl:input message="tns:LoginWithAccAndPassSoapIn" />
+      <wsdl:output message="tns:LoginWithAccAndPassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creatCustomer">
+      <wsdl:input message="tns:creatCustomerSoapIn" />
+      <wsdl:output message="tns:creatCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerByEmail">
+      <wsdl:input message="tns:GetIDCustomerByEmailSoapIn" />
+      <wsdl:output message="tns:GetIDCustomerByEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetuserByEmail">
+      <wsdl:input message="tns:GetuserByEmailSoapIn" />
+      <wsdl:output message="tns:GetuserByEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerByUser">
+      <wsdl:input message="tns:GetIDCustomerByUserSoapIn" />
+      <wsdl:output message="tns:GetIDCustomerByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Signin">
+      <wsdl:input message="tns:SigninSoapIn" />
+      <wsdl:output message="tns:SigninSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListNews">
+      <wsdl:input message="tns:GetListNewsSoapIn" />
+      <wsdl:output message="tns:GetListNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsByID">
+      <wsdl:input message="tns:GetNewsByIDSoapIn" />
+      <wsdl:output message="tns:GetNewsByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creatOrder">
+      <wsdl:input message="tns:creatOrderSoapIn" />
+      <wsdl:output message="tns:creatOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIDOrderFromTotalBillIdCustomrAndCustomerAddress">
+      <wsdl:input message="tns:GetIDOrderFromTotalBillIdCustomrAndCustomerAddressSoapIn" />
+      <wsdl:output message="tns:GetIDOrderFromTotalBillIdCustomrAndCustomerAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creatRefProductOrder">
+      <wsdl:input message="tns:creatRefProductOrderSoapIn" />
+      <wsdl:output message="tns:creatRefProductOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReviews">
+      <wsdl:input message="tns:GetReviewsSoapIn" />
+      <wsdl:output message="tns:GetReviewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Comment_Book">
+      <wsdl:input message="tns:Comment_BookSoapIn" />
+      <wsdl:output message="tns:Comment_BookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCus">
+      <wsdl:input message="tns:GetCusSoapIn" />
+      <wsdl:output message="tns:GetCusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBooksForSlider">
+      <soap:operation soapAction="http://tempuri.org/GetBooksForSlider" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBooks">
+      <soap:operation soapAction="http://tempuri.org/GetBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRating">
+      <soap:operation soapAction="http://tempuri.org/GetRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookByID">
+      <soap:operation soapAction="http://tempuri.org/GetBookByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchByName">
+      <soap:operation soapAction="http://tempuri.org/searchByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthors">
+      <soap:operation soapAction="http://tempuri.org/GetAuthors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCartByIdUser">
+      <soap:operation soapAction="http://tempuri.org/getCartByIdUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettongtien">
+      <soap:operation soapAction="http://tempuri.org/gettongtien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatecart">
+      <soap:operation soapAction="http://tempuri.org/updatecart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatAndUpdate">
+      <soap:operation soapAction="http://tempuri.org/creatAndUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetlistProductFromIdUser">
+      <soap:operation soapAction="http://tempuri.org/GetlistProductFromIdUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Deletecart">
+      <soap:operation soapAction="http://tempuri.org/Deletecart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletecartFromUserIdAndProductId">
+      <soap:operation soapAction="http://tempuri.org/DeletecartFromUserIdAndProductId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetlistCartFromIdUser">
+      <soap:operation soapAction="http://tempuri.org/GetlistCartFromIdUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIdserFromIdCustomer">
+      <soap:operation soapAction="http://tempuri.org/UpdateIdserFromIdCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCustomerHad">
+      <soap:operation soapAction="http://tempuri.org/updateCustomerHad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookByCategory">
+      <soap:operation soapAction="http://tempuri.org/GetBookByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Contact">
+      <soap:operation soapAction="http://tempuri.org/SendMail_Contact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatCustomerAddress">
+      <soap:operation soapAction="http://tempuri.org/creatCustomerAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerAddressrUniqueByIdCustomer">
+      <soap:operation soapAction="http://tempuri.org/GetIDCustomerAddressrUniqueByIdCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatCustomerAddressHaveEmail">
+      <soap:operation soapAction="http://tempuri.org/creatCustomerAddressHaveEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerAddressrTop1UniqueByIdCustomer">
+      <soap:operation soapAction="http://tempuri.org/GetIDCustomerAddressrTop1UniqueByIdCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListAddressCustomerByCustomerId">
+      <soap:operation soapAction="http://tempuri.org/GetListAddressCustomerByCustomerId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MailToCustomer">
+      <soap:operation soapAction="http://tempuri.org/MailToCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithAccAndPass">
+      <soap:operation soapAction="http://tempuri.org/LoginWithAccAndPass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatCustomer">
+      <soap:operation soapAction="http://tempuri.org/creatCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerByEmail">
+      <soap:operation soapAction="http://tempuri.org/GetIDCustomerByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetuserByEmail">
+      <soap:operation soapAction="http://tempuri.org/GetuserByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerByUser">
+      <soap:operation soapAction="http://tempuri.org/GetIDCustomerByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Signin">
+      <soap:operation soapAction="http://tempuri.org/Signin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListNews">
+      <soap:operation soapAction="http://tempuri.org/GetListNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsByID">
+      <soap:operation soapAction="http://tempuri.org/GetNewsByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatOrder">
+      <soap:operation soapAction="http://tempuri.org/creatOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDOrderFromTotalBillIdCustomrAndCustomerAddress">
+      <soap:operation soapAction="http://tempuri.org/GetIDOrderFromTotalBillIdCustomrAndCustomerAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatRefProductOrder">
+      <soap:operation soapAction="http://tempuri.org/creatRefProductOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReviews">
+      <soap:operation soapAction="http://tempuri.org/GetReviews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Comment_Book">
+      <soap:operation soapAction="http://tempuri.org/Comment_Book" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCus">
+      <soap:operation soapAction="http://tempuri.org/GetCus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBooksForSlider">
+      <soap12:operation soapAction="http://tempuri.org/GetBooksForSlider" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBooks">
+      <soap12:operation soapAction="http://tempuri.org/GetBooks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRating">
+      <soap12:operation soapAction="http://tempuri.org/GetRating" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookByID">
+      <soap12:operation soapAction="http://tempuri.org/GetBookByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchByName">
+      <soap12:operation soapAction="http://tempuri.org/searchByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthors">
+      <soap12:operation soapAction="http://tempuri.org/GetAuthors" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCartByIdUser">
+      <soap12:operation soapAction="http://tempuri.org/getCartByIdUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettongtien">
+      <soap12:operation soapAction="http://tempuri.org/gettongtien" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatecart">
+      <soap12:operation soapAction="http://tempuri.org/updatecart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatAndUpdate">
+      <soap12:operation soapAction="http://tempuri.org/creatAndUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetlistProductFromIdUser">
+      <soap12:operation soapAction="http://tempuri.org/GetlistProductFromIdUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Deletecart">
+      <soap12:operation soapAction="http://tempuri.org/Deletecart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletecartFromUserIdAndProductId">
+      <soap12:operation soapAction="http://tempuri.org/DeletecartFromUserIdAndProductId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetlistCartFromIdUser">
+      <soap12:operation soapAction="http://tempuri.org/GetlistCartFromIdUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIdserFromIdCustomer">
+      <soap12:operation soapAction="http://tempuri.org/UpdateIdserFromIdCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCustomerHad">
+      <soap12:operation soapAction="http://tempuri.org/updateCustomerHad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookByCategory">
+      <soap12:operation soapAction="http://tempuri.org/GetBookByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Contact">
+      <soap12:operation soapAction="http://tempuri.org/SendMail_Contact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatCustomerAddress">
+      <soap12:operation soapAction="http://tempuri.org/creatCustomerAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerAddressrUniqueByIdCustomer">
+      <soap12:operation soapAction="http://tempuri.org/GetIDCustomerAddressrUniqueByIdCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatCustomerAddressHaveEmail">
+      <soap12:operation soapAction="http://tempuri.org/creatCustomerAddressHaveEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerAddressrTop1UniqueByIdCustomer">
+      <soap12:operation soapAction="http://tempuri.org/GetIDCustomerAddressrTop1UniqueByIdCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListAddressCustomerByCustomerId">
+      <soap12:operation soapAction="http://tempuri.org/GetListAddressCustomerByCustomerId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MailToCustomer">
+      <soap12:operation soapAction="http://tempuri.org/MailToCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithAccAndPass">
+      <soap12:operation soapAction="http://tempuri.org/LoginWithAccAndPass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatCustomer">
+      <soap12:operation soapAction="http://tempuri.org/creatCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerByEmail">
+      <soap12:operation soapAction="http://tempuri.org/GetIDCustomerByEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetuserByEmail">
+      <soap12:operation soapAction="http://tempuri.org/GetuserByEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDCustomerByUser">
+      <soap12:operation soapAction="http://tempuri.org/GetIDCustomerByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Signin">
+      <soap12:operation soapAction="http://tempuri.org/Signin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListNews">
+      <soap12:operation soapAction="http://tempuri.org/GetListNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsByID">
+      <soap12:operation soapAction="http://tempuri.org/GetNewsByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatOrder">
+      <soap12:operation soapAction="http://tempuri.org/creatOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDOrderFromTotalBillIdCustomrAndCustomerAddress">
+      <soap12:operation soapAction="http://tempuri.org/GetIDOrderFromTotalBillIdCustomrAndCustomerAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creatRefProductOrder">
+      <soap12:operation soapAction="http://tempuri.org/creatRefProductOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReviews">
+      <soap12:operation soapAction="http://tempuri.org/GetReviews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Comment_Book">
+      <soap12:operation soapAction="http://tempuri.org/Comment_Book" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCus">
+      <soap12:operation soapAction="http://tempuri.org/GetCus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost:50312/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost:50312/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
