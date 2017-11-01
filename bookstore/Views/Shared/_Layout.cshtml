@@ -193,7 +193,11 @@
          
         }
            function LoginUot() {
-               window.location = "/Home/logout";
+               var xmlHttp2 = new XMLHttpRequest();
+               xmlHttp2.open("get", "/Home/logout", false); // false for synchronous request
+               xmlHttp2.send();
+               var intEmail = xmlHttp2.responseText;
+               window.location = "/Home/";
            }
            function dangky() {
                var name = document.getElementById("name").value;
