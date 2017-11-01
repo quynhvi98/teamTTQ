@@ -32,7 +32,7 @@
     <div class="noidunggiohang">
         <div class="khunggiohang">
             <div>
-                <div class="giohangsanpham" style="font-size: 14px;float:none;"><strong style="font-size: 19px;">ABC </strong> (@results.Count kết quả)</div>
+                <div class="giohangsanpham" style="font-size: 14px;float:none;"><strong style="font-size: 19px;">ABC </strong> (@results.Length kết quả)</div>
             </div>
             @foreach (var item in results)
             {
@@ -83,4 +83,7 @@
     <link href="~/Content/css/giohang1.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/css/danhmuc/SGK&giaotrinh.css" rel="stylesheet" type="text/css" />
+}
+@section login{
+    @Html.Raw(ViewBag.checklogin)
 }

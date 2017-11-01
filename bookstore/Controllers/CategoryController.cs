@@ -11,6 +11,7 @@ namespace bookstore.Controllers
 {
     public class CategoryController : Controller
     {
+        localhost.Service s = new localhost.Service();
         // GET: Category
         public ActionResult Category(string name_type,int? page)
         {
@@ -22,16 +23,17 @@ namespace bookstore.Controllers
             {
                 ViewBag.checklogin = "<img style='float:left;' src='~/Image_System/dangnhap.png'/>&nbsp;<a class='dangnhap' href='#'>Đăng Nhập</a>&nbsp;|&nbsp;<a class='dangky' href='#'>Đăng Ký</a> <p>Q.lí tài khoản & đơn hàng</p>";
             }
-            BookModel model = new BookModel();
+
             ViewBag.name_type = name_type;
-            CategoryModel cm = new CategoryModel();
-            List<Book> booklist = cm.GetBookByCategory(name_type);
-            ViewBag.ListBooks = booklist;
-            ViewBag.slider = model.GetBooksForSlider();
-            NewsModel new_model = new NewsModel();
            
-            List < News > newlist= new_model.GetListNews(1);
-            ViewBag.listnews = newlist;
+            List<localhost.Book> booklist = new List<localhost.Book>();
+            foreach(var item in s.GetBookByCategory(name_type))
+            {
+                booklist.Add(item);
+            }
+            ViewBag.ListBooks = booklist;
+            ViewBag.slider = s.GetBooksForSlider();
+            ViewBag.listnews = s.GetListNews(1);
             int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(booklist.ToPagedList(pageNumber, pageSize));
@@ -39,8 +41,8 @@ namespace bookstore.Controllers
         public ActionResult GetCategory()
         {
             var nhaptrang = Request.Form["nhaptrang"];
-            CategoryModel cm = new CategoryModel();
-            ViewBag.ListBooks = cm.GetBookByCategory("Tiểu thuyết");
+        
+            ViewBag.ListBooks = s.GetBookByCategory("Tiểu thuyết");
             return View();
         }
 
