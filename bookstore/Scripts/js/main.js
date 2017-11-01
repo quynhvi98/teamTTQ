@@ -1,96 +1,70 @@
 
-$(document).ready(function() {
-    $("#loginLink").click(function( event ){
+$(document).ready(function () {
+    $("#loginLink").click(function (event) {
         event.preventDefault();
         $(".dangnhap").fadeToggle("fast");
-      
-        
+
+
     });
-     
-    $(".dangnhap").click(function(event){
+
+    $(".dangnhap").click(function (event) {
         event.preventDefault();
         var action = $(this).attr('data-action');
-         
-        $.get( "ajax/" + action, function( data ) {
-            $( ".login-content" ).html( data );
-        }); 
-           $('#fixNav').attr('style', 'position:inherit;');
-            
- $( "body" ).addClass( "hah1" );
+
+        $.get("ajax/" + action, function (data) {
+            $(".login-content").html(data);
+        });
+        $('#fixNav').attr('style', 'position:inherit;');
+
+        $("body").addClass("hah1");
         $(".overlay").fadeToggle("fast");
     });
-     
-    $(".close").click(function(){
+
+    $(".close").click(function () {
         $(".overlay").fadeToggle("fast");
-         $('#fixNav').attr('style', 'position:relative;');
+        $('#fixNav').attr('style', 'position:relative;');
     });
-     
-  
+
+
     return false;
-    
+
 });
 
 
 
-$(document).ready(function() {
-    $(".dangky").click(function( event ){
+$(document).ready(function () {
+    $(".dangky").click(function (event) {
         event.preventDefault();
-       
-      
-        
+
+
+
     });
-     
-    $(".dangky").click(function(event){
+
+    $(".dangky").click(function (event) {
         event.preventDefault();
         var action = $(this).attr('data-action');
-         
-        $.get( "ajax/" + action, function( data ) {
-            $( ".login-content1" ).html( data );
-        }); 
-           $('#fixNav').attr('style', 'position:inherit;');
-            
+
+        $.get("ajax/" + action, function (data) {
+            $(".login-content1").html(data);
+        });
+        $('#fixNav').attr('style', 'position:inherit;');
+
 
         $(".overlay1").fadeToggle("fast");
     });
-     
-    $(".close1").click(function(){
+
+    $(".close1").click(function () {
         $(".overlay1").fadeToggle("fast");
-         $('#fixNav').attr('style', 'position:relative;');
+        $('#fixNav').attr('style', 'position:relative;');
     });
-     
- 
+
+
     return false;
-    
+
 });
 
 
 
-$(document).ready(function() {
-    $("#loginLink").click(function( event ){
-        event.preventDefault();
-        $(".star-rating").fadeToggle("fast");
-      
-        
-    });
-     
-    $(".star-rating").click(function(event){
-        event.preventDefault();
-        var action = $(this).attr('data-action');
-         
-        $.get( "ajax/" + action, function( data ) {
-            $( ".login-content" ).html( data );
-        }); 
-           $('#fixNav').attr('style', 'position:inherit;');
-            
-
-        $(".overlay").fadeToggle("fast");
-    });
-     
-    
-   
-    return false;
-    
-});
 
 
 jQuery(document).ready(function ($) {
@@ -120,114 +94,113 @@ $(function () {
     });
 });
 
-;(function($){
-    
+; (function ($) {
+
     /* name class in control rating */
     var controlRating = ".control-rating";
     var scoreVote = ".score-vote";
-    
-    $.fn.rating = function(callback){        
-        
-        callback = callback || function(){};
+
+    $.fn.rating = function (callback) {
+
+        callback = callback || function () { };
 
         // each for all item
-        this.each(function(i, v){            
-            $(v).data('rating', {callback:callback})
+        this.each(function (i, v) {
+            $(v).data('rating', { callback: callback })
                 .bind('init.rating', $.fn.rating.init)
                 .bind('set.rating', $.fn.rating.set)
                 .bind('hover.rating', $.fn.rating.hover)
                 .trigger('init.rating');
         });
     };
-    
+
     $.extend($.fn.rating, {
-        init: function(e){
+        init: function (e) {
             var el = $(this),
                 list = '',
                 isChecked = null,
                 childs = el.children(),
                 i = 0,
-                l = childs.length;            
+                l = childs.length;
             for (; i < l; i++) {
                 list = list + '<a class="star" title="' + $(childs[i]).val() + '" />';
                 if ($(childs[i]).is(':checked')) {
                     isChecked = $(childs[i]).val();
                 };
             };
-                        
+
             childs.hide();
-            
+
             el
                 .append('<div class="stars">' + list + '</div>')
                 .trigger('set.rating', isChecked);
-            
-            $('a', el).bind('click', $.fn.rating.click);            
+
+            $('a', el).bind('click', $.fn.rating.click);
             el.trigger('hover.rating');
         },
-        set: function(e, val) {
-            
+        set: function (e, val) {
+
             var el = $(this),
                 item = $('a', el),
-                input = undefined;                        
-                            
+                input = undefined;
+
             if (val) {
                 item.removeClass('fullStar');
-                
-                input = item.filter(function(i){
+
+                input = item.filter(function (i) {
                     if ($(this).attr('title') == val)
                         return $(this);
                     else
                         return false;
                 });
-                
+
                 input
                     .addClass('fullStar')
                     .prevAll()
                     .addClass('fullStar');
-                
+
             }
-            
+
             /* Neu da co danh gia roi thi them active star theo so diem */
-            var scoreIsVote = parseInt( el.parents(controlRating).find(scoreVote).html());
-            if(scoreIsVote > 0)
-            {
+            var scoreIsVote = parseInt(el.parents(controlRating).find(scoreVote).html());
+            if (scoreIsVote > 0) {
                 item.removeClass('fullStar');
-                
-                input = item.filter(function(i){
+
+                input = item.filter(function (i) {
                     if ($(this).attr('title') <= scoreIsVote)
                         return $(this);
                     else
                         return false;
                 });
-                
+
                 input
                     .addClass('fullStar')
                     .prevAll()
                     .addClass('fullStar');
             }
-            
+
             return;
         },
-        hover: function(e){
+        hover: function (e) {
             var el = $(this),
                 stars = $('a', el);
-            
-            stars.bind('mouseenter', function(e){
+
+            stars.bind('mouseenter', function (e) {
                 // add tmp class when mouse enter                
                 $(this)
                     .addClass('tmp_fs')
                     .prevAll()
                     .addClass('tmp_fs');
-                
+
                 $(this).nextAll()
                     .addClass('tmp_es');
-                    
-                /*change score vote when hover star*/                 
-                el.parents(controlRating).find(scoreVote).html($(this).attr('title'));                                              
-                
+
+                /*change score vote when hover star*/
+                el.parents(controlRating).find(scoreVote).html($(this).attr('title'));
+
             });
-            
-            stars.bind('mouseleave', function(e){
+
+            stars.bind('mouseleave', function (e) {
                 // remove all tmp class when mouse leave
                 $(this)
                     .removeClass('tmp_fs')
@@ -236,355 +209,245 @@ $(function () {
                 
                 $(this).nextAll()
                     .removeClass('tmp_es');
-                    
-                /*change score vote when hover star*/                            
-                el.parents(controlRating).find(scoreVote).html($('a.fullStar',el).length);
+
+                /*change score vote when hover star*/
+                el.parents(controlRating).find(scoreVote).html($('a.fullStar', el).length);
             });
-        },
-        click: function(e){            
-            e.preventDefault();            
-            //Kiem tra da dang nhap chua. Neu chua thi hien thi box login
-            if(!isl)
-            {
-                //$('#modal-login').modal();
-                $('#vegaidModal iframe').attr("src", $('#iconVgIDLogin').attr('data-url'));
-                $('#vegaidModal').modal();
-                return false;    
-            }                
-            var el = $(e.target),
-                container = el.parent().parent(),
-                inputs = container.children('input'),
-                rate = el.attr('title');
-                                                
-            matchInput = inputs.filter(function(i){                
-                if ($(this).val() == rate)
-                    return true;
-                else
-                    return false;
-            });
-            
-            matchInput
-                .attr('checked', true)
-				.siblings('input').attr('checked', false);
-            
-            container
-                .trigger('set.rating', matchInput.val())
-                .data('rating').callback(rate, e);
         }
+
     });
-    
+
 })(jQuery);
 
- // Start when document ready
-$(function(){  
-    if($('.star-rating').length > 0)
-    {
-        $('.star-rating').each(function(){  
-            var $this = $(this);
-            $(this).rating(function(vote,event){            
-                var parentControl = $this.parents('.control-rating');        
-                /*process main*/
-                $.ajax({
-                  method: "POST",
-                  url: host_name+"book-rating.html",
-                  data: {
-                    ci_csrf_token: csrf_token, 
-                    book_id: parentControl.attr('id'),
-                    vote: vote                    
-                  },
-                  beforeSend:function(){}
-                })
-                .done(function(response)
-                {                           
-                    /*sen ga event*/
-                    ga('send', {hitType: 'event',eventCategory: 'Rating',eventAction: 'rating',eventLabel: 'Rating'});
-                    getAvgScoreBook(parentControl);                                              
-                    feel(parentControl.attr('id')); 
-                    cleanCacheRating(parentControl.attr('id'));                     
-                });            
-            });    
-        });
-    }
-    
-    if($('.star-rating-book').length > 0)
-    {
-        $('.star-rating-book').each(function(){  
-            var $this = $(this);
-            $(this).rating(function(vote,event){            
-                var parentControl = $this.parents('.control-rating');        
-                /*process main*/
-                $.ajax({
-                  method: "POST",
-                  url: host_name+"book-rating.html",
-                  data: {
-                    ci_csrf_token: csrf_token, 
-                    book_id: parentControl.attr('id'),
-                    vote: vote                    
-                  },
-                  beforeSend:function(){}
-                })
-                .done(function(response)
-                {                           
-                    /*sen ga event*/
-                    ga('send', {hitType: 'event',eventCategory: 'Rating',eventAction: 'rating',eventLabel: 'Rating'});
-                    getAvgScoreBook(parentControl);                                              
-                    feel(parentControl.attr('id')); 
-                    cleanCacheRating(parentControl.attr('id'));                                                                                           
-                });            
-            });    
-        });
-    }
-        
-});
+// Start when document ready
+
 
 /*Get total rangting*/
-function getAvgScoreBook(parentControl)
-{
+function getAvgScoreBook(parentControl) {
     $.ajax({
-      method: "POST",
-      url: host_name+"get-avg-score-book.html",
-      data: {
-        ci_csrf_token: csrf_token, 
-        book_id: parentControl.attr('id')                         
-      },
-      beforeSend:function(){}
+        method: "POST",
+        url: host_name + "get-avg-score-book.html",
+        data: {
+            ci_csrf_token: csrf_token,
+            book_id: parentControl.attr('id')
+        },
+        beforeSend: function () { }
     })
-    .done(function(response)
-    {          
-        parentControl.find('.box-star-score').html(response);
-        parentControl.find('.total-score').html(response); 
-                                              
-    });
+        .done(function (response) {
+            parentControl.find('.box-star-score').html(response);
+            parentControl.find('.total-score').html(response);
+
+        });
 }
 
-function feel(book_id)
-{
-    bootbox.dialog({        
+function feel(book_id) {
+    bootbox.dialog({
         title: "Cảm nhận của bạn",
-        message:'<input id="feel-text" name="feel-text" type="text" placeholder="Nhập cảm nhận của bạn..." class="form-control input-md"/>',
-        buttons: {                    
+        message: '<input id="feel-text" name="feel-text" type="text" placeholder="Nhập cảm nhận của bạn..." class="form-control input-md"/>',
+        buttons: {
             main: {
-              label: "Hoàn tất",
-              className: "btn-primary",
-              callback: function() {
-                $.ajax({
-                  method: "POST",
-                  url: host_name+"book-feel-rating.html",
-                  data: {
-                    ci_csrf_token: csrf_token, 
-                    book_id: book_id,
-                    feel: $('#feel-text').val()                    
-                  },
-                  beforeSend:function(){}
-                })
-                .done(function(response)
-                {                               
-                    //console.log(response);
-                    //Xoa cache
-                    cleanCacheRating(book_id);
-                });
-              }
+                label: "Hoàn tất",
+                className: "btn-primary",
+                callback: function () {
+                    $.ajax({
+                        method: "POST",
+                        url: host_name + "book-feel-rating.html",
+                        data: {
+                            ci_csrf_token: csrf_token,
+                            book_id: book_id,
+                            feel: $('#feel-text').val()
+                        },
+                        beforeSend: function () { }
+                    })
+                        .done(function (response) {
+                            //console.log(response);
+                            //Xoa cache
+                            cleanCacheRating(book_id);
+                        });
+                }
             }
         }
     });
-} 
-function listRating(object)
-{
+}
+function listRating(object) {
     var controlParent = $(object).parents('.control-rating');
     var bookID = controlParent.attr('id');
     /** load danh sach rating **/
     $.ajax({
-      method: "POST",
-      url: host_name+"get-list-rating-book.html",
-      data: {
-        ci_csrf_token: csrf_token, 
-        book_id: bookID                           
-      },
-      beforeSend:function(){}
+        method: "POST",
+        url: host_name + "get-list-rating-book.html",
+        data: {
+            ci_csrf_token: csrf_token,
+            book_id: bookID
+        },
+        beforeSend: function () { }
     })
-    .done(function(response)
-    {                 
-        var _data = JSON.parse(response); 
-           
-        $str_html = '<div id="wrap-list-rating">';
-        if(_data)
-        {
-            $data = _data.data;
-            if($data.length == 0)
-                $str_html += "Chưa có đánh giá nào";
-            for(var i=0; i<$data.length; i++)
-            {
-                $str_html +='<div class="media list-item-rating">';
-                $str_html +='  <div class="media-left pull-left">';
-                $str_html +='    <a href="javascript:;">';
-                $str_html += getAvatarUser($data[i]['avatar'],64,64,$data[i]['image_version'],$data[i]['fullname'],$data[i]['id_facebook'],'media-object');
-                $str_html +='    </a>';
-                $str_html +='  </div>';
-                $str_html +='  <div clavss="media-body">';
-                $str_html +='    <h4 class="media-heading text-shadow fullname">'+$data[i]['fullname']+'</h4>';
-                $str_html +='    Đánh giá: '+$data[i]['rating']+'/10 <span class="star-in-list"></span> <br />';
-                if($data[i]['feel']!=null)
-                    $str_html += $data[i]['feel'];        
-                $str_html +='  </div>';
-                $str_html +='</div>';                
+        .done(function (response) {
+            var _data = JSON.parse(response);
+
+            $str_html = '<div id="wrap-list-rating">';
+            if (_data) {
+                $data = _data.data;
+                if ($data.length == 0)
+                    $str_html += "Chưa có đánh giá nào";
+                for (var i = 0; i < $data.length; i++) {
+                    $str_html += '<div class="media list-item-rating">';
+                    $str_html += '  <div class="media-left pull-left">';
+                    $str_html += '    <a href="javascript:;">';
+                    $str_html += getAvatarUser($data[i]['avatar'], 64, 64, $data[i]['image_version'], $data[i]['fullname'], $data[i]['id_facebook'], 'media-object');
+                    $str_html += '    </a>';
+                    $str_html += '  </div>';
+                    $str_html += '  <div clavss="media-body">';
+                    $str_html += '    <h4 class="media-heading text-shadow fullname">' + $data[i]['fullname'] + '</h4>';
+                    $str_html += '    Đánh giá: ' + $data[i]['rating'] + '/10 <span class="star-in-list"></span> <br />';
+                    if ($data[i]['feel'] != null)
+                        $str_html += $data[i]['feel'];
+                    $str_html += '  </div>';
+                    $str_html += '</div>';
+                }
+                $str_html += "</div>";
+                if (_data.pager.total_page > 1) {
+                    $str_html += '<ul class="pager" id="rating-pagination">';
+                    $str_html += '    <li class="previous"><a href="javascript:;" data-page="1"><span aria-hidden="true">&larr;</span> Trang trước</a></li>';
+                    $str_html += '    <li class="next"><a href="javascript:;" data-page="2">Trang sau <span aria-hidden="true">&rarr;</span></a></li>';
+                    $str_html += '</ul>';
+                }
             }
-            $str_html +="</div>";
-            if(_data.pager.total_page > 1)
-            {
-                $str_html +='<ul class="pager" id="rating-pagination">';
-                $str_html +='    <li class="previous"><a href="javascript:;" data-page="1"><span aria-hidden="true">&larr;</span> Trang trước</a></li>';
-                $str_html +='    <li class="next"><a href="javascript:;" data-page="2">Trang sau <span aria-hidden="true">&rarr;</span></a></li>';
-                $str_html +='</ul>';
-            }            
-        }
-                        
-        bootbox.dialog({
-          title: 'Danh sách đánh giá',
-          message: $str_html
+
+            bootbox.dialog({
+                title: 'Danh sách đánh giá',
+                message: $str_html
+            });
+            listRatingPagination(bookID);
+            //console.log(response);
         });
-        listRatingPagination(bookID);
-        //console.log(response);
-    });    
 }
-function listRatingPagination(_book_id)
-{
-    var wrapList = $('#wrap-list-rating');    
-    var $this = $('#rating-pagination');                  
+function listRatingPagination(_book_id) {
+    var wrapList = $('#wrap-list-rating');
+    var $this = $('#rating-pagination');
     var url = host_name + 'get-list-rating.html';
     var btnPrevious = $this.find('.previous a');
     var btnNext = $this.find('.next a');
     /* next page*/
-    btnNext.click(function(){
-        var page =parseInt( $(this).attr('data-page'));            
-        $.ajax({
-          method: "POST",
-          url:url,
-          data: {
-            ci_csrf_token: csrf_token,
-            book_id:_book_id,
-            page:page                            
-          }              
-        })
-        .done(function(response){
-            //console.log(response);
-            if(response)
-            {
-                $response = JSON.parse(response);
-                var pager = $response.pager;
-                if(page > pager.total_page)
-                    return false;                                        
-                if(page <= pager.total_page)
-                {
-                    btnNext.attr('data-page',pager.page + 1);
-                    if(page >= 3)
-                        btnPrevious.attr('data-page',( parseInt(btnPrevious.attr('data-page')) + 1));
-                }                                             
-                /*bind data*/
-                var data = $response.data;                              
-                var strAppend = '';
-                for(var i=0; i<data.length;i++)
-                {
-                    strAppend +='<div class="media list-item-rating">';
-                    strAppend +='  <div class="media-left pull-left">';
-                    strAppend +='    <a href="javascript:;">';
-                    strAppend += getAvatarUser(data[i]['avatar'],64,64,data[i]['image_version'],data[i]['fullname'],data[i]['id_facebook'],'media-object');
-                    strAppend +='    </a>';
-                    strAppend +='  </div>';
-                    strAppend +='  <div clavss="media-body">';
-                    strAppend +='    <h4 class="media-heading text-shadow fullname">'+data[i]['fullname']+'</h4>';
-                    strAppend +='    Đánh giá: '+data[i]['rating']+'/10 <span class="star-in-list"></span> <br />';
-                    strAppend += data[i]['feel'];        
-                    strAppend +='  </div>';
-                    strAppend +='</div>';                     
-                }                                                     
-                wrapList.html(strAppend);                
-            }                
-        }); 
-    });
-    /* prev page*/
-    btnPrevious.click(function(){
+    btnNext.click(function () {
         var page = parseInt($(this).attr('data-page'));
         $.ajax({
-          method: "POST",
-          url:url,
-          data: {
-            ci_csrf_token: csrf_token,
-            book_id:_book_id,
-            page:page                           
-          }              
+            method: "POST",
+            url: url,
+            data: {
+                ci_csrf_token: csrf_token,
+                book_id: _book_id,
+                page: page
+            }
         })
-        .done(function(response){
-            if(response)
-            {
-                $response = JSON.parse(response);
-                var pager = $response.pager;
-                if(page < 1)
-                    return false;
-                if(page==1)
-                {
-                    btnPrevious.attr('data-page',1);
-                    btnNext.attr('data-page',2);
-                }                                        
-                if(page > 1)
-                {
-                    btnPrevious.attr('data-page',(page-1));
-                    btnNext.attr('data-page',(page + 1));
+            .done(function (response) {
+                //console.log(response);
+                if (response) {
+                    $response = JSON.parse(response);
+                    var pager = $response.pager;
+                    if (page > pager.total_page)
+                        return false;
+                    if (page <= pager.total_page) {
+                        btnNext.attr('data-page', pager.page + 1);
+                        if (page >= 3)
+                            btnPrevious.attr('data-page', (parseInt(btnPrevious.attr('data-page')) + 1));
+                    }
+                    /*bind data*/
+                    var data = $response.data;
+                    var strAppend = '';
+                    for (var i = 0; i < data.length; i++) {
+                        strAppend += '<div class="media list-item-rating">';
+                        strAppend += '  <div class="media-left pull-left">';
+                        strAppend += '    <a href="javascript:;">';
+                        strAppend += getAvatarUser(data[i]['avatar'], 64, 64, data[i]['image_version'], data[i]['fullname'], data[i]['id_facebook'], 'media-object');
+                        strAppend += '    </a>';
+                        strAppend += '  </div>';
+                        strAppend += '  <div clavss="media-body">';
+                        strAppend += '    <h4 class="media-heading text-shadow fullname">' + data[i]['fullname'] + '</h4>';
+                        strAppend += '    Đánh giá: ' + data[i]['rating'] + '/10 <span class="star-in-list"></span> <br />';
+                        strAppend += data[i]['feel'];
+                        strAppend += '  </div>';
+                        strAppend += '</div>';
+                    }
+                    wrapList.html(strAppend);
                 }
-                    
-                 
-                /*bind data*/
-                var data = $response.data;
-                var strAppend = '';
-                for(var i=0; i<data.length;i++)
-                {
-                    strAppend +='<div class="media list-item-rating">';
-                    strAppend +='  <div class="media-left pull-left">';
-                    strAppend +='    <a href="javascript:;">';
-                    strAppend += getAvatarUser(data[i]['avatar'],64,64,data[i]['image_version'],data[i]['fullname'],data[i]['id_facebook'],'media-object');
-                    strAppend +='    </a>';
-                    strAppend +='  </div>';
-                    strAppend +='  <div clavss="media-body">';
-                    strAppend +='    <h4 class="media-heading text-shadow fullname">'+data[i]['fullname']+'</h4>';
-                    strAppend +='    Đánh giá: '+data[i]['rating']+'/10 <span class="star-in-list"></span> <br />';
-                    strAppend += data[i]['feel'];        
-                    strAppend +='  </div>';
-                    strAppend +='</div>';                  
+            });
+    });
+    /* prev page*/
+    btnPrevious.click(function () {
+        var page = parseInt($(this).attr('data-page'));
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: {
+                ci_csrf_token: csrf_token,
+                book_id: _book_id,
+                page: page
+            }
+        })
+            .done(function (response) {
+                if (response) {
+                    $response = JSON.parse(response);
+                    var pager = $response.pager;
+                    if (page < 1)
+                        return false;
+                    if (page == 1) {
+                        btnPrevious.attr('data-page', 1);
+                        btnNext.attr('data-page', 2);
+                    }
+                    if (page > 1) {
+                        btnPrevious.attr('data-page', (page - 1));
+                        btnNext.attr('data-page', (page + 1));
+                    }
+
+
+                    /*bind data*/
+                    var data = $response.data;
+                    var strAppend = '';
+                    for (var i = 0; i < data.length; i++) {
+                        strAppend += '<div class="media list-item-rating">';
+                        strAppend += '  <div class="media-left pull-left">';
+                        strAppend += '    <a href="javascript:;">';
+                        strAppend += getAvatarUser(data[i]['avatar'], 64, 64, data[i]['image_version'], data[i]['fullname'], data[i]['id_facebook'], 'media-object');
+                        strAppend += '    </a>';
+                        strAppend += '  </div>';
+                        strAppend += '  <div clavss="media-body">';
+                        strAppend += '    <h4 class="media-heading text-shadow fullname">' + data[i]['fullname'] + '</h4>';
+                        strAppend += '    Đánh giá: ' + data[i]['rating'] + '/10 <span class="star-in-list"></span> <br />';
+                        strAppend += data[i]['feel'];
+                        strAppend += '  </div>';
+                        strAppend += '</div>';
+                    }
+                    wrapList.html(strAppend);
                 }
-                wrapList.html(strAppend);
-            }                
-        });
-    });        
+            });
+    });
 }
 /** get avatar user **/
-function getAvatarUser(_avatar,_width, _height,_image_version,_fullname,_id_fb,_class)
-{
+function getAvatarUser(_avatar, _width, _height, _image_version, _fullname, _id_fb, _class) {
     //Neu co avatar thi lay avatar
-    if(_avatar)
-    {
-        _link = 'http://v2.cdn.ringring.vn/mncLnn7ESyO87REfISuw/'+_width+'x'+_height+'x'+_image_version+'/news/users/'+_avatar;
-        return '<img class="'+_class+'" src="'+_link+'" alt="Ảnh đại diện" />';
+    if (_avatar) {
+        _link = 'http://v2.cdn.ringring.vn/mncLnn7ESyO87REfISuw/' + _width + 'x' + _height + 'x' + _image_version + '/news/users/' + _avatar;
+        return '<img class="' + _class + '" src="' + _link + '" alt="Ảnh đại diện" />';
     }
-    else if(_id_fb)
-    {
-        _link = "http://graph.facebook.com/"+_id_fb+"/picture?width="+_width+"&height="+_height;
-        return '<img class="'+_class+'" src="'+_link+'" />';
+    else if (_id_fb) {
+        _link = "http://graph.facebook.com/" + _id_fb + "/picture?width=" + _width + "&height=" + _height;
+        return '<img class="' + _class + '" src="' + _link + '" />';
     }
-    else
-    {
-        return '<div style="background:#0088ca; width:64px; height:64px; color:#fff; text-align:center; padding-top:10px; font-size:30px">'+_fullname[0]+'</div>'; 
+    else {
+        return '<div style="background:#0088ca; width:64px; height:64px; color:#fff; text-align:center; padding-top:10px; font-size:30px">' + _fullname[0] + '</div>';
     }
 }
-function cleanCacheRating(book_id)
-{
+function cleanCacheRating(book_id) {
     $.ajax({
-      method: "POST",
-      url: host_name+"get-list-rating-book.html?cache=clean",
-      data: {ci_csrf_token: csrf_token, book_id:book_id},
-      beforeSend:function(){}
-    }).done(function(response){});
+        method: "POST",
+        url: host_name + "get-list-rating-book.html?cache=clean",
+        data: { ci_csrf_token: csrf_token, book_id: book_id },
+        beforeSend: function () { }
+    }).done(function (response) { });
 }
-﻿
-        jQuery(document).ready(function ($) {
+
+jQuery(document).ready(function ($) {
     var Top = $("#lentop");
     $(window).scroll(function () {
         if ($(this).scrollTop() > 210) {
@@ -624,42 +487,42 @@ $(function () {
     });
 });
 (function (i, f, c, k, d, l, h) {
-    new (function () {});
+    new (function () { });
     var e = i.$JssorEasing$ = {
         $EaseSwing: function (a) {
-            return-c.cos(a * c.PI) / 2 + .5
+            return -c.cos(a * c.PI) / 2 + .5
         }, $EaseLinear: function (a) {
             return a
         }, $EaseInQuad: function (a) {
             return a * a
         }, $EaseOutQuad: function (a) {
-            return-a * (a - 2)
+            return -a * (a - 2)
         }, $EaseInOutQuad: function (a) {
-            return(a *= 2) < 1 ? 1 / 2 * a * a : -1 / 2 * (--a * (a - 2) - 1)
+            return (a *= 2) < 1 ? 1 / 2 * a * a : -1 / 2 * (--a * (a - 2) - 1)
         }, $EaseInCubic: function (a) {
             return a * a * a
         }, $EaseOutCubic: function (a) {
-            return(a -= 1) * a * a + 1
+            return (a -= 1) * a * a + 1
         }, $EaseInOutCubic: function (a) {
-            return(a *= 2) < 1 ? 1 / 2 * a * a * a : 1 / 2 * ((a -= 2) * a * a + 2)
+            return (a *= 2) < 1 ? 1 / 2 * a * a * a : 1 / 2 * ((a -= 2) * a * a + 2)
         }, $EaseInQuart: function (a) {
             return a * a * a * a
         }, $EaseOutQuart: function (a) {
-            return-((a -= 1) * a * a * a - 1)
+            return -((a -= 1) * a * a * a - 1)
         }, $EaseInOutQuart: function (a) {
-            return(a *= 2) < 1 ? 1 / 2 * a * a * a * a : -1 / 2 * ((a -= 2) * a * a * a - 2)
+            return (a *= 2) < 1 ? 1 / 2 * a * a * a * a : -1 / 2 * ((a -= 2) * a * a * a - 2)
         }, $EaseInQuint: function (a) {
             return a * a * a * a * a
         }, $EaseOutQuint: function (a) {
-            return(a -= 1) * a * a * a * a + 1
+            return (a -= 1) * a * a * a * a + 1
         }, $EaseInOutQuint: function (a) {
-            return(a *= 2) < 1 ? 1 / 2 * a * a * a * a * a : 1 / 2 * ((a -= 2) * a * a * a * a + 2)
+            return (a *= 2) < 1 ? 1 / 2 * a * a * a * a * a : 1 / 2 * ((a -= 2) * a * a * a * a + 2)
         }, $EaseInSine: function (a) {
             return 1 - c.cos(c.PI / 2 * a)
         }, $EaseOutSine: function (a) {
             return c.sin(c.PI / 2 * a)
         }, $EaseInOutSine: function (a) {
-            return-1 / 2 * (c.cos(c.PI * a) - 1)
+            return -1 / 2 * (c.cos(c.PI * a) - 1)
         }, $EaseInExpo: function (a) {
             return a == 0 ? 0 : c.pow(2, 10 * (a - 1))
         }, $EaseOutExpo: function (a) {
@@ -667,16 +530,16 @@ $(function () {
         }, $EaseInOutExpo: function (a) {
             return a == 0 || a == 1 ? a : (a *= 2) < 1 ? 1 / 2 * c.pow(2, 10 * (a - 1)) : 1 / 2 * (-c.pow(2, -10 * --a) + 2)
         }, $EaseInCirc: function (a) {
-            return-(c.sqrt(1 - a * a) - 1)
+            return -(c.sqrt(1 - a * a) - 1)
         }, $EaseOutCirc: function (a) {
             return c.sqrt(1 - (a -= 1) * a)
         }, $EaseInOutCirc: function (a) {
-            return(a *= 2) < 1 ? -1 / 2 * (c.sqrt(1 - a * a) - 1) : 1 / 2 * (c.sqrt(1 - (a -= 2) * a) + 1)
+            return (a *= 2) < 1 ? -1 / 2 * (c.sqrt(1 - a * a) - 1) : 1 / 2 * (c.sqrt(1 - (a -= 2) * a) + 1)
         }, $EaseInElastic: function (a) {
             if (!a || a == 1)
                 return a;
             var b = .3, d = .075;
-            return-(c.pow(2, 10 * (a -= 1)) * c.sin((a - d) * 2 * c.PI / b))
+            return -(c.pow(2, 10 * (a -= 1)) * c.sin((a - d) * 2 * c.PI / b))
         }, $EaseOutElastic: function (a) {
             if (!a || a == 1)
                 return a;
@@ -686,16 +549,16 @@ $(function () {
             if (!a || a == 1)
                 return a;
             var b = .45, d = .1125;
-            return(a *= 2) < 1 ? -.5 * c.pow(2, 10 * (a -= 1)) * c.sin((a - d) * 2 * c.PI / b) : c.pow(2, -10 * (a -= 1)) * c.sin((a - d) * 2 * c.PI / b) * .5 + 1
+            return (a *= 2) < 1 ? -.5 * c.pow(2, 10 * (a -= 1)) * c.sin((a - d) * 2 * c.PI / b) : c.pow(2, -10 * (a -= 1)) * c.sin((a - d) * 2 * c.PI / b) * .5 + 1
         }, $EaseInBack: function (a) {
             var b = 1.70158;
             return a * a * ((b + 1) * a - b)
         }, $EaseOutBack: function (a) {
             var b = 1.70158;
-            return(a -= 1) * a * ((b + 1) * a + b) + 1
+            return (a -= 1) * a * ((b + 1) * a + b) + 1
         }, $EaseInOutBack: function (a) {
             var b = 1.70158;
-            return(a *= 2) < 1 ? 1 / 2 * a * a * (((b *= 1.525) + 1) * a - b) : 1 / 2 * ((a -= 2) * a * (((b *= 1.525) + 1) * a + b) + 2)
+            return (a *= 2) < 1 ? 1 / 2 * a * a * (((b *= 1.525) + 1) * a - b) : 1 / 2 * ((a -= 2) * a * (((b *= 1.525) + 1) * a + b) + 2)
         }, $EaseInBounce: function (a) {
             return 1 - e.$EaseOutBounce(1 - a)
         }, $EaseOutBounce: function (a) {
@@ -711,13 +574,14 @@ $(function () {
         }, $EaseOutJump: function (a) {
             return 1 - ((a *= 2) < 1 ? (a = 1 - a) * a * a : (a -= 1) * a * a)
         }, $EaseInJump: function (a) {
-            return(a *= 2) < 1 ? a * a * a : (a = 2 - a) * a * a
-        }}, g = i.$Jease$ = {$Swing: e.$EaseSwing, $Linear: e.$EaseLinear, $InQuad: e.$EaseInQuad, $OutQuad: e.$EaseOutQuad, $InOutQuad: e.$EaseInOutQuad, $InCubic: e.$EaseInCubic, $OutCubic: e.$EaseOutCubic, $InOutCubic: e.$EaseInOutCubic, $InQuart: e.$EaseInQuart, $OutQuart: e.$EaseOutQuart, $InOutQuart: e.$EaseInOutQuart, $InQuint: e.$EaseInQuint, $OutQuint: e.$EaseOutQuint, $InOutQuint: e.$EaseInOutQuint, $InSine: e.$EaseInSine, $OutSine: e.$EaseOutSine, $InOutSine: e.$EaseInOutSine, $InExpo: e.$EaseInExpo, $OutExpo: e.$EaseOutExpo, $InOutExpo: e.$EaseInOutExpo, $InCirc: e.$EaseInCirc, $OutCirc: e.$EaseOutCirc, $InOutCirc: e.$EaseInOutCirc, $InElastic: e.$EaseInElastic, $OutElastic: e.$EaseOutElastic, $InOutElastic: e.$EaseInOutElastic, $InBack: e.$EaseInBack, $OutBack: e.$EaseOutBack, $InOutBack: e.$EaseInOutBack, $InBounce: e.$EaseInBounce, $OutBounce: e.$EaseOutBounce, $InOutBounce: e.$EaseInOutBounce, $GoBack: e.$EaseGoBack, $InWave: e.$EaseInWave, $OutWave: e.$EaseOutWave, $OutJump: e.$EaseOutJump, $InJump: e.$EaseInJump};
+            return (a *= 2) < 1 ? a * a * a : (a = 2 - a) * a * a
+        }
+    }, g = i.$Jease$ = { $Swing: e.$EaseSwing, $Linear: e.$EaseLinear, $InQuad: e.$EaseInQuad, $OutQuad: e.$EaseOutQuad, $InOutQuad: e.$EaseInOutQuad, $InCubic: e.$EaseInCubic, $OutCubic: e.$EaseOutCubic, $InOutCubic: e.$EaseInOutCubic, $InQuart: e.$EaseInQuart, $OutQuart: e.$EaseOutQuart, $InOutQuart: e.$EaseInOutQuart, $InQuint: e.$EaseInQuint, $OutQuint: e.$EaseOutQuint, $InOutQuint: e.$EaseInOutQuint, $InSine: e.$EaseInSine, $OutSine: e.$EaseOutSine, $InOutSine: e.$EaseInOutSine, $InExpo: e.$EaseInExpo, $OutExpo: e.$EaseOutExpo, $InOutExpo: e.$EaseInOutExpo, $InCirc: e.$EaseInCirc, $OutCirc: e.$EaseOutCirc, $InOutCirc: e.$EaseInOutCirc, $InElastic: e.$EaseInElastic, $OutElastic: e.$EaseOutElastic, $InOutElastic: e.$EaseInOutElastic, $InBack: e.$EaseInBack, $OutBack: e.$EaseOutBack, $InOutBack: e.$EaseInOutBack, $InBounce: e.$EaseInBounce, $OutBounce: e.$EaseOutBounce, $InOutBounce: e.$EaseInOutBounce, $GoBack: e.$EaseGoBack, $InWave: e.$EaseInWave, $OutWave: e.$EaseOutWave, $OutJump: e.$EaseOutJump, $InJump: e.$EaseInJump };
     var b = new function () {
         var g = this, Ab = /\S+/g, K = 1, ib = 2, mb = 3, lb = 4, qb = 5, L, s = 0, j = 0, t = 0, z = 0, A = 0, D = navigator, vb = D.appName, o = D.userAgent, q = parseFloat;
         function Ib() {
             if (!L) {
-                L = {yf: "ontouchstart"in i || "createTouch"in f};
+                L = { yf: "ontouchstart" in i || "createTouch" in f };
                 var a;
                 if (D.pointerEnabled || (a = D.msPointerEnabled))
                     L.zd = a ? "msTouchAction" : "touchAction"
@@ -809,7 +673,7 @@ $(function () {
         }
         var M = eb("transform");
         function ub(a) {
-            return{}.toString.call(a)
+            return {}.toString.call(a)
         }
         var rb = {};
         n(["Boolean", "Number", "String", "Function", "Array", "Date", "RegExp", "Object"], function (a) {
@@ -840,7 +704,7 @@ $(function () {
             }
         }
         function p(a, b) {
-            return{x: a, y: b}
+            return { x: a, y: b }
         }
         function yb(b, a) {
             setTimeout(b, a || 0)
@@ -898,7 +762,7 @@ $(function () {
         };
         g.Od = function (a) {
             a = u(a);
-            return{x: a.pageX || a.clientX || 0, y: a.pageY || a.clientY || 0}
+            return { x: a.pageX || a.clientX || 0, y: a.pageY || a.clientY || 0 }
         };
         function G(c, d, a) {
             if (a !== h)
@@ -948,9 +812,9 @@ $(function () {
             } else
                 b.style.opacity = a == 1 ? "" : c.round(a * 100) / 100
         }
-        var N = {$Rotate: ["rotate"], $RotateX: ["rotateX"], $RotateY: ["rotateY"], $SkewX: ["skewX"], $SkewY: ["skewY"]};
+        var N = { $Rotate: ["rotate"], $RotateX: ["rotateX"], $RotateY: ["rotateY"], $SkewX: ["skewX"], $SkewY: ["skewY"] };
         if (!H())
-            N = E(N, {$ScaleX: ["scaleX", 2], $ScaleY: ["scaleY", 2], $TranslateZ: ["translateZ", 1]});
+            N = E(N, { $ScaleX: ["scaleX", 2], $ScaleY: ["scaleY", 2], $TranslateZ: ["translateZ", 1] });
         function O(d, a) {
             var c = "";
             if (a) {
@@ -1052,7 +916,7 @@ $(function () {
         };
         function tb(a, c, e, b) {
             b = b || "u";
-            for (a = a?a.firstChild:k; a; a = a.nextSibling)
+            for (a = a ? a.firstChild : k; a; a = a.nextSibling)
                 if (a.nodeType == 1) {
                     if (X(a, b) == c)
                         return a;
@@ -1067,7 +931,7 @@ $(function () {
         function V(a, d, f, b) {
             b = b || "u";
             var c = [];
-            for (a = a?a.firstChild:k; a; a = a.nextSibling)
+            for (a = a ? a.firstChild : k; a; a = a.nextSibling)
                 if (a.nodeType == 1) {
                     X(a, b) == d && c.push(a);
                     if (!f) {
@@ -1079,7 +943,7 @@ $(function () {
             return c
         }
         function nb(a, c, d) {
-            for (a = a?a.firstChild:k; a; a = a.nextSibling)
+            for (a = a ? a.firstChild : k; a; a = a.nextSibling)
                 if (a.nodeType == 1) {
                     if (a.tagName == c)
                         return a;
@@ -1093,7 +957,7 @@ $(function () {
         g.xf = nb;
         function hb(a, c, e) {
             var b = [];
-            for (a = a?a.firstChild:k; a; a = a.nextSibling)
+            for (a = a ? a.firstChild : k; a; a = a.nextSibling)
                 if (a.nodeType == 1) {
                     (!c || a.tagName == c) && b.push(a);
                     if (!e) {
@@ -1147,7 +1011,7 @@ $(function () {
             return F(a) == "string"
         };
         g.Zb = function (a) {
-            return!isNaN(q(a)) && isFinite(a)
+            return !isNaN(q(a)) && isFinite(a)
         };
         g.a = n;
         g.cd = B;
@@ -1160,7 +1024,7 @@ $(function () {
         g.Ff = function () {
             return U("SPAN")
         };
-        g.ad = function () {};
+        g.ad = function () { };
         function Y(b, c, a) {
             if (a == h)
                 return b.getAttribute(c);
@@ -1226,7 +1090,7 @@ $(function () {
             }
         };
         g.P = function () {
-            return+new Date
+            return +new Date
         };
         g.G = function (b, a) {
             b.appendChild(a)
@@ -1351,7 +1215,7 @@ $(function () {
             };
             l.$Enable = function (a) {
                 if (a === h)
-                    return!d;
+                    return !d;
                 d = a ? 0 : 3;
                 j()
             };
@@ -1393,7 +1257,7 @@ $(function () {
             else
                 return a.style.cssText
         };
-        var W = {$Opacity: g.Gb, $Top: g.z, $Left: g.B, S: g.l, N: g.m, Cb: g.A, Jh: g.bb, $ZIndex: g.D};
+        var W = { $Opacity: g.Gb, $Top: g.z, $Left: g.B, S: g.l, N: g.m, Cb: g.A, Jh: g.bb, $ZIndex: g.D };
         function w(f, l) {
             var e = Q(), b = H(), d = fb(), i = M(f);
             function j(b, d, a) {
@@ -1426,7 +1290,7 @@ $(function () {
                     c.$Move(a.C, a.F);
                     d.style[i] = c.Sd()
                 } else if (!z || z < 9) {
-                    var o = "", k = {x: 0, y: 0};
+                    var o = "", k = { x: 0, y: 0 };
                     if (a.$OriginalWidth)
                         k = j(c, a.$OriginalWidth, a.$OriginalHeight);
                     g.Uf(d, k.y);
@@ -1472,10 +1336,10 @@ $(function () {
                 return a * c.PI / 180
             }
             function n(a, b) {
-                return{x: a, y: b}
+                return { x: a, y: b }
             }
             function m(b, c, f, g, i, l, n, o, q, t, u, w, y, A, C, F, a, d, e, h, j, k, m, p, r, s, v, x, z, B, D, E) {
-                return[b * a + c * j + f * r + g * z, b * d + c * k + f * s + g * B, b * e + c * m + f * v + g * D, b * h + c * p + f * x + g * E, i * a + l * j + n * r + o * z, i * d + l * k + n * s + o * B, i * e + l * m + n * v + o * D, i * h + l * p + n * x + o * E, q * a + t * j + u * r + w * z, q * d + t * k + u * s + w * B, q * e + t * m + u * v + w * D, q * h + t * p + u * x + w * E, y * a + A * j + C * r + F * z, y * d + A * k + C * s + F * B, y * e + A * m + C * v + F * D, y * h + A * p + C * x + F * E]
+                return [b * a + c * j + f * r + g * z, b * d + c * k + f * s + g * B, b * e + c * m + f * v + g * D, b * h + c * p + f * x + g * E, i * a + l * j + n * r + o * z, i * d + l * k + n * s + o * B, i * e + l * m + n * v + o * D, i * h + l * p + n * x + o * E, q * a + t * j + u * r + w * z, q * d + t * k + u * s + w * B, q * e + t * m + u * v + w * D, q * h + t * p + u * x + w * E, y * a + A * j + C * r + F * z, y * d + A * k + C * s + F * B, y * e + A * m + C * v + F * D, y * h + A * p + C * x + F * E]
             }
             function e(c, a) {
                 return m.apply(k, (a || b).concat(c))
@@ -1522,10 +1386,10 @@ $(function () {
                 return n(a[12], a[13])
             };
             d.Sd = function () {
-                return"matrix3d(" + b.join(",") + ")"
+                return "matrix3d(" + b.join(",") + ")"
             };
             d.Td = function () {
-                return"progid:DXImageTransform.Microsoft.Matrix(M11=" + b[0] + ", M12=" + b[4] + ", M21=" + b[1] + ", M22=" + b[5] + ", SizingMethod='auto expand')"
+                return "progid:DXImageTransform.Microsoft.Matrix(M11=" + b[0] + ", M12=" + b[4] + ", M21=" + b[1] + ", M22=" + b[5] + ", SizingMethod='auto expand')"
             }
         }
         new (function () {
@@ -1553,14 +1417,14 @@ $(function () {
                 return p(a[0][0], a[1][0])
             }
         });
-        var P = {Tc: 0, Nc: 0, C: 0, F: 0, $Zoom: 1, $ScaleX: 1, $ScaleY: 1, $Rotate: 0, $RotateX: 0, $RotateY: 0, $TranslateX: 0, $TranslateY: 0, $TranslateZ: 0, $SkewX: 0, $SkewY: 0};
+        var P = { Tc: 0, Nc: 0, C: 0, F: 0, $Zoom: 1, $ScaleX: 1, $ScaleY: 1, $Rotate: 0, $RotateX: 0, $RotateY: 0, $TranslateX: 0, $TranslateY: 0, $TranslateZ: 0, $SkewX: 0, $SkewY: 0 };
         g.sc = function (a) {
             var c = a || {};
             if (a)
                 if (b.Zc(a))
-                    c = {jc: c};
+                    c = { jc: c };
                 else if (b.Zc(a.$Clip))
-                    c.$Clip = {jc: a.$Clip};
+                    c.$Clip = { jc: a.$Clip };
             return c
         };
         function wb(c, a) {
@@ -1594,7 +1458,7 @@ $(function () {
                         var y = i(f);
                         j = C + p * y
                     } else {
-                        j = b.o({bc: {}}, l[g]);
+                        j = b.o({ bc: {} }, l[g]);
                         var v = q[g] || {};
                         b.a(p.bc || p, function (d, a) {
                             i = v[a] || v.jc || i;
@@ -1637,7 +1501,7 @@ $(function () {
     function n() {
         var a = this, d = [];
         function h(a, b) {
-            d.push({kc: a, fc: b})
+            d.push({ kc: a, fc: b })
         }
         function g(a, c) {
             b.a(d, function (b, e) {
@@ -1790,7 +1654,7 @@ $(function () {
         };
         a.dc = a.Xc = a.Wc = a.tc = b.ad;
         a.oc = b.P();
-        h = b.o({$Interval: 16, ed: 50}, h);
+        h = b.o({ $Interval: 16, ed: 50 }, h);
         p = h.Fc;
         x = h.Re;
         f = j = z;
@@ -1802,10 +1666,10 @@ $(function () {
     var p = i.$JssorSlideshowFormations$ = new function () {
         var h = this, b = 0, a = 1, f = 2, e = 3, s = 1, r = 2, t = 4, q = 8, w = 256, x = 512, v = 1024, u = 2048, j = u + s, i = u + r, o = x + s, m = x + r, n = w + t, k = w + q, l = v + t, p = v + q;
         function y(a) {
-            return(a & r) == r
+            return (a & r) == r
         }
         function z(a) {
-            return(a & t) == t
+            return (a & t) == t
         }
         function g(b, a, c) {
             c.push(a);
@@ -1918,7 +1782,7 @@ $(function () {
                         break;
                     case e:
                         h--
-                    }
+                }
             }
             return A
         };
@@ -1982,7 +1846,7 @@ $(function () {
                             break;
                         case e:
                             d--
-                        }
+                    }
                 } else {
                     switch (h[s++ % h.length]) {
                         case b:
@@ -2009,7 +1873,7 @@ $(function () {
                             break;
                         case e:
                             d--
-                        }
+                    }
                 }
             }
             return t
@@ -2172,7 +2036,7 @@ $(function () {
             })
         }
         function i(g, f) {
-            var a = {$Interval: f, $Duration: 1, $Delay: 0, $Cols: 1, $Rows: 1, $Opacity: 0, $Zoom: 0, $Clip: 0, $Move: l, $SlideOut: l, $Reverse: l, $Formation: p.$FormationRandom, $Assembly: 1032, $ChessMode: {$Column: 0, $Row: 0}, $Easing: e.$EaseSwing, $Round: {}, Sb: [], $During: {}};
+            var a = { $Interval: f, $Duration: 1, $Delay: 0, $Cols: 1, $Rows: 1, $Opacity: 0, $Zoom: 0, $Clip: 0, $Move: l, $SlideOut: l, $Reverse: l, $Formation: p.$FormationRandom, $Assembly: 1032, $ChessMode: { $Column: 0, $Row: 0 }, $Easing: e.$EaseSwing, $Round: {}, Sb: [], $During: {} };
             b.o(a, g);
             t(a);
             a.Ob = a.$Cols * a.$Rows;
@@ -2183,10 +2047,10 @@ $(function () {
                 b /= a.$Rows;
                 var f = c + "x" + b;
                 if (!a.Sb[f]) {
-                    a.Sb[f] = {S: c, N: b};
+                    a.Sb[f] = { S: c, N: b };
                     for (var d = 0; d < a.$Cols; d++)
                         for (var e = 0; e < a.$Rows; e++)
-                            a.Sb[f][e + "," + d] = {$Top: e * b, $Right: d * c + c, $Bottom: e * b + b, $Left: d * c}
+                            a.Sb[f][e + "," + d] = { $Top: e * b, $Right: d * c + c, $Bottom: e * b + b, $Left: d * c }
                 }
                 return a.Sb[f]
             };
@@ -2260,7 +2124,7 @@ $(function () {
                     var C = p ? a.$Bottom : a.$Top, z = p ? a.$Top : a.$Bottom, B = n ? a.$Right : a.$Left, A = n ? a.$Left : a.$Right;
                     a.$Clip = C || z || B || A;
                     s = {};
-                    e = {F: 0, C: 0, $Opacity: 1, S: o, N: m};
+                    e = { F: 0, C: 0, $Opacity: 1, S: o, N: m };
                     f = b.o({}, e);
                     u = b.o({}, g[t]);
                     if (a.$Opacity)
@@ -2325,7 +2189,7 @@ $(function () {
                     i[t].Ge = y;
                     i[t].Ie = y + D - 1;
                     for (var F = 0; F <= D; F++) {
-                        var E = b.jd(f, s, F / D, a.$Easing, a.$During, a.$Round, {$Move: a.$Move, $OriginalWidth: o, $OriginalHeight: m});
+                        var E = b.jd(f, s, F / D, a.$Easing, a.$During, a.$Round, { $Move: a.$Move, $OriginalWidth: o, $OriginalHeight: m });
                         E.$ZIndex = E.$ZIndex || 1;
                         i[t].push(E)
                     }
@@ -2409,7 +2273,7 @@ $(function () {
             m.call(a, -1e8, 2e8);
             a.ze = function () {
                 var b = a.tb(), d = c.floor(b), f = t(d), e = b - c.floor(b);
-                return{pb: f, xe: d, Cb: e}
+                return { pb: f, xe: d, Cb: e }
             };
             a.dc = function (b, a) {
                 var e = c.floor(a);
@@ -2421,7 +2285,7 @@ $(function () {
         }
         function Ec() {
             var a = this;
-            m.call(a, 0, 0, {Fc: r});
+            m.call(a, 0, 0, { Fc: r });
             b.a(C, function (b) {
                 D & 1 && b.jf(r);
                 a.pc(b);
@@ -2430,12 +2294,12 @@ $(function () {
         }
         function Dc() {
             var a = this, b = Vb.$Elmt;
-            m.call(a, -1, 2, {$Easing: e.$EaseLinear, Re: {Cb: bc}, Fc: r}, b, {Cb: 1}, {Cb: -2});
+            m.call(a, -1, 2, { $Easing: e.$EaseLinear, Re: { Cb: bc }, Fc: r }, b, { Cb: 1 }, { Cb: -2 });
             a.Ub = b
         }
         function rc(o, n) {
             var b = this, e, f, h, i, c;
-            m.call(b, -1e8, 2e8, {ed: 100});
+            m.call(b, -1e8, 2e8, { ed: 100 });
             b.Xc = function () {
                 O = d;
                 R = k;
@@ -2902,7 +2766,7 @@ $(function () {
                 var f;
                 if (e.type != "mousemove") {
                     var l = e.touches[0];
-                    f = {x: l.clientX, y: l.clientY}
+                    f = { x: l.clientX, y: l.clientY }
                 } else
                     f = b.Od(e);
                 if (f) {
@@ -3023,7 +2887,7 @@ $(function () {
             return a
         }
         function t(a) {
-            return(a % r + r) % r
+            return (a % r + r) % r
         }
         function nc(b, d) {
             if (d)
@@ -3059,7 +2923,7 @@ $(function () {
             }
         }
         function lc() {
-            V = {S: K, N: J, $Top: 0, $Left: 0};
+            V = { S: K, N: J, $Top: 0, $Left: 0 };
             b.a(T, function (a) {
                 b.K(a, V);
                 b.A(a, "absolute");
@@ -3139,7 +3003,7 @@ $(function () {
             return O
         };
         g.$IsMouseOver = function () {
-            return!F
+            return !F
         };
         g.$LastDragSucceded = function () {
             return M
@@ -3209,13 +3073,13 @@ $(function () {
         };
         n.call(g);
         g.$Elmt = p = b.hb(p);
-        var a = b.o({$FillMode: 0, $LazyLoading: 1, $ArrowKeyNavigation: 1, $StartIndex: 0, $AutoPlay: l, $Loop: 1, $HWA: d, $NaviQuitDrag: d, $AutoPlaySteps: 1, $AutoPlayInterval: 3e3, $PauseOnHover: 1, $SlideDuration: 500, $SlideEasing: e.$EaseOutQuad, $MinDragOffsetToSlide: 20, $SlideSpacing: 0, $Cols: 1, $Align: 0, $UISearchMode: 1, $PlayOrientation: 1, $DragOrientation: 1}, hc);
+        var a = b.o({ $FillMode: 0, $LazyLoading: 1, $ArrowKeyNavigation: 1, $StartIndex: 0, $AutoPlay: l, $Loop: 1, $HWA: d, $NaviQuitDrag: d, $AutoPlaySteps: 1, $AutoPlayInterval: 3e3, $PauseOnHover: 1, $SlideDuration: 500, $SlideEasing: e.$EaseOutQuad, $MinDragOffsetToSlide: 20, $SlideSpacing: 0, $Cols: 1, $Align: 0, $UISearchMode: 1, $PlayOrientation: 1, $DragOrientation: 1 }, hc);
         a.$HWA = a.$HWA && b.Pf();
         if (a.$Idle != h)
             a.$AutoPlayInterval = a.$Idle;
         if (a.$ParkingPosition != h)
             a.$Align = a.$ParkingPosition;
-        var hb = a.$PlayOrientation & 3, xc = (a.$PlayOrientation & 4) / -4 || 1, eb = a.$SlideshowOptions, I = b.o({$Class: q, $PlayInMode: 1, $PlayOutMode: 1, $HWA: a.$HWA}, a.$CaptionSliderOptions);
+        var hb = a.$PlayOrientation & 3, xc = (a.$PlayOrientation & 4) / -4 || 1, eb = a.$SlideshowOptions, I = b.o({ $Class: q, $PlayInMode: 1, $PlayOutMode: 1, $HWA: a.$HWA }, a.$CaptionSliderOptions);
         I.$Transitions = I.$Transitions || I.$CaptionTransitions;
         var rb = a.$BulletNavigatorOptions, W = a.$ArrowNavigatorOptions, ab = a.$ThumbnailNavigatorOptions, Q = !a.$UISearchMode, y, v = b.u(p, "slides", Q), cb = b.u(p, "loading", Q) || b.fb(f), Jb = b.u(p, "navigator", Q), ec = b.u(p, "arrowleft", Q), cc = b.u(p, "arrowright", Q), Hb = b.u(p, "thumbnavigator", Q), pc = b.l(v), oc = b.m(v), V, T = [], yc = b.yb(v);
         b.a(yc, function (a) {
@@ -3228,7 +3092,7 @@ $(function () {
         if (r) {
             if (a.$HWA)
                 Mb = function (a, c, d) {
-                    b.Db(a, {$TranslateX: c, $TranslateY: d})
+                    b.Db(a, { $TranslateX: c, $TranslateY: d })
                 };
             P = a.$AutoPlay;
             g.Mb = hc;
@@ -3325,7 +3189,7 @@ $(function () {
     j.$EVT_SLIDESHOW_END = 207;
     j.$EVT_PROGRESS_CHANGE = 208;
     j.$EVT_STATE_CHANGE = 209;
-    var o = {cc: 1};
+    var o = { cc: 1 };
     i.$JssorBulletNavigator$ = function (e, C) {
         var f = this;
         n.call(f);
@@ -3377,7 +3241,7 @@ $(function () {
                 u = d
             }
         };
-        f.Mb = a = b.o({$SpacingX: 10, $SpacingY: 10, $Orientation: 1, $ActionMode: 1}, C);
+        f.Mb = a = b.o({ $SpacingX: 10, $SpacingY: 10, $Orientation: 1, $ActionMode: 1 }, C);
         g = b.u(e, "prototype");
         q = b.l(g);
         p = b.m(g);
@@ -3425,7 +3289,7 @@ $(function () {
                 m = d
             }
         };
-        c.Mb = f = b.o({$Steps: 1}, h);
+        c.Mb = f = b.o({ $Steps: 1 }, h);
         i = f.$Steps;
         if (f.$Scale == l) {
             b.s(a, "noscale", d);
@@ -3495,12 +3359,12 @@ $(function () {
                     b.G(i[a], d);
                     v.push(j)
                 });
-                var E = b.o({$AutoPlay: l, $NaviQuitDrag: l, $SlideWidth: n, $SlideHeight: k, $SlideSpacing: q * h + r * (1 - h), $MinDragOffsetToSlide: 12, $SlideDuration: 200, $PauseOnHover: 1, $PlayOrientation: a.$Orientation, $DragOrientation: a.$NoDrag || a.$DisableDrag ? 0 : a.$Orientation}, a);
+                var E = b.o({ $AutoPlay: l, $NaviQuitDrag: l, $SlideWidth: n, $SlideHeight: k, $SlideSpacing: q * h + r * (1 - h), $MinDragOffsetToSlide: 12, $SlideDuration: 200, $PauseOnHover: 1, $PlayOrientation: a.$Orientation, $DragOrientation: a.$NoDrag || a.$DisableDrag ? 0 : a.$Orientation }, a);
                 s = new j(g, E);
                 w = d
             }
         };
-        h.Mb = a = b.o({$SpacingX: 0, $SpacingY: 0, $Cols: 1, $Orientation: 1, $AutoCenter: 3, $ActionMode: 1}, B);
+        h.Mb = a = b.o({ $SpacingX: 0, $SpacingY: 0, $Cols: 1, $Orientation: 1, $AutoCenter: 3, $ActionMode: 1 }, B);
         z = b.l(g);
         x = b.m(g);
         f = b.u(g, "slides", d);
@@ -3544,7 +3408,7 @@ $(function () {
             b.a(d, function (d) {
                 var h = b.j(d, "u") == "caption";
                 if (h) {
-                    var e = b.j(d, "t"), g = i[b.vc(e)] || i[e], f = {$Elmt: d, hc: g};
+                    var e = b.j(d, "t"), g = i[b.vc(e)] || i[e], f = { $Elmt: d, hc: g };
                     a.push(f)
                 }
                 if (c < 5)
@@ -3566,7 +3430,7 @@ $(function () {
                     g.F = g.$Top;
                     delete f.$Top
                 }
-                var i = {$Easing: g, $OriginalWidth: a.S, $OriginalHeight: a.N}, k = new m(h.b, h.d, i, e, a, f);
+                var i = { $Easing: g, $OriginalWidth: a.S, $OriginalHeight: a.N }, k = new m(h.b, h.d, i, e, a, f);
                 c.zb(k);
                 a = b.ge(a, f)
             });
@@ -3574,7 +3438,7 @@ $(function () {
         }
         function q(a) {
             b.a(a, function (f) {
-                var a = f.$Elmt, e = b.l(a), d = b.m(a), c = {$Left: b.B(a), $Top: b.z(a), C: 0, F: 0, $Opacity: 1, $ZIndex: b.D(a) || 0, $Rotate: 0, $RotateX: 0, $RotateY: 0, $ScaleX: 1, $ScaleY: 1, $TranslateX: 0, $TranslateY: 0, $TranslateZ: 0, $SkewX: 0, $SkewY: 0, S: e, N: d, $Clip: {$Top: 0, $Right: e, $Bottom: d, $Left: 0}};
+                var a = f.$Elmt, e = b.l(a), d = b.m(a), c = { $Left: b.B(a), $Top: b.z(a), C: 0, F: 0, $Opacity: 1, $ZIndex: b.D(a) || 0, $Rotate: 0, $RotateX: 0, $RotateY: 0, $ScaleX: 1, $ScaleY: 1, $TranslateX: 0, $TranslateY: 0, $TranslateZ: 0, $SkewX: 0, $SkewY: 0, S: e, N: d, $Clip: { $Top: 0, $Right: e, $Bottom: d, $Left: 0 } };
                 c.Tc = c.$Left;
                 c.Nc = c.$Top;
                 r(a, f.hc, c)
@@ -3594,7 +3458,7 @@ $(function () {
         function s(f) {
             var d = c.uc(), e = 0;
             b.a(f, function (c, f) {
-                c = b.o({d: l}, c);
+                c = b.o({ d: l }, c);
                 t(c, d, e);
                 d = c.b;
                 e += c.d;
@@ -3608,14 +3472,14 @@ $(function () {
             a.r(-1, d)
         };
         o = [g.$Swing, g.$Linear, g.$InQuad, g.$OutQuad, g.$InOutQuad, g.$InCubic, g.$OutCubic, g.$InOutCubic, g.$InQuart, g.$OutQuart, g.$InOutQuart, g.$InQuint, g.$OutQuint, g.$InOutQuint, g.$InSine, g.$OutSine, g.$InOutSine, g.$InExpo, g.$OutExpo, g.$InOutExpo, g.$InCirc, g.$OutCirc, g.$InOutCirc, g.$InElastic, g.$OutElastic, g.$InOutElastic, g.$InBack, g.$OutBack, g.$InOutBack, g.$InBounce, g.$OutBounce, g.$InOutBounce, g.$GoBack, g.$InWave, g.$OutWave, g.$OutJump, g.$InJump];
-        var u = {$Top: "y", $Left: "x", $Bottom: "m", $Right: "t", $Rotate: "r", $RotateX: "rX", $RotateY: "rY", $ScaleX: "sX", $ScaleY: "sY", $TranslateX: "tX", $TranslateY: "tY", $TranslateZ: "tZ", $SkewX: "kX", $SkewY: "kY", $Opacity: "o", $Easing: "e", $ZIndex: "i", $Clip: "c"};
+        var u = { $Top: "y", $Left: "x", $Bottom: "m", $Right: "t", $Rotate: "r", $RotateX: "rX", $RotateY: "rY", $ScaleX: "sX", $ScaleY: "sY", $TranslateX: "tX", $TranslateY: "tY", $TranslateZ: "tZ", $SkewX: "kX", $SkewY: "kY", $Opacity: "o", $Easing: "e", $ZIndex: "i", $Clip: "c" };
         b.a(u, function (b, a) {
             h[b] = a
         });
         q(k(n, 1));
         c.r(-1);
         var p = f.$Breaks || [], e = [].concat(p[b.vc(b.j(n, "b"))] || []);
-        e.push({b: c.ac(), d: e.length ? 0 : l});
+        e.push({ b: c.ac(), d: e.length ? 0 : l });
         s(e);
         a.r(-1)
     }
@@ -3623,28 +3487,28 @@ $(function () {
 $(document).ready(function ($) {
 
     var team_2_SlideshowTransitions = [
-        {$Duration: 1200, x: 0.3, $During: {$Left: [0.3, 0.7]}, $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, x: -0.3, $SlideOut: true, $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, x: -0.3, $During: {$Left: [0.3, 0.7]}, $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, x: 0.3, $SlideOut: true, $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, y: 0.3, $During: {$Top: [0.3, 0.7]}, $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, y: -0.3, $SlideOut: true, $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, y: -0.3, $During: {$Top: [0.3, 0.7]}, $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, y: 0.3, $SlideOut: true, $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, x: 0.3, $Cols: 2, $During: {$Left: [0.3, 0.7]}, $ChessMode: {$Column: 3}, $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, x: 0.3, $Cols: 2, $SlideOut: true, $ChessMode: {$Column: 3}, $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, y: 0.3, $Rows: 2, $During: {$Top: [0.3, 0.7]}, $ChessMode: {$Row: 12}, $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, y: 0.3, $Rows: 2, $SlideOut: true, $ChessMode: {$Row: 12}, $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, y: 0.3, $Cols: 2, $During: {$Top: [0.3, 0.7]}, $ChessMode: {$Column: 12}, $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, y: -0.3, $Cols: 2, $SlideOut: true, $ChessMode: {$Column: 12}, $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, x: 0.3, $Rows: 2, $During: {$Left: [0.3, 0.7]}, $ChessMode: {$Row: 3}, $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, x: -0.3, $Rows: 2, $SlideOut: true, $ChessMode: {$Row: 3}, $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: {$Left: [0.3, 0.7], $Top: [0.3, 0.7]}, $ChessMode: {$Column: 3, $Row: 12}, $Easing: {$Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: {$Left: [0.3, 0.7], $Top: [0.3, 0.7]}, $SlideOut: true, $ChessMode: {$Column: 3, $Row: 12}, $Easing: {$Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, $Delay: 20, $Clip: 3, $Assembly: 260, $Easing: {$Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, $Delay: 20, $Clip: 3, $SlideOut: true, $Assembly: 260, $Easing: {$Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, $Delay: 20, $Clip: 12, $Assembly: 260, $Easing: {$Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2},
-        {$Duration: 1200, $Delay: 20, $Clip: 12, $SlideOut: true, $Assembly: 260, $Easing: {$Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear}, $Opacity: 2}
+        { $Duration: 1200, x: 0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, x: -0.3, $SlideOut: true, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, x: -0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, x: 0.3, $SlideOut: true, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, y: 0.3, $During: { $Top: [0.3, 0.7] }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, y: -0.3, $SlideOut: true, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, y: -0.3, $During: { $Top: [0.3, 0.7] }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, y: 0.3, $SlideOut: true, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, x: 0.3, $Cols: 2, $During: { $Left: [0.3, 0.7] }, $ChessMode: { $Column: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, x: 0.3, $Cols: 2, $SlideOut: true, $ChessMode: { $Column: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, y: 0.3, $Rows: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Row: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, y: 0.3, $Rows: 2, $SlideOut: true, $ChessMode: { $Row: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, y: 0.3, $Cols: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Column: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, y: -0.3, $Cols: 2, $SlideOut: true, $ChessMode: { $Column: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, x: 0.3, $Rows: 2, $During: { $Left: [0.3, 0.7] }, $ChessMode: { $Row: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, x: -0.3, $Rows: 2, $SlideOut: true, $ChessMode: { $Row: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $ChessMode: { $Column: 3, $Row: 12 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $SlideOut: true, $ChessMode: { $Column: 3, $Row: 12 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, $Delay: 20, $Clip: 3, $Assembly: 260, $Easing: { $Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, $Delay: 20, $Clip: 3, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, $Delay: 20, $Clip: 12, $Assembly: 260, $Easing: { $Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+        { $Duration: 1200, $Delay: 20, $Clip: 12, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 }
     ];
 
     var team_2_options = {
@@ -3709,68 +3573,24 @@ function scrollSticky() {
 $(window).scroll(function () {
     scrollSticky();
 });
-function time() {
-    var today = new Date();
-    var weekday = new Array(7);
-    weekday[0] = "Chủ Nhật";
-    weekday[1] = "Thứ Hai";
-    weekday[2] = "Thứ Ba";
-    weekday[3] = "Thứ Tư";
-    weekday[4] = "Thứ Năm";
-    weekday[5] = "Thứ Sáu";
-    weekday[6] = "Thứ Bảy";
-    var day = weekday[today.getDay()];
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-    nowTime = h + ":" + m + ":" + s;
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-    today = day + ', ' + dd + '/' + mm + '/' + yyyy;
-
-    tmp = '<span class="date">' + today + '</span>';
-
-    document.getElementById("thoigiantintuc").innerHTML = tmp;
-    document.getElementById("thoigiantintuc1").innerHTML = tmp;
-    document.getElementById("thoigiantintuc2").innerHTML = tmp;
-    document.getElementById("thoigiantintuc3").innerHTML = tmp;
-
-    clocktime = setTimeout("time()", "1000", "JavaScript");
-    function checkTime(i)
-    {
-        if (i < 10) {
-            i = "0" + i;
-        }
-        return i;
-    }
-}
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
 // Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
 
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
     }
-  }
 };
 
 function myFunction1() {
@@ -3778,18 +3598,18 @@ function myFunction1() {
 }
 
 // Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn1')) {
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn1')) {
 
-    var dropdowns = document.getElementsByClassName("dropdown-content1");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show1')) {
-        openDropdown.classList.remove('show1');
-      }
+        var dropdowns = document.getElementsByClassName("dropdown-content1");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show1')) {
+                openDropdown.classList.remove('show1');
+            }
+        }
     }
-  }
 };
 
 function myFunction2() {
@@ -3797,18 +3617,18 @@ function myFunction2() {
 }
 
 // Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn2')) {
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn2')) {
 
-    var dropdowns = document.getElementsByClassName("dropdown-content2");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show2')) {
-        openDropdown.classList.remove('show2');
-      }
+        var dropdowns = document.getElementsByClassName("dropdown-content2");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show2')) {
+                openDropdown.classList.remove('show2');
+            }
+        }
     }
-  }
 };
 
 

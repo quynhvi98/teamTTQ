@@ -1,4 +1,4 @@
-﻿using bookstore.Models;
+using bookstore.Models;
 using PagedList;
 using PagedList.Mvc;
 using System;

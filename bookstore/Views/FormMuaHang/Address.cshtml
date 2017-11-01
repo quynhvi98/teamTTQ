@@ -5,6 +5,7 @@
     var cart_list = ViewBag.cart_list;
     var tong_tien = ViewBag.tong_tien;
     var AddressList = ViewBag.AddressList;
+    
 }
 
 <a href="#">
@@ -70,42 +71,45 @@
         <p>Bạn muốn giao hàng đến địa chỉ khác? <a href="/FormMuaHang/FormMuaHang">Thêm địa chỉ mới!</a></p>
         @foreach (var item in AddressList)
         {
-            <div class="col-lg-6 col-md-6 col-sm-6 item">
+            <div style="margin-top:10px;" class="col-lg-6 col-md-6 col-sm-6 item">
                 <div class="panel panel-default address-item is-default">
                     <form>
                         <div class="panel-body">
-
+                            <input name="cbaddress" id="@item.id" type="checkbox"/>   
                             <p class="name">@item._name</p>
                             <p class="address" title="@item._adddress_full">
                                @item._adddress_full
                             </p>
-                            
+                          
                             <p class="phone">Điện thoại: @item._phone</p>
                             <p class="action">
-                                <button type="button" style="width:170px;height:30px;" onclick="GetIdAddress(@item.id)" class="btn btn-default btn-custom1 saving-address is-blue" data-id="2738691">
+                                <button type="button" style="width:170px;height:30px;" onclick="GetIdAddress(@item.id,'@item._email');" class="btn btn-default btn-custom1 saving-address is-blue" data-id="2738691">
                                     Giao đến địa chỉ này
                                 </button>
-
                             </p>
                         </div>
                     </form>
 
                 </div>
-        
-
             </div>
         }
-        
-        
+     
     </div>
-    
+  
 </div>
 
 <script>
     var idAddress;
-    function GetIdAddress(id) {
+    var email;
+    function GetIdAddress(id,getEmail) {
         idAddress = id;
+        var result = document.getElementsByName('cbaddress');
+        for (var i = 0; i < result.length; i++) {
+            result[i].checked = false;
+        }
+        document.getElementById(id).checked = true;
         swal("congratulations!", "Chọn Thành Công", "success");
+        email = getEmail;
     }
     function guithongtinmuahang() {
         if (idAddress == null) {
@@ -116,9 +120,10 @@
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("post", "/FormMuaHang/CreatOrderFromCart", false); // false for synchronous request
             xmlHttp.send(formData);
-            return xmlHttp.responseText;
+             xmlHttp.responseText;
+            Mail(email);
         }
-        
+
     }
     function message() {
         if (idAddress != null) {
@@ -135,8 +140,19 @@
                     }
                 });
         }
-           
+
     }
+    function Mail(email) {
+        var formData = new FormData();
+        formData.append("email", email);
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("post", "/FormMuaHang/MailToCus", false); // false for synchronous request
+        xmlHttp.send(formData);
+        return xmlHttp.responseText;
+
+        console.log(email);
+    }
+
 </script>
 
 <style>

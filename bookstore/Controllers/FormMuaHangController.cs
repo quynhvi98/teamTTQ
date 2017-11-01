@@ -8,8 +8,10 @@ using System.Web.Mvc;
 
 namespace bookstore.Controllers
 {
+
     public class FormMuaHangController : Controller
     {
+        localhost.Service s = new localhost.Service();
         // GET: FormMuaHang
         public ActionResult FormMuaHang()
         {
@@ -28,28 +30,28 @@ namespace bookstore.Controllers
             {
                 ViewBag.checklogin = "<img style='float:left;' src='~/Image_System/dangnhap.png'/>&nbsp;<a class='dangnhap' href='#'>Đăng Nhập</a>&nbsp;|&nbsp;<a class='dangky' href='#'>Đăng Ký</a> <p>Q.lí tài khoản & đơn hàng</p>";
             }
-            CartModel cartModel = new CartModel();
-            List<Cart> listcarrt;
+         
+          
             if (Request.Cookies["id_user"] != null)
             {
-                listcarrt = cartModel.getCartByIdUser(Request.Cookies["id_user"].Values["user"]);
-                ViewBag.tong_tien = cartModel.gettongtien(Request.Cookies["id_user"].Values["user"]);
+                ViewBag.cart_list = s.getCartByIdUser(Request.Cookies["id_user"].Values["user"]);
+                ViewBag.tong_tien = s.gettongtien(Request.Cookies["id_user"].Values["user"]);
             }
             else
             {
-                listcarrt = cartModel.getCartByIdUser(Request.Cookies["Account"].Values["user"]);
-                ViewBag.tong_tien = cartModel.gettongtien(Request.Cookies["Account"].Values["user"]);
+                ViewBag.cart_list = s.getCartByIdUser(Request.Cookies["Account"].Values["user"]);
+                ViewBag.tong_tien = s.gettongtien(Request.Cookies["Account"].Values["user"]);
             }
 
 
-            ViewBag.cart_list = listcarrt;
-            if (listcarrt.Count <= 0)
+            
+            if (ViewBag.cart_list.Length <= 0)
             {
-                List<Cart> cartlist = new List<Cart>();
+               
                 String iduser = Request.Cookies["id_user"].Values["user"];
-                cartlist = cartModel.getCartByIdUser(iduser);
-                ViewBag.tongtien = cartModel.gettongtien(iduser);
-                ViewBag.listCart = cartlist;
+                
+                ViewBag.tongtien = s.gettongtien(iduser);
+                ViewBag.listCart = s.getCartByIdUser(iduser); ;
                 return View("~/Views/Cart/Cart.cshtml");
             }
             return View();
@@ -61,21 +63,20 @@ namespace bookstore.Controllers
             if (idAddressRequest != null)
             {
                 var User = Request.Cookies["Account"].Values["user"];
-                CustomerModel customerModel = new CustomerModel();
-                var id_customer = customerModel.GetIDCustomerByUser(User);
-                CustomerAddressModel customerAddressModel = new CustomerAddressModel();
-                CartModel cartModel = new CartModel();
-                Decimal tongtien = cartModel.gettongtien(User);
-                OrderModel orderModel = new OrderModel();
-                orderModel.creatOrder(tongtien, id_customer, Int32.Parse(idAddressRequest));
-                int idOrder = orderModel.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(tongtien, id_customer, Int32.Parse(idAddressRequest));
-                List<RefProductOrder> list = cartModel.GetlistProductFromIdUser(User);
-                RefProductOrdermodel refProductOrdermodel = new RefProductOrdermodel();
-                foreach (var item in list)
+              
+                var id_customer = s.GetIDCustomerByUser(User);
+              
+                Decimal tongtien = s.gettongtien(User);
+              
+                s.creatOrder(tongtien, id_customer, Int32.Parse(idAddressRequest));
+                int idOrder = s.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(tongtien, id_customer, Int32.Parse(idAddressRequest));
+             
+         
+                foreach (var item in s.GetlistProductFromIdUser(User))
                 {
-                    refProductOrdermodel.creatRefProductOrder(item, idOrder);
+                    s.creatRefProductOrder(item, idOrder);
                 }
-                cartModel.Deletecart(User);
+                s.Deletecart(User);
             }
             else
             {
@@ -91,24 +92,19 @@ namespace bookstore.Controllers
                     {
                         // đăng nhập rồi.
                         var User = Request.Cookies["Account"].Values["user"];
-                        CustomerModel customerModel = new CustomerModel();
-                        var id_customer = customerModel.GetIDCustomerByUser(User);
-                        CustomerAddressModel customerAddressModel = new CustomerAddressModel();
-                        customerAddressModel.creatCustomerAddressHaveEmail(email, nhahoten, diachi, sodienthoai, thanhpho, quanhuyen, id_customer);
-                        var idAddress = customerAddressModel.GetIDCustomerAddressrTop1UniqueByIdCustomer(id_customer);
-                        CartModel cartModel = new CartModel();
-                        Decimal tongtien = cartModel.gettongtien(User);
-                        OrderModel orderModel = new OrderModel();
-                        orderModel.creatOrder(tongtien, id_customer, idAddress);
-                        int idOrder = orderModel.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(tongtien, id_customer, idAddress);
-                        List<RefProductOrder> list = cartModel.GetlistProductFromIdUser(User);
-                        RefProductOrdermodel refProductOrdermodel = new RefProductOrdermodel();
-                        foreach (var item in list)
+                       
+                        var id_customer = s.GetIDCustomerByUser(User);
+                       
+                        s.creatCustomerAddressHaveEmail(email, nhahoten, diachi, sodienthoai, thanhpho, quanhuyen, id_customer);
+                        var idAddress = s.GetIDCustomerAddressrTop1UniqueByIdCustomer(id_customer);          
+                        Decimal tongtien = s.gettongtien(User);                  
+                        s.creatOrder(tongtien, id_customer, idAddress);
+                        int idOrder = s.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(tongtien, id_customer, idAddress);
+                        foreach (var item in s.GetlistProductFromIdUser(User))
                         {
-                            refProductOrdermodel.creatRefProductOrder(item, idOrder);
+                            s.creatRefProductOrder(item, idOrder);
                         }
-                        cartModel.Deletecart(User);
-
+                        s.Deletecart(User);
                     }
                     else
                     {
@@ -244,13 +240,29 @@ namespace bookstore.Controllers
             Regex re = new Regex(strRegex);
             if (re.IsMatch(sodienthoai))
             {
-
+                return 0;
             }
             else
             {
                 return 2;
             }
-            return 0;
+            
+        }
+
+        public Boolean MailToCus()
+        {
+            try
+            {
+                var email = Request.Form["email"];
+                CustomerAddressModel model = new CustomerAddressModel();
+                model.MailToCustomer(email);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
     }
 }

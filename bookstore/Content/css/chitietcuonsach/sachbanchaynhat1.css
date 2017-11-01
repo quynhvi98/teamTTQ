@@ -18,7 +18,7 @@ and open the template in the editor.
 */
 .control-rating{min-height: 40px; height: 45px;}
 .control-rating .box-star-score{
-    background: url(../..//chitietcuonsach/star-point.png) no-repeat top left;
+    background: url(../../../Image_System/book_details/star-point.png) no-repeat top left;
     width: 42px; 
     height: 40px;
     margin-right: 20px; 
@@ -42,8 +42,9 @@ and open the template in the editor.
 
 .link-rate-mobile{background: url(images/star-rating-mobile.png) no-repeat 0px 13px;padding-top: 13px;padding-left: 25px;}
 /*originally*/
+
 .star{
-    background-image: url(../..//chitietcuonsach/saovang.png);
+    background-image: url(../../../Image_System/book_details/saovang.png);
     background-position:left -2px;
     display:block;
     width:20px;
@@ -59,7 +60,7 @@ and open the template in the editor.
 }
 
 .stars{
-    overflow: hidden;
+   
 }
 
 .tmp_es{
@@ -204,7 +205,7 @@ p{
     padding-top: 5px;
     width: 90%;
     height: 30px;
-    background: url(../..//chitietcuonsach/dot_check.png)no-repeat left;
+   
 }
 a{
     color: #007fff;
@@ -249,4 +250,16 @@ b{
      border: 1px solid #ddd;
      margin-left: 20px;
     
+}
+#comment:focus {
+    outline: none;
+}
+#submit {
+    background-color: #4267b2;
+    border: 1px solid #4267b2;
+    height:30px;
+    width:60px;
+    border-radius:3px;
+    color:white;
+    font-weight:bold;
 }

@@ -31,7 +31,7 @@
             <div class="dautienbenphai1"><a href="#">Đổi trả dễ dàng</a></div>
         </div>
     </div>
-    @if (cart.Count == 0)
+    @if (cart.Length == 0)
     {
         <div style="width:500px;height:auto;margin-left:auto;margin-right:auto;">
             <img height="230" width="230" src="~/Image_System/cart/cart-empty.png" />
@@ -51,7 +51,7 @@
         <div class="noidunggiohang">
             <div class="khunggiohang">
                 <div>
-                    <div class="giohangsanpham" style="font-size: 14px;"><strong style="font-size: 19px;">Giỏ Hàng </strong> (@cart.Count sản phẩm)</div>
+                    <div class="giohangsanpham" style="font-size: 14px;"><strong style="font-size: 19px;">Giỏ Hàng </strong> (@cart.Length sản phẩm)</div>
 
                 </div>
 
