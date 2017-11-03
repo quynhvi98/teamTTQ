@@ -10,7 +10,44 @@
     var slider = ViewBag.slider;
     var listnews = ViewBag.listnews;
 }
+<style>
+    ul {
+        list-style-type: none;
+    }
 
+    .pagination li {
+        width: 25px;
+        height: 25px;
+        float: left;
+        border-radius: 100%;
+        background-color: #4c4c4c;
+        margin-left:5px;
+    }
+    .pagination li a {
+        text-decoration:none;
+        color:#fff;
+        padding-left:10px;
+        font-size:12px;
+    }
+    .pagination li a:hover {
+        text-decoration:underline;
+    }
+    .PagedList-skipToNext a{
+        font-size:16px;
+    }
+    .PagedList-skipToPrevious a{
+        font-size: 16px;
+    }
+    .pagination .active {
+        background-color: #c00;
+    }
+    .pagination-container{
+        height:auto;
+        width:auto;
+        float:right;
+        margin-right:25%;
+    }
+</style>
 <div class="tintuc">
     <div id="head">
         <img style="float:left; padding-top: 7px; padding-left: 25px;" src="~/Image_System/tintuc_home/th_hot.gif" width="40" height="13" />
@@ -577,7 +614,7 @@
 </div>
 <div class="noidungsachgk">
     <img style="margin-top: 25px;" src="~/Image_System/book_type/sgk-1170x260_2.jpg" width="100%" alt="" />
-    <div style="width: 550px;" class="tieude">
+    <div style="width: 300px;" class="tieude">
         <img style="float:left;" src="~/Image_System/book_type/trai-xam.png" alt="" />
         <h2>@name_type</h2>
         <img src="~/Image_System/book_type/phai-xam.png" alt="" />
