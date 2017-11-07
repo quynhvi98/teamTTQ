@@ -286,7 +286,7 @@ namespace bookstore.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetBooks", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Book[] GetBooks(string query1, string query2) {
+        public Book[] GetBooks(int query1, string query2) {
             object[] results = this.Invoke("GetBooks", new object[] {
                         query1,
                         query2});
@@ -294,12 +294,12 @@ namespace bookstore.localhost {
         }
         
         /// <remarks/>
-        public void GetBooksAsync(string query1, string query2) {
+        public void GetBooksAsync(int query1, string query2) {
             this.GetBooksAsync(query1, query2, null);
         }
         
         /// <remarks/>
-        public void GetBooksAsync(string query1, string query2, object userState) {
+        public void GetBooksAsync(int query1, string query2, object userState) {
             if ((this.GetBooksOperationCompleted == null)) {
                 this.GetBooksOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetBooksOperationCompleted);
             }

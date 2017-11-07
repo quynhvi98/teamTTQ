@@ -24,9 +24,9 @@ namespace bookstore.Controllers
                 Response.Cookies.Add(httpCookie);
             }
 
-            ViewBag.hot_books = s.GetBooks("TOP 6", "WHERE [_id_category] =1");
-            ViewBag.new_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 2");
-            ViewBag.sale_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 3");
+            ViewBag.hot_books = s.GetBooks(6, "1");
+            ViewBag.new_books = s.GetBooks(6, "2");
+            ViewBag.sale_books = s.GetBooks(6, "3");
             ViewBag.authors = s.GetAuthors();
             ViewBag.slider = s.GetBooksForSlider();
 
@@ -117,11 +117,11 @@ namespace bookstore.Controllers
                 httpCookie.Expires = DateTime.Now.AddDays(20);
                 Response.Cookies.Add(httpCookie);
                 Session["Account"] = Request.Cookies["Account"].Value;
-               
-                ViewBag.hot_books = s.GetBooks("TOP 6", "WHERE [_id_category] =1");
-                ViewBag.new_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 2");
-                ViewBag.sale_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 3");
-               
+
+                ViewBag.hot_books = s.GetBooks(6, "1");
+                ViewBag.new_books = s.GetBooks(6, "2");
+                ViewBag.sale_books = s.GetBooks(6, "3");
+
                 ViewBag.authors = s.GetAuthors();
                 ViewBag.slider = s.GetBooksForSlider();
                
@@ -165,10 +165,9 @@ namespace bookstore.Controllers
             httpCookie1.Values.Add("user", "U" + dt.Ticks.ToString());
             httpCookie1.Expires = DateTime.Now.AddDays(20);
             Response.Cookies.Add(httpCookie1);
-
-            ViewBag.hot_books = s.GetBooks("TOP 6", "WHERE [_id_category] =1");
-            ViewBag.new_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 2");
-            ViewBag.sale_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 3");
+            ViewBag.hot_books = s.GetBooks(6, "1");
+            ViewBag.new_books = s.GetBooks(6, "2");
+            ViewBag.sale_books = s.GetBooks(6, "3");
             ViewBag.authors = s.GetAuthors();
             ViewBag.slider = s.GetBooksForSlider();
            
