@@ -1233,7 +1233,7 @@ namespace bookstore.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/creatOrder", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void creatOrder(decimal _total_bill, int _customer, int _id_customer_address) {
+        public void creatOrder(double _total_bill, int _customer, int _id_customer_address) {
             this.Invoke("creatOrder", new object[] {
                         _total_bill,
                         _customer,
@@ -1241,12 +1241,12 @@ namespace bookstore.localhost {
         }
         
         /// <remarks/>
-        public void creatOrderAsync(decimal _total_bill, int _customer, int _id_customer_address) {
+        public void creatOrderAsync(double _total_bill, int _customer, int _id_customer_address) {
             this.creatOrderAsync(_total_bill, _customer, _id_customer_address, null);
         }
         
         /// <remarks/>
-        public void creatOrderAsync(decimal _total_bill, int _customer, int _id_customer_address, object userState) {
+        public void creatOrderAsync(double _total_bill, int _customer, int _id_customer_address, object userState) {
             if ((this.creatOrderOperationCompleted == null)) {
                 this.creatOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OncreatOrderOperationCompleted);
             }
@@ -1265,7 +1265,7 @@ namespace bookstore.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetIDOrderFromTotalBillIdCustomrAndCustomerAddress", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(decimal _total_bill, int _customer, int _id_customer_address) {
+        public int GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(double _total_bill, int _customer, int _id_customer_address) {
             object[] results = this.Invoke("GetIDOrderFromTotalBillIdCustomrAndCustomerAddress", new object[] {
                         _total_bill,
                         _customer,
@@ -1274,12 +1274,12 @@ namespace bookstore.localhost {
         }
         
         /// <remarks/>
-        public void GetIDOrderFromTotalBillIdCustomrAndCustomerAddressAsync(decimal _total_bill, int _customer, int _id_customer_address) {
+        public void GetIDOrderFromTotalBillIdCustomrAndCustomerAddressAsync(double _total_bill, int _customer, int _id_customer_address) {
             this.GetIDOrderFromTotalBillIdCustomrAndCustomerAddressAsync(_total_bill, _customer, _id_customer_address, null);
         }
         
         /// <remarks/>
-        public void GetIDOrderFromTotalBillIdCustomrAndCustomerAddressAsync(decimal _total_bill, int _customer, int _id_customer_address, object userState) {
+        public void GetIDOrderFromTotalBillIdCustomrAndCustomerAddressAsync(double _total_bill, int _customer, int _id_customer_address, object userState) {
             if ((this.GetIDOrderFromTotalBillIdCustomrAndCustomerAddressOperationCompleted == null)) {
                 this.GetIDOrderFromTotalBillIdCustomrAndCustomerAddressOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetIDOrderFromTotalBillIdCustomrAndCustomerAddressOperationCompleted);
             }
@@ -1391,10 +1391,10 @@ namespace bookstore.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCus", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetCus(string name) {
+        public int GetCus(string name) {
             object[] results = this.Invoke("GetCus", new object[] {
                         name});
-            return ((string)(results[0]));
+            return ((int)(results[0]));
         }
         
         /// <remarks/>
@@ -2854,10 +2854,10 @@ namespace bookstore.localhost {
         }
         
         /// <remarks/>
-        public string Result {
+        public int Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
     }

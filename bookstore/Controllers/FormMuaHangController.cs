@@ -68,8 +68,8 @@ namespace bookstore.Controllers
               
                 Decimal tongtien = s.gettongtien(User);
               
-                s.creatOrder(tongtien, id_customer, Int32.Parse(idAddressRequest));
-                int idOrder = s.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(tongtien, id_customer, Int32.Parse(idAddressRequest));
+                s.creatOrder(double.Parse(tongtien.ToString()), id_customer, Int32.Parse(idAddressRequest));
+                int idOrder = s.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(double.Parse(tongtien.ToString()), id_customer, Int32.Parse(idAddressRequest));
              
          
                 foreach (var item in s.GetlistProductFromIdUser(User))
@@ -98,8 +98,8 @@ namespace bookstore.Controllers
                         s.creatCustomerAddressHaveEmail(email, nhahoten, diachi, sodienthoai, thanhpho, quanhuyen, id_customer);
                         var idAddress = s.GetIDCustomerAddressrTop1UniqueByIdCustomer(id_customer);          
                         Decimal tongtien = s.gettongtien(User);                  
-                        s.creatOrder(tongtien, id_customer, idAddress);
-                        int idOrder = s.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(tongtien, id_customer, idAddress);
+                        s.creatOrder(double.Parse(tongtien.ToString()), id_customer, idAddress);
+                        int idOrder = s.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(double.Parse(tongtien.ToString()), id_customer, idAddress);
                         foreach (var item in s.GetlistProductFromIdUser(User))
                         {
                             s.creatRefProductOrder(item, idOrder);
@@ -131,8 +131,8 @@ namespace bookstore.Controllers
                       
                         Decimal tongtien = s.gettongtien(id);
                        
-                        s.creatOrder(tongtien, id_customer, id_customerAddress);
-                        int idOrder = s.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(tongtien, id_customer, id_customerAddress);
+                        s.creatOrder(double.Parse(tongtien.ToString()), id_customer, id_customerAddress);
+                        int idOrder = s.GetIDOrderFromTotalBillIdCustomrAndCustomerAddress(double.Parse(tongtien.ToString()), id_customer, id_customerAddress);
                      
                       
                         foreach (var item in s.GetlistProductFromIdUser(id))
