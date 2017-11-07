@@ -60,7 +60,7 @@ namespace bookstore.Controllers
                 ViewBag.checklogin = "<img style='float:left;' src='~/Image_System/dangnhap.png'/>&nbsp;<a class='dangnhap' href='#'>Đăng Nhập</a>&nbsp;|&nbsp;<a class='dangky' href='#'>Đăng Ký</a> <p>Q.lí tài khoản & đơn hàng</p>";
             }
             ViewBag.Message = "Your contact page.";
-
+            ViewBag.interestnews = s.GetListNews(3);
             return View("Contact");
         }
 

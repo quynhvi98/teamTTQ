@@ -117,18 +117,18 @@
     TIN ĐƯỢC QUAN TÂM
 </div>
 <div id="tinduocquantam">
-    <div id="tinduocquantam-list">
-        <img style="float: left;" src="img_tintuc1/tinquantam.jpg" width="90" height="70" />
-        <p><a href="#">Giấy mời: Tọa đàm Viết văn cho thiếu nhi và Giao lưu với nhà văn Hwang Sun-mi</a></p>
-    </div>
-    <div id="tinduocquantam-list">
-        <img style="float: left;" src="img_tintuc1/tinquantam1.jpg" width="90" height="70" />
-        <p><a href="#">Chương trình: Cả nhà mình đọc sách – Ecopark</a></p>
-    </div>
-    <div id="tinduocquantam-list">
-        <img style="float: left;" src="img_tintuc1/tinquantam2.jpg" width="90" height="70" />
-        <p><a href="#">Buổi đọc sách “Số phận chú bé đánh trống” (Arkady Gaida, NXB Kim Đồng, 2016)</a></p>
-    </div>
+
+    @foreach (var item in ViewBag.interestnews)
+     {
+        <div id="tinduocquantam-list">
+            <img style="float: left;" src="~/Image_Data/@item._img" width="90" height="70" />
+            <p><a href="/News/chitiettintuc?id_news=@item._id">@item._name</a></p>
+        </div>
+    }
+
+
+
+
 </div>
 <div class="nhataitro">
     <div id="doitac">
