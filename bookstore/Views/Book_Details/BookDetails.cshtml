@@ -47,16 +47,19 @@
         <h5>
             Giá bìa :
         </h5>
-        <span style="text-decoration: line-through; font-size: 19px;">@book_detail._price Đ</span>
+        <span id="_price" style="text-decoration: line-through; font-size: 19px;">@book_detail._price Đ</span>
         <h5>
             Giá bán :
         </h5>
-        <span style="color: #ff3333; font-size: 21px;">@book_detail._price Đ</span>
+        <span id="_price_pages" style="color: #ff3333; font-size: 21px;">@book_detail._price_pages Đ</span>
         <div id="gach">
             <h5>
                 Tiết kiệm :
             </h5>
-            <span style="color: forestgreen;">0 Đ</span>
+            @{ 
+                var save = @book_detail._price - @book_detail._price_pages;
+            }
+            <span id="save" style="color: forestgreen;">@save Đ</span>
         </div>
         <div class="dathang">
             <a title="@book_detail._id" class="tienhanhdathangtes" onclick="TienHanhDatHang(@book_detail._id)" href="~/Cart/Cart">Tiến Hành Đặt Hàng</a>
@@ -138,7 +141,7 @@
 <script>
     var checkpoint;
     var rate;
-
+    
     function TienHanhDatHang(id) {
         var formData = new FormData();
         formData.append("product",'@book_detail._id');
@@ -196,6 +199,7 @@
             TimeAbout = "PM";
         return now.getDate() + "/" + now.getMonth() + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " " + TimeAbout;
     }
+  
 </script>
 
 @section css_link{

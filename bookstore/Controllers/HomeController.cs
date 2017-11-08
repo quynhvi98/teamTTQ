@@ -33,7 +33,7 @@ namespace bookstore.Controllers
             ViewBag.listnews = s.GetListNews(1);
             if (Request.Cookies["Account"] != null)
             {
-                ViewBag.checklogin = "<span>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </span> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
+                ViewBag.checklogin = "<a href='#'>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </a> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
             }
             else
             {
@@ -53,7 +53,7 @@ namespace bookstore.Controllers
         {
             if (Request.Cookies["Account"] != null)
             {
-                ViewBag.checklogin = "<span>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </span> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
+                ViewBag.checklogin = "<a href='#'>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </a> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
             }
             else
             {
@@ -126,8 +126,8 @@ namespace bookstore.Controllers
                 ViewBag.slider = s.GetBooksForSlider();
                
                 ViewBag.listnews = s.GetListNews(1);
-                ViewBag.checklogin = "<span>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </span> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
-                
+                ViewBag.checklogin = "<a href='#'>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </a> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
+
                 if (Request.Cookies["id_user"] != null)
                 {
                     String iduser = Request.Cookies["id_user"].Values["user"];

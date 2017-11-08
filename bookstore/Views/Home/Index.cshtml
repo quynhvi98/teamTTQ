@@ -115,7 +115,7 @@
         <ul>
             <h1 class="allca"><strong>Thể loại<img style="float: left; margin-right: 10px;" src="~/Image_System/booktheloai (2).png" width="35" height="35" /></strong></h1>
             <li>
-                <a href="danhmuc/sachtrongnuoc.html">Sách Trong Nước</a><ul class="sub-menu">
+                <a href="/Category/Category?name_type=Tình cảm">Sách Trong Nước</a><ul class="sub-menu">
                     <div class="noidunglimenu">
                         <div class="noidunglimenudiv1">
                             <strong class="tieudenoidungdiv1">KIẾN THỨC TỔNG HỢP</strong><br>
@@ -579,7 +579,7 @@
     </div>
 </a>
 
-<a href="danhmuc/tuyentap.html"><div class="title"><p style="font-size:18px;">Sách Bán Chạy Nhất</p></div><div class="border"></div></a><br>
+<a href="/Category/Category?name_type=Tình cảm"><div class="title"><p style="font-size:18px;">Sách Bán Chạy Nhất</p></div><div class="border"></div></a><br>
 <div style="min-height: 900px;margin-top:20px;">
     <div class="noidungcach">
         @foreach (var book in hot_books)
@@ -621,7 +621,7 @@
 
     </div>
 </div>
-<a href="danhmuc/tuyentap.html"><div class="title" style="margin-left:265px;"><p style="font-size:18px;">Sách Mới Nhất</p></div><div class="border"></div></a><br>
+<a href="/Category/Category?name_type=Tình cảm"><div class="title" style="margin-left:265px;"><p style="font-size:18px;">Sách Mới Nhất</p></div><div class="border"></div></a><br>
 <div style="min-height: 900px;margin-top:20px;">
     <div class="noidungcach">
         @foreach (var book in new_books)
@@ -660,7 +660,7 @@
         }
     </div>
 </div>
-<a href="danhmuc/tuyentap.html"><div class="title" style="margin-left:265px;"><p style="font-size:18px;">Sách Siêu Giảm Giá</p></div><div class="border"></div></a><br>
+<a href="/Category/Category?name_type=Tình cảm"><div class="title" style="margin-left:265px;"><p style="font-size:18px;">Sách Siêu Giảm Giá</p></div><div class="border"></div></a><br>
 <div>
     <div class="noidungcach">
         @foreach (var book in sale_books)
@@ -676,8 +676,13 @@
                                 <div class="jm-item-button"><a><img onclick="check('@book._id');message();" width="150" height="45" src="~/Image_System/cart/g10.png" alt="" /></a></div>
                             </div>
                         </div>
+                        @{
+                            double aaa = 100 - (book._price_pages / book._price * 100);
+                            //int sale = (int)aaa;
+
+                        }
                         <div>
-                            <a href="#" class="round-button">-50%</a>
+                            <a href="#" class="round-button">-@aaa%</a>
                         </div>
                         <!--div class="jm-item-title">Pizza Ristorante</div>-->
                     </div>
@@ -699,10 +704,7 @@
                 </div>
             </div>
         }
-
-
     </div>
-
 </div>
 <a href="danhmuc/tacgia.html"><div class="title3"><p>Tác Giả</p></div><div class="border1"></div></a><br><br><br><br><br><br><br>
 <div style="min-height: 1200px;">
@@ -726,9 +728,8 @@
         }
     </div>
 </div>
-<a style="margin-top: 50px;" class="xemthemtacgia" href="danhmuc/tacgia.html">Xem Thêm Những Tác Giả Khác</a>
-<br>
-<br>
+
+
 <script>
     function check(s) {
         var formData = new FormData();

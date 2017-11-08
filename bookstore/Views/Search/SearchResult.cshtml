@@ -39,8 +39,7 @@
                 bookstore.Models.BookModel model = new bookstore.Models.BookModel();
                 var rating = model.GetRating(@item._id) * 20;
                 <div id="chitiet" style="margin-left:30px;">
-                    <img src="~/Image_Data/@item._img" width="180" height="230" alt="" />
-
+                    <a href="/Book_Details/BookDetails/@item._id"><img src="~/Image_Data/@item._img" width="180" height="230" alt="" /></a>
                     <p>@item._name</p>
                     <div style="margin-top: 10px;" class="rating-box">
                         <div class="rating" style="width:@rating%"></div>

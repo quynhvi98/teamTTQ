@@ -17,7 +17,7 @@ namespace bookstore.Controllers
             if (Request.Cookies["Account"] != null)
             {
                 ViewBag.user = Request.Cookies["Account"].Values["user"];
-                ViewBag.checklogin = "<span>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </span> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
+                ViewBag.checklogin = "<a href='#'>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </a> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
                 ViewBag.checkcomment = true;
             }
             else
