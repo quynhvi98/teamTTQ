@@ -1,0 +1,179 @@
+Index: bookstore/Controllers/CategoryController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- bookstore/Controllers/CategoryController.cs	(date 1509549383000)
++++ bookstore/Controllers/CategoryController.cs	(revision )
+@@ -11,6 +11,7 @@
+ {
+     public class CategoryController : Controller
+     {
++        localhost.Service s = new localhost.Service();
+         // GET: Category
+         public ActionResult Category(string name_type,int? page)
+         {
+@@ -22,16 +23,17 @@
+             {
+                 ViewBag.checklogin = "<img style='float:left;' src='~/Image_System/dangnhap.png'/>&nbsp;<a class='dangnhap' href='#'>Đăng Nhập</a>&nbsp;|&nbsp;<a class='dangky' href='#'>Đăng Ký</a> <p>Q.lí tài khoản & đơn hàng</p>";
+             }
+-            BookModel model = new BookModel();
++           
+             ViewBag.name_type = name_type;
+-            CategoryModel cm = new CategoryModel();
+-            List<Book> booklist = cm.GetBookByCategory(name_type);
++           
++            List<localhost.Book> booklist = new List<localhost.Book>();
++            foreach(var item in s.GetBookByCategory(name_type))
++            {
++                booklist.Add(item);
++            }
+             ViewBag.ListBooks = booklist;
+-            ViewBag.slider = model.GetBooksForSlider();
+-            NewsModel new_model = new NewsModel();
+-           
+-            List < News > newlist= new_model.GetListNews(1);
+-            ViewBag.listnews = newlist;
++            ViewBag.slider = s.GetBooksForSlider();
++            ViewBag.listnews = s.GetListNews(1);
+             int pageSize = 12;
+             int pageNumber = (page ?? 1);
+             return View(booklist.ToPagedList(pageNumber, pageSize));
+@@ -39,8 +41,8 @@
+         public ActionResult GetCategory()
+         {
+             var nhaptrang = Request.Form["nhaptrang"];
+-            CategoryModel cm = new CategoryModel();
+-            ViewBag.ListBooks = cm.GetBookByCategory("Tiểu thuyết");
++        
++            ViewBag.ListBooks = s.GetBookByCategory("Tiểu thuyết");
+             return View();
+         }
+ 
+Index: bookstore/Views/Category/Category.cshtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- bookstore/Views/Category/Category.cshtml	(date 1509549383000)
++++ bookstore/Views/Category/Category.cshtml	(revision )
+@@ -1,7 +1,7 @@
+ 
+ @using PagedList;
+ @using PagedList.Mvc;
+-@model IPagedList<bookstore.Models.Book>
++@model IPagedList<bookstore.localhost.Book>
+ @{
+     ViewBag.Title = "Category";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+Index: bookstore/Controllers/HomeController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- bookstore/Controllers/HomeController.cs	(date 1509549383000)
++++ bookstore/Controllers/HomeController.cs	(revision )
+@@ -10,26 +10,27 @@
+ {
+     public class HomeController : Controller
+     {
++        localhost.Service s = new localhost.Service();
++
+         [AcceptVerbs(HttpVerbs.Get)]
+         public ActionResult Index()
+         {
+-            if (Request.Cookies["id_user"]==null&&Request.Cookies["Account"]==null)
++            if (Request.Cookies["id_user"] == null && Request.Cookies["Account"] == null)
+             {
+                 HttpCookie httpCookie = new HttpCookie("id_user");
+                 DateTime dt = DateTime.Now;
+-                httpCookie.Values.Add("user", "U"+dt.Ticks.ToString());
++                httpCookie.Values.Add("user", "U" + dt.Ticks.ToString());
+                 httpCookie.Expires = DateTime.Now.AddDays(20);
+                 Response.Cookies.Add(httpCookie);
+             }
+-            BookModel model = new BookModel();
+-            AuthorModel author_model = new AuthorModel();
+-            ViewBag.hot_books = model.GetBooks("TOP 6", "WHERE [_id_category] =1");
+-            ViewBag.new_books = model.GetBooks("TOP 6", "WHERE [_id_category] = 2");
+-            ViewBag.sale_books = model.GetBooks("TOP 6", "WHERE [_id_category] = 3");
+-            ViewBag.authors = author_model.GetAuthors();
+-            ViewBag.slider = model.GetBooksForSlider();
+-            NewsModel new_model = new NewsModel();
+-            ViewBag.listnews = new_model.GetListNews(1);
++
++            ViewBag.hot_books = s.GetBooks("TOP 6", "WHERE [_id_category] =1");
++            ViewBag.new_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 2");
++            ViewBag.sale_books = s.GetBooks("TOP 6", "WHERE [_id_category] = 3");
++            ViewBag.authors = s.GetAuthors();
++            ViewBag.slider = s.GetBooksForSlider();
++
++            ViewBag.listnews = s.GetListNews(1);
+             if (Request.Cookies["Account"] != null)
+             {
+                 ViewBag.checklogin = "<span>Tài khoản: " + Request.Cookies["Account"].Values["user"] + " </span> &nbsp;| &nbsp;<a onclick='LoginUot()' href ='#'>Đăng xuất</a><p>Q.lí tài khoản & đơn hàng</p>";
+@@ -67,7 +68,7 @@
+             {
+                 return false;
+             }
+-         }
++        }
+ 
+         [HttpPost]
+         public ActionResult DangNhap()
+@@ -104,7 +105,7 @@
+                     String iduser = Request.Cookies["id_user"].Values["user"];
+                     cartModel.UpdateIdserFromIdCustomer(iduser, account);
+                 }
+-              
++
+                 HttpCookie httpCookie1 = new HttpCookie("id_user");
+                 DateTime dt = DateTime.Now;
+                 httpCookie1.Values.Add("user", "U" + dt.Ticks.ToString());
+@@ -118,11 +119,11 @@
+                 ViewBag.checklogin = "<img style='float:left;' src='~/Image_System/dangnhap.png'/>&nbsp;<a class='dangnhap' href='#'>Đăng Nhập</a>&nbsp;|&nbsp;<a class='dangky' href='#'>Đăng Ký</a> <p>Q.lí tài khoản & đơn hàng</p>";
+                 ViewBag.login_false = "Sai tài khoản hoặc mật khẩu!";
+             }
+-            
++
+             return View("DangNhap");
+         }
+ 
+-       
++
+         public ActionResult logout()
+         {
+             HttpCookie httpCookie = new HttpCookie("Account");
+@@ -131,11 +132,11 @@
+             httpCookie.Expires = DateTime.Now.AddDays(-2);
+             Response.Cookies.Add(httpCookie);
+ 
+-                HttpCookie httpCookie1 = new HttpCookie("id_user");
+-                DateTime dt = DateTime.Now;
+-                httpCookie1.Values.Add("user", "U" + dt.Ticks.ToString());
+-                httpCookie1.Expires = DateTime.Now.AddDays(20);
+-                Response.Cookies.Add(httpCookie1);
++            HttpCookie httpCookie1 = new HttpCookie("id_user");
++            DateTime dt = DateTime.Now;
++            httpCookie1.Values.Add("user", "U" + dt.Ticks.ToString());
++            httpCookie1.Expires = DateTime.Now.AddDays(20);
++            Response.Cookies.Add(httpCookie1);
+ 
+             BookModel model = new BookModel();
+             AuthorModel author_model = new AuthorModel();
+Index: bookstore/Web.config
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- bookstore/Web.config	(date 1509549383000)
++++ bookstore/Web.config	(revision )
+@@ -5,7 +5,7 @@
+   -->
+ <configuration>
+   <configSections>
+-    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
++    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+       <section name="bookstore.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+     </sectionGroup>
+   </configSections>

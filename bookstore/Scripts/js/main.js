@@ -181,6 +181,10 @@ $(function () {
 
             return;
         },
+       
+        click: function check(e) {
+            index = document.getElementById("fffff").innerHTML;
+        },
         hover: function (e) {
             var el = $(this),
                 stars = $('a', el);
@@ -197,7 +201,7 @@ $(function () {
 
                 /*change score vote when hover star*/
                 el.parents(controlRating).find(scoreVote).html($(this).attr('title'));
-
+                setsao0();
             });
 
             stars.bind('mouseleave', function (e) {
@@ -212,13 +216,31 @@ $(function () {
 
                 /*change score vote when hover star*/
                 el.parents(controlRating).find(scoreVote).html($('a.fullStar', el).length);
+                setsao();
             });
+          
         }
 
     });
 
 })(jQuery);
 
+var index = 0;
+function setsao() {
+    var elms = document.getElementsByClassName('star')
+    var d = document.getElementById("fffff").innerHTML;
+    $("#fffff").html(index.toString());
+    for (var i = 0; i < index; i++) {
+        elms[i].style = 'background-position: left -40px;';
+    }
+}
+function setsao0() {
+    var elms = document.getElementsByClassName('star')
+    var d = document.getElementById("fffff").innerHTML;
+    for (var i = 0; i < index; i++) {
+        elms[i].style = '';
+    }
+}
 // Start when document ready
 
 

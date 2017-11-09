@@ -1,7 +1,7 @@
 ﻿
 @using PagedList;
 @using PagedList.Mvc;
-@model IPagedList<bookstore.Models.Book>
+@model IPagedList<bookstore.localhost.Book>
 @{
     ViewBag.Title = "Category";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,7 +10,44 @@
     var slider = ViewBag.slider;
     var listnews = ViewBag.listnews;
 }
+<style>
+    ul {
+        list-style-type: none;
+    }
 
+    .pagination li {
+        width: 25px;
+        height: 25px;
+        float: left;
+        border-radius: 100%;
+        background-color: #4c4c4c;
+        margin-left:5px;
+    }
+    .pagination li a {
+        text-decoration:none;
+        color:#fff;
+        padding-left:10px;
+        font-size:12px;
+    }
+    .pagination li a:hover {
+        text-decoration:underline;
+    }
+    .PagedList-skipToNext a{
+        font-size:16px;
+    }
+    .PagedList-skipToPrevious a{
+        font-size: 16px;
+    }
+    .pagination .active {
+        background-color: #c00;
+    }
+    .pagination-container{
+        height:auto;
+        width:auto;
+        float:right;
+        margin-right:25%;
+    }
+</style>
 <div class="tintuc">
     <div id="head">
         <img style="float:left; padding-top: 7px; padding-left: 25px;" src="~/Image_System/tintuc_home/th_hot.gif" width="40" height="13" />
@@ -28,11 +65,6 @@
         </div>
     }
 
-    @*<div id="tintuc2">
-            <img style="padding-left: 10px; padding-right: 10px; padding-top: 15px; float:left;" src="~/Image_System/tintuc_home/IMG_7064.JPG" width="80" height="70" />
-            <p><a href="talk2.html">Hãy mạnh mẽ ngày ta không còn có nhau.</a></p>
-            <p style="font-size: 13px; color: #666666; padding-left: 90px;"><strong id="thoigiantintuc3"></strong></p>
-        </div>*@
 </div>
 <slider class="slidertrangchu">
     <div id="team_2" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px; overflow: hidden; visibility: hidden; background-color: #fff;">
@@ -577,7 +609,7 @@
 </div>
 <div class="noidungsachgk">
     <img style="margin-top: 25px;" src="~/Image_System/book_type/sgk-1170x260_2.jpg" width="100%" alt="" />
-    <div style="width: 550px;" class="tieude">
+    <div style="width: 300px;" class="tieude">
         <img style="float:left;" src="~/Image_System/book_type/trai-xam.png" alt="" />
         <h2>@name_type</h2>
         <img src="~/Image_System/book_type/phai-xam.png" alt="" />
@@ -599,12 +631,12 @@
                     <div id="price1">@item._price_pages đ</div>
                     <div id="costprice">@item._price</div>
                     <br>
-                    <a onclick="check(@item._id);message();">
+                    <a onclick="check('@item._id');message();">
                         <div id="icoin">
                             <i class="fa fa-shopping-cart hhcart"></i>
                         </div>
                     </a>
-                    <a onclick="check(@item._id);message();">
+                    <a onclick="check('@item._id');message();">
                         <div id="icoin">
                             <i class="fa fa-heart"></i>
                         </div>
@@ -686,4 +718,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@6.10.2/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@6.10.2/dist/sweetalert2.min.js"></script>
+}
+@section login{
+    @Html.Raw(ViewBag.checklogin)
 }

@@ -38,7 +38,7 @@
             <div class="khungtinhtientam">
                 <div class="gokhungtinhtien">
                     <div style=" border-bottom: 2px solid #ddd ;height: 30px;">
-                        <p style="font-size: 15px;font-weight: 400;">Đơn hàng (@cart_list.Count sản phẩm)</p>
+                        <p style="font-size: 15px;font-weight: 400;">Đơn hàng (@cart_list.Length sản phẩm)</p>
                     </div>
                 </div>
                 <div class="gokhungthanhtien1" style=" border-bottom: 2px solid #ff0033 ">
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="dathang">
-                <a class="tienhanhdathangtes" onclick="guithongtinmuahang(); message();">Gửi Thông Tin Đặt Hàng</a>
+                <a class="tienhanhdathangtes" onclick="guithongtinmuahang()">Gửi Thông Tin Đặt Hàng</a>
             </div>
 
         </div>
@@ -120,10 +120,10 @@
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("post", "/FormMuaHang/CreatOrderFromCart", false); // false for synchronous request
             xmlHttp.send(formData);
-             xmlHttp.responseText;
-            Mail(email);
+            xmlHttp.responseText;
+            message();
+            Mail(email);   
         }
-
     }
     function message() {
         if (idAddress != null) {
@@ -192,3 +192,6 @@
 }
 
 
+@section login{
+    @Html.Raw(ViewBag.checklogin)
+}

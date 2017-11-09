@@ -47,16 +47,19 @@
         <h5>
             Giá bìa :
         </h5>
-        <span style="text-decoration: line-through; font-size: 19px;">@book_detail._price Đ</span>
+        <span id="_price" style="text-decoration: line-through; font-size: 19px;">@book_detail._price Đ</span>
         <h5>
             Giá bán :
         </h5>
-        <span style="color: #ff3333; font-size: 21px;">@book_detail._price Đ</span>
+        <span id="_price_pages" style="color: #ff3333; font-size: 21px;">@book_detail._price_pages Đ</span>
         <div id="gach">
             <h5>
                 Tiết kiệm :
             </h5>
-            <span style="color: forestgreen;">7.000 Đ</span>
+            @{ 
+                var save = @book_detail._price - @book_detail._price_pages;
+            }
+            <span id="save" style="color: forestgreen;">@save Đ</span>
         </div>
         <div class="dathang">
             <a title="@book_detail._id" class="tienhanhdathangtes" onclick="TienHanhDatHang(@book_detail._id)" href="~/Cart/Cart">Tiến Hành Đặt Hàng</a>
@@ -68,73 +71,80 @@
     <h2 style="height: 45px;">Khách hàng nhận xét</h2>
     <!-- begin rating -->
 
+   
+        @foreach (var review in reviews)
+        {
+            <div class="ndnx">
 
-    @foreach (var review in reviews)
-    {
-        <div class="ndnx">
+                <span style="font-family: inherit;color: #000;font-weight: 700;line-height: 2em;">@review._title </span>&nbsp;&nbsp;
+                <div style="display: inline-block;" class="rating-box">
+                    <div style="width: @review._rating%;" class="rating"></div>
 
-            <span style="font-family: inherit;color: #000;font-weight: 700;line-height: 2em;">@review._title </span>&nbsp;&nbsp;
-            <div style="display: inline-block;" class="rating-box">
-                <div style="width: @review._rating%;" class="rating"></div>
+                </div>
+                <br>
 
+                <p style="line-height: 3em;">Nhận xét bởi <a href="#">@review._name_customer</a> vào ngày @review._date</p>
+                <p>@review._comment</p>
             </div>
-            <br>
+        }
 
-            <p style="line-height: 3em;">Nhận xét bởi <a href="#">@review._name_customer</a> vào ngày @review._date</p>
-            <p>@review._comment</p>
-        </div>
-    }
-
+    
+   
 
 </div>
 <div class="note">
-    <div class="control-rating" id="720">
-        <div class="box-star-score pull-left">
-            @point
-        </div>
-        <div class="box-until">
-            <div class="row-rating">
-                <p class="pull-left">Đánh giá:</p>
-                <div class="star-rating pull-left">
-                    <input id="rate1" type="radio" value="1" />
-                    <input id="rate1" type="radio" value="2" />
-                    <input id="rate3" type="radio" value="3" />
-                    <input id="rate4" type="radio" value="4" />
-                    <input id="rate5" type="radio" value="5" />
+    @if (ViewBag.checkcomment)
+    {
+        <div class="control-rating" id="720">
+            <div class="box-star-score pull-left">
+                @point
+            </div>
+            <div class="box-until">
+                <div class="row-rating">
+                    <p class="pull-left">Đánh giá:</p>
+                    <div class="star-rating pull-left">
+                        <input id="rate1" type="radio" value="1" />
+                        <input id="rate1" type="radio" value="2" />
+                        <input id="rate3" type="radio" value="3" />
+                        <input id="rate4" type="radio" value="4" />
+                        <input id="rate5" type="radio" value="5" />
 
-                </div>
+                    </div>
 
-                <p class="pull-left">
-                    <span id="fffff" class="score-vote">
-                        0
+                    <p class="pull-left">
+                        <span id="fffff" class="score-vote">
+                            0
+                        </span>
+                        /5
+                    </p>
+                </div><br />
+                <div class="row-score">
+                    <span onclick="listRating(this);" style="cursor: pointer;">
+                        Điểm: <span class="total-score">@point</span>/5
                     </span>
-                    /5
-                </p>
-            </div><br />
-            <div class="row-score">
-                <span onclick="listRating(this);" style="cursor: pointer;">
-                    Điểm: <span class="total-score">@point</span>/5
-                </span>
-                <span class="pull-right num-user-rating hidden" onclick="listRating(this);">
-                </span>
+                    <span class="pull-right num-user-rating hidden" onclick="listRating(this);">
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
     <!-- end rating -->  <br>
-    <span style="color:#007fff;font-family:'Noto Sans', sans-serif;">Trọng Trần </span>
-    <input id="comment" type="text" style="margin-left:10px;height:30px;width:400px;padding:2px 12px;border-radius:20px;border:1px solid #ccc;" placeholder="Viết bình luận..." />
-    <input id="submit" type="button" value="Đăng" />
+        <span style="color:#007fff;font-family:'Noto Sans', sans-serif;">@ViewBag.user </span>
+        <input id="comment" type="text" style="margin-left:10px;height:30px;width:400px;padding:2px 12px;border-radius:20px;border:1px solid #ccc;" placeholder="Viết bình luận..." />
+        <input id="submit" type="button" value="Đăng" />
+    }
+    else
+    {
+        <p>Chỉ có thành viên mới có thể viết nhận xét. Vui lòng <a style="color: #c00;" class="dangnhap" href="#">đăng nhập</a> hoặc <a class="dangky" style="color: #c00;" href="#">đăng ký</a>.</p>
+    }
+
 </div>
 <script>
     var checkpoint;
     var rate;
-    //function Review(point) {
-    //    console.log(point);
-    //}
-
+    
     function TienHanhDatHang(id) {
         var formData = new FormData();
-        formData.append("product", id);
+        formData.append("product",'@book_detail._id');
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open("post", "/Cart/CreatDataCart", false); // false for synchronous request
         xmlHttp.send(formData);
@@ -165,8 +175,8 @@
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open("post", "/Book_Details/Comment", false); // false for synchronous request
                 xmlHttp.send(formData);
-              
-                $('.nhanxet').append("<div class='ndnx'><span style='font-family: inherit;color: #000;font-weight: 700;line-height: 2em;'>" + comment + " </span>&nbsp;&nbsp<div style='display: inline-block;' class='rating-box'><div style='width: " + rate * 20 + "%;' class='rating'></div></div> <br><p style='line-height: 3em;'>Nhận xét bởi <a href='#'>"+getCookie()+"</a> vào ngày " + getDatetime()+"</p><p>" + comment + "</p></div>");
+
+                $('.nhanxet').append("<div class='ndnx'><span style='font-family: inherit;color: #000;font-weight: 700;line-height: 2em;'>" + comment + " </span>&nbsp;&nbsp<div style='display: inline-block;' class='rating-box'><div style='width: " + rate * 20 + "%;' class='rating'></div></div> <br><p style='line-height: 3em;'>Nhận xét bởi <a href='#'>" + getCookie() + "</a> vào ngày " + getDatetime() + "</p><p>" + comment + "</p></div>");
                 $('#comment').val("");
 
             } else {
@@ -189,6 +199,7 @@
             TimeAbout = "PM";
         return now.getDate() + "/" + now.getMonth() + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " " + TimeAbout;
     }
+  
 </script>
 
 @section css_link{

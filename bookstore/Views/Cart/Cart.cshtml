@@ -85,7 +85,12 @@
                                         <div class="giamuasoluong">
                                             <strong> @item.price_pages VNĐ   </strong> <br>
                                             <strong class="giatiengoc"> @item.price VNĐ  </strong> <br>
-                                            <p class="sale"> Giảm 45% </p>
+                                            @{ 
+                                                double aaa = 100-(item.price_pages / item.price * 100);
+                                                int sale = (int)aaa;
+
+                                            }
+                                            <p class="sale"> Giảm @sale% </p>
                                         </div>
 
                                     </div>

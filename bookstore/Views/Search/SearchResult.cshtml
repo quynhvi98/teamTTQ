@@ -32,15 +32,14 @@
     <div class="noidunggiohang">
         <div class="khunggiohang">
             <div>
-                <div class="giohangsanpham" style="font-size: 14px;float:none;"><strong style="font-size: 19px;">ABC </strong> (@results.Count kết quả)</div>
+                <div class="giohangsanpham" style="font-size: 14px;float:none;"><strong style="font-size: 19px;">ABC </strong> (@results.Length kết quả)</div>
             </div>
             @foreach (var item in results)
             {
                 bookstore.Models.BookModel model = new bookstore.Models.BookModel();
                 var rating = model.GetRating(@item._id) * 20;
                 <div id="chitiet" style="margin-left:30px;">
-                    <img src="~/Image_Data/@item._img" width="180" height="230" alt="" />
-
+                    <a href="/Book_Details/BookDetails/@item._id"><img src="~/Image_Data/@item._img" width="180" height="230" alt="" /></a>
                     <p>@item._name</p>
                     <div style="margin-top: 10px;" class="rating-box">
                         <div class="rating" style="width:@rating%"></div>
@@ -83,4 +82,7 @@
     <link href="~/Content/css/giohang1.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/newcss.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/css/danhmuc/SGK&giaotrinh.css" rel="stylesheet" type="text/css" />
+}
+@section login{
+    @Html.Raw(ViewBag.checklogin)
 }
